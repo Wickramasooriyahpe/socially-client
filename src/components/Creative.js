@@ -2,6 +2,7 @@ import React from 'react';
 import FileUp from './FileUp';
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
+import Navibar from './Navibar';
 
 
 const Creative = () => {
@@ -26,18 +27,21 @@ const Creative = () => {
    }
    console.log(creativeType)
   return(
+     
    <div className="bg-light">
-      <h4>Ad preferences</h4>
+      <Navibar /><br></br>
       <div class="wrapper">
        
          <form onSubmit={handleSave}>
+         <h4>Ad preferences</h4><br></br>
             <div class="form-outline mb-4">
-               <label class="form-label" for="form6Example3">Heading</label>
+               
                <input 
                type="text" 
                id="form6Example3" 
                class="form-control" 
                name="heading"
+               placeholder='Heading'
                onChange={handleChange}
                />
             </div>
@@ -45,31 +49,33 @@ const Creative = () => {
             <div class="row mb-4">
                <div class="col">
                   <div class="form-outline">
-                  <label class="form-label" for="form6Example1">Cost Per Sale</label>
+                 
                   <input 
                   type="text" 
                   id="form6Example1" 
                   class="form-control" 
                   name="costpersale"
+                  placeholder='Cost Per Sale'
                   onChange={handleChange}
                   />
                   </div>
                </div>
                <div class="col">
                   <div class="form-outline">
-                  <label class="form-label" for="form6Example2">Destination URL</label>
+                  
                   <input 
                   type="text" 
                   id="form6Example2" 
                   class="form-control"
                   name="destinationurl" 
+                  placeholder='Destination URL'
                   onChange={handleChange}
                   />
                   </div>
                </div>
             </div>
 
-            <label>Creative type</label>  
+            <label><h6>Creative type</h6></label>  
             
 
             <div class="form-check">
@@ -92,17 +98,18 @@ const Creative = () => {
             </div>
 
             <div class="form-outline mb-4">
-               <label class="form-label" for="form6Example7">Discription</label>
-               <textarea class="form-control" id="form6Example7" rows="4"></textarea>  
+               <br></br>
+               <label class="form-label" for="form6Example7"><h6>Discription</h6></label>
+               <textarea class="form-control" id="form6Example7" rows="4" ></textarea>  
             </div>
  
-            <label>Upload Thumbnail media</label>
+            <label><h6>Upload Thumbnail media</h6></label>
             <div>
                <FileUp />               
             </div>
 
             <br></br>     
-            <label>Upload media</label>
+            <label><h6>Upload media</h6></label>
             <div>
                <FileUp />               
             </div>

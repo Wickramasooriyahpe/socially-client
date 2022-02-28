@@ -1,78 +1,96 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import DisplayTable from './DisplayTable';
 import DateRange from '../DateRange';
-import useCampForm from './useCampForm';
+//import CampTable from './CampTable';
+import CreativeTable from './CreativeTable';
+import Navibar from './Navibar';
 
-const CampaignCreate = ({submitForm}) => {
+const CampaignCreate = () => {
    //import React, { Fragment, useState } from "react";
+  const [data, setData] = React.useState();
+
+  const handleSave = (event) =>{
+     console.log(data);
+     event.preventDefault();
+  }
   
-   const { handleChange, handleButton, values, errors,handleSave } = useCampForm(submitForm);
-    
+  const handleChange = (event) =>{
+     //console.log(event.target.name, event.target.value);
+     setData({
+        ...data,
+        [event.target.name]: event.target.value
+     })
+  }
+
+  const handleButton = (event) =>{
+   setData({
+      ...data,
+      [event.target.name]: event.target.value
+   })
+  }
+   
   return (
      <div>
+         <Navibar /><br></br>
    <div className="bg-light">
-       <h4>Create campaign</h4>
+      
     <div className="wrapper">
+    
         <form onSubmit={handleSave}>
+        <h4>Create campaign</h4><br></br>
         <div className="title">
-          Campaign details
+        <h6>Campaign details</h6>
         </div>
         <div className="form">
             
            <div className="col-lg-3">
-              <label>Campaign Name</label>
+              
               <input 
               type="text" 
               className="form-control"
-              name="campaignName"
-              value={values.campaignName}
+              name="campname"
               onChange={handleChange}
+              placeholder="Campaign Name"
               />
               
            </div>  
             <div className="col-lg-6">
-              <label>Ads category</label>
+              
               <input 
               type="text" 
               className="form-control"
-              name="adCategory"
-              value={values.adCategory}
+              name="category"
               onChange={handleChange}
+              placeholder="Ads category"
               />
            </div>  
            <div className="col-lg-6">
-              <label>Budget</label>
+              
               <input 
               type="currency" 
               className="input"
               name="budget"
-              value={values.budget}
               onChange={handleChange}
+              placeholder="Budget"
               />
            </div>  
           
            <div className="date">
+           <br></br>
               <DateRange />
            </div>
            
            <div class="main2">
-              <ul><li><Link to="/creative">Create creative</Link></li></ul>            
+            <Link to="/creative" class="btn btn-primary">Create creative</Link>            
            </div>
     
             <div className="table-container">
-               <DisplayTable />
+               <CreativeTable />
             </div>
-         //    
-         
-         <div className="mt-3">
-         <a
-           className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-           onClick={handleButton}
-         >
-           Save
-         </a>
-       </div>
+            <div class="main2">
+            <Link to="/campcrea" role="button" type="submit" class="btn btn-primary" onClick={handleButton}>Save</Link> 
+           </div>
+           
         
         </div>
         </form>   
