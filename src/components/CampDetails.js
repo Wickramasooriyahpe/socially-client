@@ -1,23 +1,58 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useState} from 'react';
-import { Button,Modal,Input } from 'react-bootstrap';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+//import { Button,Modal,Input } from 'react-bootstrap';
+//import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import {Link} from 'react-router-dom';
 //import { FaEye } from "react-icons/fa";
-import { FaTrashAlt } from "react-icons/fa";
-import { FaRegEdit } from "react-icons/fa";
+//import { FaTrashAlt } from "react-icons/fa";
+//import { FaRegEdit } from "react-icons/fa";
 import Navibar from "./Navibar";
 import CampTable from "./CampTable";
+import SearchBar from "./SearchBar";
  
 function CampDetails() {
  
     const [show, setShow] = useState(false);
+    
  
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   return (
  
-       <div class="container ">
+    <div class="card">
+        <div class="card-header">
+        <Navibar /><br></br>
+        </div>
+        <div class="card-body">
+            <div class="container ">
+                <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
+                    <div class="row ">
+                        <div class="col-sm-3 mt-5 mb-4 text-gred">
+                           
+                        </div>  
+                        <div class="col-sm-3 offset-sm-2 mt-5 mb-4 text-gred" style={{color: "#0275d8"}}>
+                            <h2><b>Campaign Details</b></h2>
+                        </div>
+                        <div class="col-sm-3 offset-sm-1  mt-5 mb-4 text-gred">             
+                            <div>
+                                <Link to="/campaign" class="btn btn-primary" role="button">Create Campaign</Link>            
+                            </div>
+                        </div>
+                        </div>  
+                        <div class="row">
+                            <div class="table-responsive " >
+                            <CampTable />
+                        </div>   
+                    </div>  
+                </div>    
+            </div>
+        </div>
+  </div>
+      );
+    }
+
+    export default CampDetails;
+    /*<div class="container ">
            <Navibar />
           <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
           <div class="row ">
@@ -25,7 +60,7 @@ function CampDetails() {
            <div class="col-sm-3 mt-5 mb-4 text-gred">
               <div className="search">
                 <form class="form-inline">
-                 <input class="form-control mr-sm-2" type="search" placeholder="Search Student" aria-label="Search"/>
+                 
                 
                 </form>
               </div>    
@@ -33,8 +68,8 @@ function CampDetails() {
               <div class="col-sm-3 offset-sm-2 mt-5 mb-4 text-gred" style={{color: "#0275d8"}}><h2><b>Campaign Details</b></h2></div>
               <div class="col-sm-3 offset-sm-1  mt-5 mb-4 text-gred">
               
-              <div class="main2">
-              <Link to="/campaign" class="btn btn-primary">Create Campaign</Link>            
+              <div>
+              <Link to="/campaign" class="btn btn-primary" role="button">Create Campaign</Link>            
            </div>
              </div>
              </div>  
@@ -44,11 +79,7 @@ function CampDetails() {
             </div>   
         </div>  
         </div>    
-      </div>
-      );
-    }
-
-    export default CampDetails;
+      </div>*/
 
     /*<table class="table table-striped table-hover table-bordered">
                     <thead>

@@ -11,7 +11,7 @@ const Navibar = () => {
                     <Nav>
                         <Nav.Link href='/navi'>Dashboard</Nav.Link>
                         <Nav.Link href='/campcrea'>Campaign</Nav.Link>
-                        <Nav.Link href='/'>Profile</Nav.Link>
+                        <Nav.Link href='/profile'>Profile</Nav.Link>
                         <Nav.Link href='/'>Review</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

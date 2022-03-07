@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {Link} from 'react-router-dom';
 
 function Home() {
@@ -18,8 +19,8 @@ function Home() {
             <h1>
                 Welcome 
             </h1>
-            <Link to="/form" variant="outline-secondary" role="button">Sign Up</Link>
-            <Link to="/Login" variant="outline-secondary">Sign In</Link>  
+            <Link to="/form"  class="btn btn-outline-secondary" role="button">Sign Up</Link>
+            <Link to="/Login" class="btn btn-outline-secondary" role="button">Sign In</Link>  
            
            
         </div>

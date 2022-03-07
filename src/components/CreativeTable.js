@@ -30,32 +30,25 @@ function CreativeTable() {
         dataField: "email",
         text: "Email",
         sort: true,
-       align: 'left',
-       headerStyle: (colum, colIndex) => {
-        return { width: '200px', textAlign: 'center' };
-      }
+       
     },
     {
         dataField: "postId",
         text: "Product ID",
         sort: true,
-        headerStyle: (colum, colIndex) => {
-            return { width: '60px', textAlign: 'center' };
-          }
+        
     },
     {
         dataField: "name",
         text: "Name",
         sort: true, align: 'left',
-        headerStyle: (colum, colIndex) => {
-            return { width: '140px', textAlign: 'center' };
-          }
+        
     },
     {
         dataField: "",
         text: "Action",
         headerStyle: (colum, colIndex) => {
-            return { width: '140px', textAlign: 'center' };
+            return {textAlign: 'center' };
           },
         formatter: (cellContent, row) => {
           
@@ -71,6 +64,8 @@ function CreativeTable() {
     
     }
 ]
+
+
 
   return (
     <div>
