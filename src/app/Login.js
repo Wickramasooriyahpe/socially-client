@@ -69,8 +69,8 @@ const Login = ({ submitForm }) => {
                         </div>
                         <div className="mt-3 mb-3">
                         
-                          
-                             <ul><li><Link to="/navi" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"  >SIGN IN</Link></li></ul>   
+                        
+                             <Link to="/navi" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"  role="button" type="submit"  >SIGN IN</Link>  
                           
                         </div>
                         <div className="row">
