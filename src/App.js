@@ -20,6 +20,9 @@ import AdvertiserProfile from './UserProfile/advertiserProfile';
 import ChangePassword from './UserProfile/changePassword';
 import './Payment/pay.css';
 import BillingDetails from './Payment/billing';
+import HomePage from './LandingPages/homePage';
+import './LandingPages/landingNav.css';
+
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -33,6 +36,7 @@ function App() {
       <Router>
           <Routes>
               <Route path="/" element={<Home />} /> 
+              <Route path="/home" element={<HomePage />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
               <Route path="/otp" element={<OTP />} />
