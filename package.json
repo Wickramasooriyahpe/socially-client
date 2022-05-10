@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
+    "@stripe/react-stripe-js": "^1.7.2",
+    "@stripe/stripe-js": "^1.29.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -16,7 +18,7 @@
     "date-fns": "^2.28.0",
     "html5-file-selector": "^2.1.0",
     "jquery": "^3.6.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-bootstrap-daterangepicker": "^7.0.0",
@@ -34,6 +36,7 @@
     "react-scripts": "5.0.0",
     "reactstrap": "^9.0.1",
     "rsuite": "^5.5.2",
+    "stripe": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
