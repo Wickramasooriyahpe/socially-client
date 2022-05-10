@@ -18,6 +18,8 @@ import OTP from './app/OTP';
 import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
 import ChangePassword from './UserProfile/changePassword';
+import './Payment/pay.css';
+import BillingDetails from './Payment/billing';
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -41,6 +43,7 @@ function App() {
               <Route path="/profile" element={<AdvertiserProfile />} />
               <Route path="/password" element={<ChangePassword />} />
               <Route path="/edit" element={<Edit />} />
+              <Route path="/pay" element={<BillingDetails/>}/> 
           </Routes>
       </Router>
     
