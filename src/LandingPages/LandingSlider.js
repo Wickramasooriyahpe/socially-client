@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { sliderData } from "./slider-data";
+import "./Slider.css";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -47,10 +48,10 @@ const Slider = () => {
           >
             {index === currentSlide && (
               <div>
-                <img src={slide.Image} alt="slide" className="image" />
+                <img src={slide.image} alt="slide" className="image" />
                 <div className="content">
                   <h2>{slide.heading}</h2>
-                  <p>{slide.des}</p>
+                  <p>{slide.desc}</p>
                   <hr />
                   <button className="btn btn-primary">Get Started</button>
                 </div>

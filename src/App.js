@@ -22,7 +22,7 @@ import './Payment/pay.css';
 import BillingDetails from './Payment/billing';
 import HomePage from './LandingPages/homePage';
 import './LandingPages/landingNav.css';
-
+import './LandingPages/Slider.css'
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
