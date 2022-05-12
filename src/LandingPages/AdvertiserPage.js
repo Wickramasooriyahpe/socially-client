@@ -3,14 +3,16 @@ import LandingNavibar from "./landingNarbar";
 import "./Slider.css";
 import AdvertiserPage from './advertiserNavPage';
 import SocialMedia from "./socialMlinks";
+import Footer from "./footer";
 
 const Advertiser = () => {
     return(
         <div>
-        <br></br>
+       
         <SocialMedia/>
         <LandingNavibar/>   
         <AdvertiserPage/>
+        <Footer/>
         </div>
         
     );

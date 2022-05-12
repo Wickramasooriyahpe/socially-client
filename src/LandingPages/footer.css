@@ -9,6 +9,9 @@
   }
   .footer-link{
     text-decoration: none;
-    color: white;
+    color: white ;
     
+  }
+  .list-unstyled{
+    color: white;
   }

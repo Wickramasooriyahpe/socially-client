@@ -3,14 +3,16 @@ import LandingNavibar from "./landingNarbar";
 import "./Slider.css";
 import PublisherPage from './publisherNavPage';
 import SocialMedia from "./socialMlinks";
+import Footer from "./footer";
 
 const Publisher = () => {
     return(
         <div>
-        <br></br>
+        
         <SocialMedia/>
         <LandingNavibar/>   
         <PublisherPage/>
+        <Footer/>
         </div>
         
     );
