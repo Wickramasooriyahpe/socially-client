@@ -20,7 +20,7 @@ const LandingNavibar = () => {
         <Nav.Link href="/home" className="landing-nav-text">Home</Nav.Link>
         <Nav.Link href="#features" className="landing-nav-text">About Us</Nav.Link>
         <Nav.Link href="/adv" className="landing-nav-text">Advertiser</Nav.Link>
-        <Nav.Link href="#pricing" className="landing-nav-text">Publisher</Nav.Link>
+        <Nav.Link href="/pub" className="landing-nav-text">Publisher</Nav.Link>
         <Nav.Link href="#pricing" className="landing-nav-text">Contact Us</Nav.Link>
         
       </Nav>

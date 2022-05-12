@@ -9,13 +9,13 @@ const AdvertiserPage = () => {
        <div className="adv-land-map-section">
         <div className="adv-land-overly-wrapper" >
             <Image src="slidetwo.jpg" className="adv-land-img"></Image>
-            <div className="adv-land-wrap">
+                <div className="adv-land-wrap">
                 <div className="adv-land-content">
                     <div className="adv-land-map-overly">
                         <h3 className="adv-land-text-spacing"> Advertisers </h3>
-                        <div className="adv-land-desc">
-                         <p className="adv-land-desc-para">Lorem Ipsum is simply dummy text  into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
+                            <div className="adv-land-desc">
+                                <p className="adv-land-desc-para">Lorem Ipsum is simply dummy text  into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            </div>
                         <Button href="/login" className="adv-land-button" >Start</Button>
                     </div>
                 </div>
