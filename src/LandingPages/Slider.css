@@ -47,6 +47,7 @@
     animation-delay: 1s;
     animation-fill-mode: forwards;
     visibility: hidden;
+    z-index: 1;
   }
   
   @keyframes slide-up {
@@ -99,7 +100,7 @@
   }
   .prev {
     top: 50%;
-    left: 8rem;
+    left: 9rem;
   }
   
   hr {
@@ -107,4 +108,5 @@
     background: white;
     width: 50%;
   }
-  
+
+

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import {Link} from 'react-router-dom';
 import { sliderData } from "./slider-data";
 import "./Slider.css";
 
@@ -53,7 +54,7 @@ const Slider = () => {
                   <h2>{slide.heading}</h2>
                   <p>{slide.desc}</p>
                   <hr />
-                  <button className="btn btn-primary">Get Started</button>
+                  <Link className="btn btn-primary" to={slide.path}>Learn More </Link>
                 </div>
               </div>
             )}
