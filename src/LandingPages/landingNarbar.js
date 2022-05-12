@@ -5,11 +5,11 @@ const LandingNavibar = () => {
   return (
     
     <> 
-    <Navbar bg="light" variant="light">
+    <Navbar bg="light" variant="light" className="nav-wrapper">
       <Container>
       <Navbar.Brand className="Landing-page-logo-image"href="#home">
       <img
-      src="socially.jpg"
+      src="socially2.jpg"
       width="300px"
       height="150px"
       className="socially-logo"

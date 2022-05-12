@@ -37,7 +37,7 @@ const Footer = () => {
             {/* Column3 */}
             <div className="col">
               <h3>Find Us</h3><br></br>
-              <ui className="list-unstyled">
+              <ui className="list-unstyled-icons">
               <a className="fa fa-facebook-f" href="##"></a><br></br>
               <a className="fa fa-instagram" href="##"></a><br></br>
               <a className="fa fa-twitter" href="##"></a><br></br>
