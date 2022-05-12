@@ -1,5 +1,17 @@
 .Landing-page-logo-image{
 
-    color: blue;
-    background-color: aqua;
+    height: 20%;
+    width: 50%;
+    
 }
+.socially-logo{
+    height: 20%;
+    width: 50%;
+
+}
+.landing-nav-text{
+    
+    font-size: large;
+    font-weight: 900;
+}
+

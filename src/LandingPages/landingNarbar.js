@@ -7,13 +7,22 @@ const LandingNavibar = () => {
     <> 
     <Navbar bg="light" variant="light">
       <Container>
-      <Navbar.Brand class="Landing-page-logo-image"href="#home">Socially </Navbar.Brand>
-        <Nav className="me-auto">
-        <Nav.Link href="/home">Home</Nav.Link>
-        <Nav.Link href="#features">About Us</Nav.Link>
-        <Nav.Link href="/adv">Advertiser</Nav.Link>
-        <Nav.Link href="#pricing">Publisher</Nav.Link>
-        <Nav.Link href="#pricing">Contact Us</Nav.Link>
+      <Navbar.Brand className="Landing-page-logo-image"href="#home">
+      <img
+      src="socially.jpg"
+      width="300px"
+      height="150px"
+      className="socially-logo"
+      alt="socially"
+    />
+      </Navbar.Brand>
+        <Nav className="container-fluid">
+        <Nav.Link href="/home" className="landing-nav-text">Home</Nav.Link>
+        <Nav.Link href="#features" className="landing-nav-text">About Us</Nav.Link>
+        <Nav.Link href="/adv" className="landing-nav-text">Advertiser</Nav.Link>
+        <Nav.Link href="#pricing" className="landing-nav-text">Publisher</Nav.Link>
+        <Nav.Link href="#pricing" className="landing-nav-text">Contact Us</Nav.Link>
+        
       </Nav>
       </Container>
     </Navbar>
