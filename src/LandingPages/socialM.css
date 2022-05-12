@@ -1,0 +1,27 @@
+.social-media-link-block:first-child {
+    margin-left: 20px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+}
+.social-title-bar{
+    font-size: 1.3rem;
+    padding: 10px;
+    text-align: center;
+    background-color:  #0d6efd;
+    color: grey;
+}
+.deco-bar{
+    background-color: gray;
+    padding-top: 10px;
+}
+.social-media-link-block{
+    margin-left: 20px;
+    margin-right: 20px;
+}

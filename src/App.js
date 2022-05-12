@@ -24,11 +24,7 @@ import BillingDetails from './Payment/billing';
 import HomePage from './LandingPages/homePage';
 import Advertiser from './LandingPages/AdvertiserPage';
 import Publisher from './LandingPages/publisherPage';
-//import Table from './components/Table';
-//import AdvertiserProfile from './components/AdvertiserProfile';
-//import TableComponents from './components/TableComponents';
-//import CampForm from './components/CampForm';
-//import CampTable from './components/CampTable';
+import Contact from './LandingPages/contactUs';
 
 function App() {
   return (
@@ -39,7 +35,8 @@ function App() {
               <Route path="/" element={<HomePage  />} /> 
               <Route path="/home" element={<HomePage  />} /> 
               <Route path="/adv" element={<Advertiser />} /> 
-              <Route path="/pub" element={<Publisher />} /> 
+              <Route path="/pub" element={<Publisher />} />
+              <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
               <Route path="/otp" element={<OTP />} />

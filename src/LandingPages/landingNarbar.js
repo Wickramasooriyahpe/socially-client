@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-
+import "./landingNav.css";
 const LandingNavibar = () => {
   return (
-    <> <br />
+    
+    <> 
     <Navbar bg="light" variant="light">
       <Container>
       <Navbar.Brand class="Landing-page-logo-image"href="#home">Socially </Navbar.Brand>
