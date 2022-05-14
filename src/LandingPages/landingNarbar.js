@@ -10,8 +10,8 @@ const LandingNavibar = () => {
       <Navbar.Brand className="Landing-page-logo-image"href="#home">
       <img
       src="socially2.jpg"
-      width="300px"
-      height="150px"
+      width="200px"
+      height="50px"
       className="socially-logo"
       alt="socially"
     />
@@ -21,7 +21,7 @@ const LandingNavibar = () => {
         <Nav.Link href="#features" className="landing-nav-text">About Us</Nav.Link>
         <Nav.Link href="/adv" className="landing-nav-text">Advertiser</Nav.Link>
         <Nav.Link href="/pub" className="landing-nav-text">Publisher</Nav.Link>
-        <Nav.Link href="#pricing" className="landing-nav-text">Contact Us</Nav.Link>
+        <Nav.Link href="/cont" className="landing-nav-text">Contact Us</Nav.Link>
         
       </Nav>
       </Container>

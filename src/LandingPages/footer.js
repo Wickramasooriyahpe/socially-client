@@ -1,61 +1,92 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-    return(
+  return(
+    <div className="footer-container">
+    <section className="footer-social-media">
+      <div className="footer-social-media-wrapper">
+        <small className="website-right">
+        &copy;{new Date().getFullYear()} SOCIALLY | All rights reserved |
+        </small>
+        <div className="footer-social-link-icons">
+          <Link 
+          className="social-icon-link facebook"
+          to='/'
+          target='_blank'
+          >
+          <i className="fa fa-facebook-f"></i>
+          </Link>
+       
+        <Link 
+        className="social-icon-link Instagram"
+        to='/'
+        target='_blank'
+        >
+        <i className="fa fa-instagram"></i>
+        </Link>
+     
+        <Link 
+        className="social-icon-link Twitter"
+        to='/'
+        target='_blank'
+        >
+        <i className="fa fa-twitter"></i>
+        </Link>
+        
+        <Link 
+        className="social-icon-link linkdin"
+        to='/'
+        target='_blank'
+        >
+        <i class="fa fa-linkedin"></i>
+        </Link>
+       </div>
 
-        <div className="main-footer">
-        <div className="container">
-          <div className="row">
-         
-            {/* Column1 */}
-            <div className="col">
-              <h4 className="list-unstyled">
-                <a href="/home" className="footer-link">Home</a><br></br><br></br>
-                <a href="/home" className="footer-link">About Us</a><br></br><br></br>
-                <a href="/cont" className="footer-link">Contact Us</a><br></br>
-              </h4>
-            </div>
-            {/* Column1 */}
-            <div className="col">
-            <h3>Contact Us</h3><br></br>
-            <h1 className="list-unstyled">
-              <h5> +97 999 9999</h5>
-              <h5>Moscow, Russia</h5>
-              <h5>123 Streeet South North</h5>
-            </h1>
-          </div>
-            {/* Column2 */}
-            <div className="col">
-              <h3>Join Us</h3><br></br>
-              <h5 className="list-unstyled">
-                <a className="footer-link" href="/adv">Advertiser</a><br></br><br></br>
-                <a className="footer-link" href="/pub">Publisher</a>     
-              </h5>
-            </div>
-            {/* Column3 */}
-            <div className="col">
-              <h3>Find Us</h3><br></br>
-              <ui className="list-unstyled-icons">
-              <a className="fa fa-facebook-f" href="##"></a><br></br>
-              <a className="fa fa-instagram" href="##"></a><br></br>
-              <a className="fa fa-twitter" href="##"></a><br></br>
-              <a className="fa fa-linkedin" href="##"></a>
-               
-              </ui>
-            </div>
-          </div>
-          <hr />
-          <div className="row">
-            <p className="col-sm">
-              &copy;{new Date().getFullYear()} SOCIALLY | All rights reserved |
-              
-            </p>
-          </div>
+
+      </div>
+    </section>
+    <div className="footer-links">
+      <div className="footer-link-wrapper">
+      <div className="footer-link-items">
+      <h2>Adress</h2>
+      <h6>Lake rd,Colombo</h6>
+      <h6>Sri Lanka</h6>
+      </div>
+      <div className="footer-link-items">
+      <h2>Contact</h2> 
+      <h6>+9477 999 9999</h6>
+      </div>
+
+        <div className="footer-link-items">
+        <h2>Quick Links</h2>
+        <Link to="/home">Home</Link>
+        <Link to="/home">About Us</Link>
+        <Link to="/home">Contact Us</Link>
         </div>
       </div>
-    );
-}
 
+      <div className="footer-link-wrapper">
+      <div className="footer-link-items">
+      <h2>Join Us</h2>
+      <Link to="/adv">Advertiser</Link>
+      <Link to="/pub">Publisher</Link>
+      
+      </div>
+
+      <div className="footer-link-items">
+      <h2>Find Us</h2>
+      <Link to="/home">Facebook</Link>
+      <Link to="/home">Instagram</Link>
+      <Link to="/home">Twitter</Link>
+      <Link to="/home">Linkdin</Link>
+      </div>
+    </div>
+    
+    </div>
+    </div>
+  );
+};
 export default Footer;

@@ -6,7 +6,8 @@ import { Button } from "react-bootstrap";
 
 const AdvertiserPage = () => {
     return(
-       <div className="adv-land-map-section">
+      
+        <div className="adv-land-map-section">
         <div className="adv-land-overly-wrapper" >
             <Image src="slidetwo.jpg" className="adv-land-img"></Image>
                 <div className="adv-land-wrap">
