@@ -58,6 +58,7 @@ const Footer = () => {
       <div className="footer-link-items">
       <h2>Contact</h2> 
       <h6>+9477 999 9999</h6>
+      <h6>socially@gmail.com</h6>
       </div>
 
         <div className="footer-link-items">

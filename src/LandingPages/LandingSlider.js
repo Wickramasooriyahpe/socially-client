@@ -37,8 +37,10 @@ const Slider = () => {
     return () => clearInterval(slideInterval);
   }, [currentSlide]);
 
-  return (
-    <div className="slider">
+  return(
+    <section className="slider-container">
+      <div className="slider-box">
+      <div className="slider">
       <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
       <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
       {sliderData.map((slide, index) => {
@@ -50,7 +52,7 @@ const Slider = () => {
             {index === currentSlide && (
               <div>
                 <img src={slide.image} alt="slide" className="image" />
-                <div className="content">
+                <div className="lnd-content">
                   <h2>{slide.heading}</h2>
                   <p>{slide.desc}</p>
                   <hr />
@@ -61,8 +63,10 @@ const Slider = () => {
           </div>
         );
       })}
+   
     </div>
+      </div>
+    </section>
   );
-};
-
+}
 export default Slider;
