@@ -40,15 +40,15 @@ const Slider = () => {
   return(
     <section className="slider-container">
       <div className="slider-box">
-      <div className="slider">
-      <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
-      <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
-      {sliderData.map((slide, index) => {
-        return (
-          <div
+        <div className="slider">
+          <AiOutlineArrowLeft className="arrow prev" onClick={prevSlide} />
+          <AiOutlineArrowRight className="arrow next" onClick={nextSlide} />
+            {sliderData.map((slide, index) => {
+             return (
+            <div
             className={index === currentSlide ? "slide current" : "slide"}
             key={index}
-          >
+            >
             {index === currentSlide && (
               <div>
                 <img src={slide.image} alt="slide" className="image" />
@@ -60,13 +60,12 @@ const Slider = () => {
                 </div>
               </div>
             )}
-          </div>
+        </div>
         );
-      })}
-   
+      })}   
     </div>
-      </div>
-    </section>
+  </div>
+</section>
   );
 }
 export default Slider;

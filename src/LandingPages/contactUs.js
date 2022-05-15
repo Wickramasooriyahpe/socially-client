@@ -38,8 +38,9 @@ const Contact = () => {
       <SocialMedia/>
       <LandingNavibar/>
       <div className="row">
-        <div className="col">
-          <div className="contact-form-container">
+      <div className="contact-form-container">
+        <div className="column ">
+          <div className="contact-form">
             <form ref={form} onSubmit={sendEmail} className="contact-form">
               <label>Name</label>
               <input type="text" name="name" className="input-lable" />
@@ -49,13 +50,15 @@ const Contact = () => {
               <textarea name="message" className="contact-text-area" /><br></br>
               <input type="submit" value="Send" className="contact-input-lable"/>
             </form>
-          </div>
-          <div>
+            </div>
+            </div>
+          <div className="column ">
           <img src="slidetwo.jpg" className="contact-us-page-img"></img>
           </div>
-        </div>
+        
       </div>
       <Footer/>
+    </div>
     </div>
   );
 };
