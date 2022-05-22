@@ -20,6 +20,7 @@ import AdvertiserProfile from './UserProfile/advertiserProfile';
 import ChangePassword from './UserProfile/changePassword';
 import './Payment/pay.css';
 import BillingDetails from './Payment/billing';
+import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -44,6 +45,7 @@ function App() {
               <Route path="/password" element={<ChangePassword />} />
               <Route path="/edit" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
+              <Route path="/Dashboard" element={<AdvertiserDashboard />} />
           </Routes>
       </Router>
     

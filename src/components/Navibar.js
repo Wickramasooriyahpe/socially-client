@@ -9,7 +9,7 @@ const Navibar = () => {
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav'>
                     <Nav>
-                        <Nav.Link href='/navi'>Dashboard</Nav.Link>
+                        <Nav.Link href='/Dashboard'>Dashboard</Nav.Link>
                         <Nav.Link href='/campcrea'>Campaign</Nav.Link>
                         <Nav.Link href='/profile'>Profile</Nav.Link>
                         <Nav.Link href='/'>Review</Nav.Link>
