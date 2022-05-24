@@ -21,10 +21,10 @@ const Creative = () => {
      })
   }*/
 /*************** */
-const handleSave = (event) =>{
-   console.log(values);
-   event.preventDefault();
-}
+// const handleSave = (event) =>{
+//    console.log(values);
+//    event.preventDefault();
+// }
 
 const handleChange = (event) =>{
    //console.log(event.target.name, event.target.value);
@@ -45,11 +45,11 @@ const [values, setValues] = useState({
 
   });
 
-  const handleSubmit = event => {
+  const handleSave = event => {
    event.preventDefault();
    
    var axios = require('axios');
-var data = JSON.stringify({
+   var data = JSON.stringify({
   "creativeHeading": values.creativeHeading,
   "destinationURL":values.destinationURL ,
   "creativeDescription": values.creativeDescription,
