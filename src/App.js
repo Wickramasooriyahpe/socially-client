@@ -21,10 +21,19 @@ import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
 import ChangePassword from './UserProfile/changePassword';
 import BillingDetails from './Payment/billing';
+<<<<<<< HEAD
 import HomePage from './LandingPages/homePage';
 import Advertiser from './LandingPages/AdvertiserPage';
 import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
+=======
+import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
+//import Table from './components/Table';
+//import AdvertiserProfile from './components/AdvertiserProfile';
+//import TableComponents from './components/TableComponents';
+//import CampForm from './components/CampForm';
+//import CampTable from './components/CampTable';
+>>>>>>> 41d3b33253a834e251fa488538ab3a27478aa7fc
 
 function App() {
   return (
@@ -48,6 +57,7 @@ function App() {
               <Route path="/password" element={<ChangePassword />} />
               <Route path="/edit" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
+              <Route path="/Dashboard" element={<AdvertiserDashboard />} />
           </Routes>
       </Router>
     
