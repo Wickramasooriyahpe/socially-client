@@ -29,9 +29,11 @@ function CampTable() {
       //     setData(res.data);   
       // });
 
-      const getData = () => {
-        console.log(data);
-      
+      const getData = (event) => {
+        //console.log(data);
+        //console.log(res.data);
+        //setData(data); 
+     
       var axios = require('axios');
   
       var config = {
