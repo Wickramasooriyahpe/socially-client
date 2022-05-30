@@ -3,10 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 //import './SignIn.css';
 import "./validation";
-import useForm from "./useForm";
+import useLoginForm from "./useLoginForm";
 
-const Login = ({ submitForm }) => {
-  const { handleChange, handleForSubmit, values, errors } = useForm(submitForm);
+const Login = ({ submitLoginForm }) => {
+  const { handleChange, handleForSubmit, values, errors } = useLoginForm(submitLoginForm);
 
   return (
     <div className="container-scroller">
@@ -24,7 +24,7 @@ const Login = ({ submitForm }) => {
                         </h3>{" "}
                       </div>
 
-                      <form className="pt-3">
+                      <form className="pt-3" onClick={handleForSubmit}>
                         <div className="form-group">
                           <label>Email</label>
                           <input
@@ -76,7 +76,7 @@ const Login = ({ submitForm }) => {
                         <div className="row">
                           <div className="col font-weight-light">
                             {" "}
-                            <Link to="/" className="text-primary">
+                            <Link to="/form" className="text-primary">
                               Don't have an Account?
                             </Link>
                           </div>

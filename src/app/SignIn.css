@@ -145,10 +145,7 @@ body{
 a{
   text-decoration: none;
 }
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-}
+
 .text-center {
   text-align: center!important;
 }

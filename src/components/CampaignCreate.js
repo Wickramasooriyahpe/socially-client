@@ -1,75 +1,73 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DateRange from '../DateRange';
-//import CampTable from './CampTable';
+
 import CreativeTable from './CreativeTable';
 import Navibar from './Navibar';
 import RangePicker from './RangePicker';
 //import { DateRange } from 'react-date-range';
 
 const CampaignCreate = () => {
-   //import React, { Fragment, useState } from "react";
-  const [data, setData] = React.useState();
+   const handleChange = (event) =>{
+      console.log(event.target.name, event.target.value);
+      setValues({
+         ...values,
+         [event.target.name]: event.target.value
+      })
+   }
+   const [values, setValues] = useState({
+       
+      campaignName: "",
+      budget: "",
+      adCategory: "",
+      startDate: "",
+      endDate: "",
+      //deletedAt: "",
+      adveID: ""
+      
+    });
 
-  const handleSave = (event) =>{
-     console.log(data);
-     event.preventDefault();
-  }
+//   const handleSave = (event) =>{
+//      console.log(values);
+//      event.preventDefault();
+//   }
   
-  const handleChange = (event) =>{
-     //console.log(event.target.name, event.target.value);
-     setData({
-        ...data,
-        [event.target.name]: event.target.value
-     })
-  }
+//console.log("data");
 
-  const handleSubmit = event => {
-   event.preventDefault();
-   var axios = require('axios');
-   var data = JSON.stringify({
+  const handleSave = (e) => {
+  //console.log(values);
+ e.preventDefault();
+  var axios = require("axios");
+  var data = JSON.stringify({
+    campaignName: values.campaignName,
+    budget: values.budget,
+    adCategory: values.adCategory,
+    startDate: values.startDate,
+    endDate: values.endDate,
+    // "deletedAt": setValues.deletedAt,
+    adveID: values.adveID,
+  });
 
-         "campaignName": values.campaignName,
-         "budget":values.budget ,
-         "adCategory": values.adCategory,
-         "startDate": values.startDate,
-         "endDate": values.endDate,
-         // "deletedAt": setValues.deletedAt,
-         "adveID": values.adveID
-   });
+  var config = {
+    method: "post",
+    url: "http://localhost:3000/campaign/createCampaign",
+    headers: {
+      Authorization:
+        "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
+        "Content-Type": "application/json",
+    },
+    data: data,
+  };
 
-   var config = {
-      method: 'post',
-      url: 'http://localhost:3000/campaign/createCampaign',
-      headers: { 
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('JWT'))['accessToken'] ,
-        'Content-Type': 'application/json'
-      },
-      data : data
-    };
-    
-    axios(config)
+  axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       console.log(error);
     });
-   
-  }
+};
 
-  const [values, setValues] = useState({
-       
-   campaignName: "",
-   budget: "",
-   adCategory: "",
-   startDate: "",
-   endDate: "",
-   //deletedAt: "",
-   adveID: ""
-   
- });
   
   return (
    <div class="card">
@@ -84,7 +82,7 @@ const CampaignCreate = () => {
                <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
                   <div class="row ">  
                   <div class=" text-gred">               
-                     <form onSubmit={handleSave} >
+                     <form onClick={handleSave} >
                         <h4 class="card-title">Create campaign</h4><br></br>
                         <h5 class="card-title">Basic campaign Information</h5><br></br>                    
                         <div class="form-outline mb-4">

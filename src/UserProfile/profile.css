@@ -43,9 +43,9 @@ body {
     cursor: pointer;
     text-decoration: none !important;
 }
-a {
+/* a {
     color: #0d6efd;
-}
+} */
 /*.btn, .form-group .custom-file .custom-file-label:after {
     padding: 7px 2rem;
     font-size: 14px;

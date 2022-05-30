@@ -6,22 +6,7 @@ import Navibar from '../components/Navibar';
     return (
 
         <div class="page-container-bg-solid page-boxed">
-            <div class="page-header">
-                <div class="page-header-top">
-                    <div class="container-fluid">
-                        <div class="top-menu" >
-                            <ul class="nav navbar-nav pull-right">
-                                <li class="dropdown dropdown-extended dropdown-notification-bar dropdown-dark">
-                                     <a class="append-number" href="#">
-                                        <i class="icon-bell"></i>
-                                     </a>
-                                     
-                                </li>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                </div> 
+         <div class="page-header">
             <div class="page-header-menu">
                 <div class="container-fluid">
                     <div class="hor-menu">

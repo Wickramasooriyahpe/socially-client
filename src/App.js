@@ -1,15 +1,17 @@
 import React from 'react';
-//import Campaign from './components/Campaign';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/Campaign.css';
 import './app/SignIn.css';
 import  './UserProfile/profile.css';
 import './fileUploads/image.css';
-//import RangePicker from './components/RangePicker';
+import './Payment/pay.css';
+import './LandingPages/Slider.css'
+
 import CampaignCreate from './components/CampaignCreate';
 import Creative from './components/Creative';
 import Edit from './components/Edit';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import CampDetails from './components/CampDetails';
 import Navibar from './components/Navibar';
 import Form from './app/Form';
@@ -18,8 +20,11 @@ import OTP from './app/OTP';
 import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
 import ChangePassword from './UserProfile/changePassword';
-import './Payment/pay.css';
 import BillingDetails from './Payment/billing';
+import HomePage from './LandingPages/homePage';
+import Advertiser from './LandingPages/AdvertiserPage';
+import Publisher from './LandingPages/publisherPage';
+import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
@@ -33,7 +38,11 @@ function App() {
       
       <Router>
           <Routes>
-              <Route path="/" element={<Home />} /> 
+              <Route path="/" element={<HomePage  />} /> 
+              <Route path="/home" element={<HomePage  />} /> 
+              <Route path="/adv" element={<Advertiser />} /> 
+              <Route path="/pub" element={<Publisher />} />
+              <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
               <Route path="/otp" element={<OTP />} />

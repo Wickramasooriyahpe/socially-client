@@ -37,6 +37,7 @@ const useForm = (submitForm) => {
 
     axios(config)
       .then(function (response) {
+        console.log("succes")
         console.log(JSON.stringify(response));
       })
       .catch(function (response) {
