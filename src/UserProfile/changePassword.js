@@ -6,22 +6,7 @@ import Navibar from '../components/Navibar';
     return (
 
         <div class="page-container-bg-solid page-boxed">
-            <div class="page-header">
-                <div class="page-header-top">
-                    <div class="container-fluid">
-                        <div class="top-menu" >
-                            <ul class="nav navbar-nav pull-right">
-                                <li class="dropdown dropdown-extended dropdown-notification-bar dropdown-dark">
-                                     <a class="append-number" href="#">
-                                        <i class="icon-bell"></i>
-                                     </a>
-                                     
-                                </li>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                </div> 
+         <div class="page-header">
             <div class="page-header-menu">
                 <div class="container-fluid">
                     <div class="hor-menu">
@@ -45,11 +30,11 @@ import Navibar from '../components/Navibar';
                     <div class="row">
                          <div class="col-sm-3">
                             <div class="collection" role="menu">
-                            <a class="collection-item " href="" role="menuitem" data-toggle="basic">
+                            <a class="collection-item " href="/profile" role="menuitem" data-toggle="basic">
                             <span class="collection-item-title">Personal info</span>
                             <p class="collection-item-description">Set Basic and contact information</p>
                             </a>
-                            <a class="collection-item active" href="" role="menuitem" data-toggle="password">
+                            <a class="collection-item active" href="/password" role="menuitem" data-toggle="password">
                             <span class="collection-item-title">Password</span>
                             <p class="collection-item-description">Change your password </p>
                             </a>        

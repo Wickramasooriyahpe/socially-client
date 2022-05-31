@@ -88,13 +88,19 @@ body{
   padding: 1rem 3rem;
   line-height: 1.5;
 }
+
+
+
+/*btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn
+
 .btn-primary:not(.btn-light){
   color: #fff;
 }
-.btn.btn-lg{
+.btn .btn-block .btn-primary .btn-lg .font-weight-medium .auth-form-btn{
   font-size: .875rem;
   background-color: #0062ff;
   border-color: #0062ff;
+  text-align: center;
 }
 .btn {
   line-height: 1;
@@ -145,10 +151,7 @@ body{
 a{
   text-decoration: none;
 }
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-}
+
 .text-center {
   text-align: center!important;
 }
@@ -279,7 +282,7 @@ form {
   display: block;
   margin-top: 0em;
 }
-.form-check {
+ .form-check {
   position: relative;
   display: block;
   margin-top: 10px;

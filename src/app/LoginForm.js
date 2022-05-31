@@ -6,13 +6,13 @@ import Dashboard from "./Dashboard";
 const LoginForm = () => {
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
 
-  const submitForm = () => {
+  const submitLoginForm = () => {
     setFormIsSubmitted(true);
   };
 
   return (
     <div>
-      {!formIsSubmitted ? <Login submitForm={submitForm} /> : <Dashboard />}
+      {!formIsSubmitted ? <Login submitForm={submitLoginForm} /> : <Dashboard />}
     </div>
   );
 };
