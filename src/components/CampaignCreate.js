@@ -72,100 +72,118 @@ const CampaignCreate = () => {
  });
   
   return (
-   <div class="card">
-      <div class="card-header">
-         <div class="page-header">
-            <Navibar/> 
-            
-               
-         </div>
-         <div class="card-body">
-            <div class="container ">
-               <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
-                  <div class="row ">  
-                  <div class=" text-gred">               
-                     <form onSubmit={handleSave} >
-                        <h4 class="card-title">Create campaign</h4><br></br>
-                        <h5 class="card-title">Basic campaign Information</h5><br></br>                    
-                        <div class="form-outline mb-4">
-                              
-                           <input 
-                              type="text" 
-                              id="form6Example4" 
-                              class="form-control" 
-                              name="campaignName"
-                              placeholder='campaignName'
-                              onChange={handleChange}
-                              values = {values.campaignName}
-                           />
-                        </div>
+   <div class="page-container-bg-solid page-boxed">
+      <div class="page-header">
+            <div class="page-header-top">
+               <div class="container-fluid">         
+                  <div class="top-menu" >
+                        <ul class="nav navbar-nav pull-right">
+                           <div><Navibar/></div><br></br>
+                        </ul>             
+                  </div>
+               </div>
+            </div>
+      
+            <div class="page-header-menu">
+               <div class="container-fluid">
+               </div>
+            </div>
+      </div>
 
-                        <div class="row mb-4">
-                           <div class="col">
-                              <div class="form-outline">
-                           
-                                 <input 
-                                 type="text" 
-                                 id="form6Example5" 
-                                 class="form-control" 
-                                 name="adCategory"
-                                 placeholder='adCategory'
-                                 onChange={handleChange}
-                                 values = {values.adCategory}
-                                 />
-                              </div>
+      <div class="page-container">
+         <div class="page-content-wrapper">
+            <div class="page-head"><br></br>
+               <div class="container-fluid"><br></br>
+                  <h2 class="page-head-title" title="Profile setting">Create campaign</h2>
+               </div>
+            </div>
+
+            <div class="page-content">
+               <div class="container-fluid">
+                     <div class="page-content-inner" id="listsCampaign">
+                        <div class="portlet light">
+                           <div class="portlet-title" >
+                              <form onSubmit={handleSave}>
+                                 <h5 class="card-title">Basic campaign Information</h5><br></br>  
+
+                                 <div class="form-outline mb-4">                                    
+                                    <input 
+                                       type="text" 
+                                       id="form6Example4" 
+                                       class="form-control" 
+                                       name="campaignName"
+                                       placeholder='campaignName'
+                                       onChange={handleChange}
+                                       values = {values.campaignName}
+                                    />
+                                 </div>
+
+                                 <div class="row mb-4">
+                                    <div class="col">
+                                       <div class="form-outline">
+                                    
+                                          <input 
+                                          type="text" 
+                                          id="form6Example5" 
+                                          class="form-control" 
+                                          name="adCategory"
+                                          placeholder='adCategory'
+                                          onChange={handleChange}
+                                          values = {values.adCategory}
+                                          />
+                                       </div>
+                                    </div>
+                                    <div class="col">
+                                       <div class="form-outline">
+                                       
+                                          <input 
+                                          type="currency" 
+                                          id="form6Example6" 
+                                          class="form-control"
+                                          name="budget" 
+                                          placeholder='budget'
+                                          values = {values.budget}
+                                          onChange={handleChange}
+                                          />
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div className="date" name="date">          
+                                    <RangePicker />
+                                 </div>
+
+                                 <div class="text-right">
+                                    <Link 
+                                    to="/creative" 
+                                    className="btn btn-primary pull-right" 
+                                    > 
+                                    Create creative 
+                                    </Link>  <br></br>       
+                                 </div>
+
+                                 <div className="table-container">
+                                    <br></br> 
+                                    <CreativeTable />
+                                 </div>
+
+                                 <div>
+                                    <Link 
+                                       to="/campcrea" 
+                                       role="button" 
+                                       type="submit" 
+                                       className="btn btn-primary pull-right" >
+                                       Save
+                                    </Link><br></br><br></br>
+                                 </div>
+                              </form>  
                            </div>
-                           <div class="col">
-                              <div class="form-outline">
-                              
-                                 <input 
-                                 type="currency" 
-                                 id="form6Example6" 
-                                 class="form-control"
-                                 name="budget" 
-                                 placeholder='budget'
-                                 values = {values.budget}
-                                 onChange={handleChange}
-                                 />
-                              </div>
-                           </div>
                         </div>
-
-                        <div className="date">          
-                           <RangePicker />
-                        </div>
-
-                        <div class="text-right">
-                           <Link 
-                           to="/creative" 
-                           className="btn btn-primary pull-right" 
-                           > 
-                           Create creative 
-                           </Link>  <br></br>       
-                        </div>
-
-                        <div className="table-container">
-                           <br></br> 
-                           <CreativeTable />
-                        </div>
-
-                        <div>
-                        <Link 
-                        to="/campcrea" 
-                        role="button" 
-                        type="submit" 
-                        className="btn btn-primary pull-right" >
-                        Save
-                        </Link><br></br>
-                        </div>                          
-                     </form>
                      </div>
                </div>
             </div>
          </div>
-            
-         </div>
-      </div>     
+      </div>
    </div>
  
     	

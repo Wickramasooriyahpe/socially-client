@@ -479,6 +479,12 @@ body{
     padding: 12px 20px 15px;
     background-color: #fff;
 }
+
+.portlet-title .pull-right, h6, .form-check{
+  text-transform: none;
+
+}
+
 *, :after, :before {
     box-sizing: border-box;
 }
