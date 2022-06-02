@@ -1,19 +1,19 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
+//import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import paginationFactory from 'react-bootstrap-table2-paginator';
 //import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
+//import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import { FaTrashAlt } from "react-icons/fa";
+//BsFillHeartFill
 import { FaRegEdit } from "react-icons/fa";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-import { Container } from 'react-bootstrap';
-// import SearchItem from './SearchItem';
-// import { Input } from "antd";
-// import "antd/dist/antd.css";
 //import { Button, Row } from "react-bootstrap";
 
 
@@ -23,112 +23,95 @@ function CampTable() {
         getData();
     }, []);
 
-      // const getData = () => {
-      //     axios("https://jsonplaceholder.typicode.com/comments").then((res) =>{
-      //     console.log(res.data);
-      //     setData(res.data);   
-      // });
-
-      const getData = (event) => {
-        //console.log(data);
-        //console.log(res.data);
-        //setData(data); 
-     
-      var axios = require('axios');
-  
-      var config = {
-        method: 'get',
-        url: 'http://localhost:3000/campaign/1',
-        headers: { }
-      };
-      
-      axios(config)
-      .then(function (response) {
-       console.log(JSON.stringify(response.data));
-      //  this.setState({
-      //       data: response.data
-      //     });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      
-
-  };
-
-  // const { Search } = Input;
-
-  // const [searchVal, setSearchVal] = useState();
-
-  // const { filteredData, loading } = SearchItem({
-  //   searchVal,
-  //   retrieve: getData
-  // });
-
-
-      const columns=[
+    const getData = () => {
+        axios("http://localhost:3000/campaign/1").then((res) =>{
+        console.log(res.data);
+        setData(res.data);
+       
+    });
+};
+    
+    const columns=[
       {
-          datafield: "",
-          text: "Status",
-          formatter: (cellContent, row) =>{
-              return(
-                  <>
-                      <BootstrapSwitchButton
-                          checked={false}
-                          onstyle="light"
-                      />
-                  </>
-              )
-                
+        datafield: "",
+        text: "Status",
+        formatter: (cellContent, row) =>{
+            return(
+                <>
+                    <BootstrapSwitchButton
+                        checked={false}
+                        onstyle="light"
+                    />
+                </>
+            )
               
-          }
+            
+        }
 
-      },
-      {
-        dataField: "campaignName",
-        text: "Campaign Name",
-        sort: true,
-    },
-    {
-        dataField: "budget",
-        text: "Budegt",
-        sort: true,
-    },
-    {
-        dataField: "adCategory",
-        text: "Category",
-        sort: true,
-    },
-      {
-          dataField: "",
-          text: "Action",
-          formatter: (cellContent, row) => {
-            
-              return (
-                <div>
-                <button className="btn btn-outline-danger btn-sm"><FaTrashAlt /></button>
-                <button className="btn btn-outline-primary btn-sm"><FaRegEdit /></button>
-                </div>
-              );
-            
-          }
+    },    
+  {
+      dataField: "campaignName",
+      text: "Campaign Name",
+      sort: true,
+  },
+  {
+      dataField: "budget",
+      text: "Budegt",
+      sort: true,
+  },
+  {
+      dataField: "adCategory",
+      text: "Category",
+      sort: true,
+  },
+  {
+        dataField: "",
+        text: "Action",
+       headerStyle: (colum, colIndex) => {
+            return {textAlign: 'center' };
+          },
+        formatter: (cellContent, row) => {
           
+            return (
+              <div>              
+              <button className="btn btn-outline-danger btn-sm"  ><FaTrashAlt /></button>
+              <Link className="btn btn-outline-primary btn-sm"  to="/edit" role="button" ><FaRegEdit /></Link>
+              </div>
+            );         
+        }
+    }
+]
 
-      }
-  ]
+const[value, setValue] = useState('');
+const [datasource, setDataSource] = useState(data);
+const [tablefilter, setTablefilter] =useState({});
+const filterData = (e) =>{
+  if(e.target.value != ""){
+    setData(e.target.value);
+    const filterTable = datasource.filter(o=>Object.keys(o).some(k=>
+      String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())));
+      setTablefilter({...filterTable})
+  } else{
+    setValue(e.target.value);
+    setDataSource({...datasource})
+  }
+}
 
- 
+const defaultSorted = [{
+  dataField: 'name',
+  order: 'desc'
+}];
 
 
-  const selectRow = {
-    mode: 'checkbox',
-    clickToSelect: true
-  };
+const selectRow = {
+  mode: 'checkbox',
+  clickToSelect: true
+};
 
-  const { SearchBar } = Search;
+const { SearchBar } = Search;
 
-  return (
-    <div className="container" style={{ marginTop: 50 }}>
+return (
+  <div className="container" style={{ marginTop: 50 }}>
      <ToolkitProvider
       keyField="id"
       data={data}
@@ -142,12 +125,14 @@ function CampTable() {
          <SearchBar {...props.searchProps} />
          <hr />
          <BootstrapTable
+          bootstrap4
           striped
           hover
           keyField='id'
           data={data}
           columns={columns} 
-          // filter={filterFactory()}  
+          // filter={filterFactory()}
+          defaultSorted={defaultSorted}  
           selectRow={ selectRow }
           pagination={paginationFactory()} 
          
@@ -159,8 +144,10 @@ function CampTable() {
      </ToolkitProvider>
      
     </div>
-   );   
- 
-};
+)
+
+
+
+}
 
 export default CampTable;

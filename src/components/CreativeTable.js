@@ -17,7 +17,7 @@ function CreativeTable() {
     }, []);
 
     const getData = () => {
-        axios("https://jsonplaceholder.typicode.com/comments").then((res) =>{
+        axios("http://localhost:3000/creative/camp/1").then((res) =>{
         console.log(res.data);
         setData(res.data);
         
@@ -27,20 +27,20 @@ function CreativeTable() {
     const columns=[
     
     {
-        dataField: "email",
-        text: "Email",
+        dataField: "creativeHeading",
+        text: "Heading",
         sort: true,
        
     },
     {
-        dataField: "postId",
-        text: "Product ID",
+        dataField: "destinationURL",
+        text: "URL",
         sort: true,
         
     },
     {
-        dataField: "name",
-        text: "Name",
+        dataField: " costPerSale",
+        text: "CPS",
         sort: true, align: 'left',
         
     },
@@ -54,7 +54,7 @@ function CreativeTable() {
           
             return (
               <div>
-              <button className="btn btn-outline-success btn-sm"><FaEye /></button>
+              <button className="btn btn-outline-success btn-sm" ><FaEye /></button>
               <button className="btn btn-outline-danger btn-sm"><FaTrashAlt /></button>
               <button className="btn btn-outline-primary btn-sm"><FaRegEdit /></button>
               </div>
