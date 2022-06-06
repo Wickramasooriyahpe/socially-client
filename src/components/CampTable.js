@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
@@ -14,22 +14,41 @@ import { FaTrashAlt } from "react-icons/fa";
 //BsFillHeartFill
 import { FaRegEdit } from "react-icons/fa";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import { FcPlus } from "react-icons/fc";
 //import { Button, Row } from "react-bootstrap";
 
 
-function CampTable() {
+function CampTable(){
+
+
+  //console.log(currentUser);
     const [data, setData] = useState([]);
     useEffect(() => {
         getData();
     }, []);
 
+
     const getData = () => {
-        axios("http://localhost:3000/campaign/1").then((res) =>{
+       const config =  {
+        method: "get", 
+        headers: {"Authorization" : `Bearer`+JSON.parse(localStorage.getItem("JWT"))["accessToken"]} }
+        axios.get("http://localhost:3000/campaign/1",config).then((res) =>{
+        
         console.log(res.data);
         setData(res.data);
        
     });
 };
+
+// {Campaign.map((Campaign) => (
+//   <li key={Campaign.id} onClick={handleClick}>
+//   </li>
+// ))}
+// const handleClick = (campaignId) => {
+//   axios.get(`http://localhost:5050/employees/${employeeId}`).then((res) => {
+//       setEmployees(res.data);
+//   });
+// };
     
     const columns=[
       {
@@ -49,6 +68,10 @@ function CampTable() {
         }
 
     },    
+    {
+      dataField: "campaignId", 
+      hidden: true
+  },
   {
       dataField: "campaignName",
       text: "Campaign Name",
@@ -75,7 +98,8 @@ function CampTable() {
             return (
               <div>              
               <button className="btn btn-outline-danger btn-sm"  ><FaTrashAlt /></button>
-              <Link className="btn btn-outline-primary btn-sm"  to="/edit" role="button" ><FaRegEdit /></Link>
+              <Link className="btn btn-outline-primary btn-sm"  to={'/edit/'} role="button" ><FaRegEdit /></Link>
+              <Link className="btn btn-outline-success btn-sm" role="button" to='/Creative'><FcPlus /></Link>
               </div>
             );         
         }

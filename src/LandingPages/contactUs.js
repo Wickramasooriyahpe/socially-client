@@ -5,6 +5,7 @@ import LandingNavibar from "./landingNarbar";
 import SocialMedia from "./socialMlinks";
 import Footer from "./footer";
 import "./contact.css";
+import ContactHeader from "./contactHeadder";
 
 // npm i @emailjs/browser
 
@@ -37,6 +38,7 @@ const Contact = () => {
       <br></br>
       <SocialMedia/>
       <LandingNavibar/>
+      <ContactHeader/>
       <div className="row">
       <div className="contact-form-container">
         <div className="column ">
@@ -53,7 +55,8 @@ const Contact = () => {
             </div>
             </div>
           <div className="column ">
-          <img src="slidetwo.jpg" className="contact-us-page-img"></img>
+          <div className="contact-us-page-img-container">
+          <img src="slidetwo.jpg" className="contact-us-page-img"></img></div>
           </div>
         
       </div>

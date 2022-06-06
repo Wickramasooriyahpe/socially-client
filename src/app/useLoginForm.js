@@ -22,6 +22,7 @@ const useLoginForm = (submitLoginForm) => {
 var data = JSON.stringify({
   "email": values.email,
   "password":values.password,
+
 });
 
 var config = {
@@ -39,9 +40,10 @@ axios(config)
   console.log("succes");
   
   console.log(JSON.stringify(response.data));
+  console.log(JSON.stringify(response.data.email));
   // saving the acces token in local storage
   localStorage.setItem("JWT",JSON.stringify(response.data));
-
+  
 })
 .catch(function (error) {
   console.log(error);
