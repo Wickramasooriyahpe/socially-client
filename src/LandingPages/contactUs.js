@@ -41,7 +41,7 @@ const Contact = () => {
       <ContactHeader/>
       <div className="row">
       <div className="contact-form-container">
-        <div className="column ">
+        <div className="column " id="cont-column">
           <div className="contact-form">
             <form ref={form} onSubmit={sendEmail} className="contact-form">
               <label>Name</label>
@@ -54,7 +54,7 @@ const Contact = () => {
             </form>
             </div>
             </div>
-          <div className="column ">
+          <div className="column " id="cont-column">
           <div className="contact-us-page-img-container">
           <img src="slidetwo.jpg" className="contact-us-page-img"></img></div>
           </div>

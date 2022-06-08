@@ -19,28 +19,28 @@ const AdvPubComponent = (props) =>{
                 <div className="adv-pub-repeter">
                 <div className="row">
     
-                    <div class="column">
+                    <div class="column" id="adv-pub-component">
                     <div className="adv-pub-content-box adv-pub-palette-4">
                         <div className="adv-pub-text-container">
                         <p className="adv-pub-text">{ADdata.step1}</p>
                         </div>
                     </div></div>
     
-                    <div class="column">
+                    <div class="column" id="adv-pub-component">
                     <div className="adv-pub-content-box adv-pub-palette-3">
                     <div className="adv-pub-text-container">
                         <p className="adv-pub-text">{ADdata.step2}</p>
                         </div>
                     </div></div>
     
-                    <div class="column">
+                    <div class="column" id="adv-pub-component">
                     <div className="adv-pub-content-box adv-pub-palette-2">
                     <div className="adv-pub-text-container">
                         <p className="adv-pub-text">{ADdata.step3}</p>
                         </div>
                     </div></div>
     
-                    <div class="column">
+                    <div class="column" id="adv-pub-component">
                     <div className="adv-pub-content-box adv-pub-palette-1">
                     <div className="adv-pub-text-container">
                         <p className="adv-pub-text">{ADdata.step4}</p>

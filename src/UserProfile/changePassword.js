@@ -28,7 +28,7 @@ import Navibar from '../components/Navibar';
             <div class="page-content"><br></br>
                 <div class="container-fluid"><br></br>
                     <div class="row">
-                         <div class="col-sm-3">
+                         <div class="col-sm-4">
                             <div class="collection" role="menu">
                             <a class="collection-item " href="" role="menuitem" data-toggle="basic">
                             <span class="collection-item-title">Personal info</span>
@@ -45,7 +45,7 @@ import Navibar from '../components/Navibar';
                             <div class="portlet">
                                 <div class="portlet-body">
                                     <div class="row">
-                                        <div class="col-lg-6 col-lg-offset-3 col-sm-12">
+                                        <div class="">
                         <div class="form-group">
                             <label class="control-label" for="old_password">Old Password</label>
                             <input class="form-control show-password" type="password" id="old_password" name="old_password"/>

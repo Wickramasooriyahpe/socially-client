@@ -1,76 +1,61 @@
-.advertiser-form-container{
+.adv-pub-com-container{
     width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
     height: 80vh;
-    position: absolute;
-    overflow: hidden;
+    background-color: black;
 }
-.adv-land-map-section{
-    
-    height: 400px;
-    width: 80%;
-    overflow: hidden;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-  
-    padding: 0px;
-}
-.adv-land-overly-wrapper{
-    position: relative;
-    height: 100%;
-    
-}
-.adv-land-wrap{
-    overflow: hidden;
-    display: inline-flex;
-}
-.adv-land-content{
-    box-sizing: border-box;
-}
-.adv-land-map-overly{
-    position: absolute;
-    left: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-top: 0;
-    width: 30%;
-    background: rgba(0, 0, 0, 0.8);
-    
-}
-.adv-land-text-spacing{
-    margin-bottom: 15px;
-    position: relative;
-    text-align: center;
-    font-family: "Lucida Console", "Courier New", monospace;
-    color: whitesmoke;
-}
-.adv-land-img{
-    height: 100%;
+.adv-pub-com-container-wrapper{
+    align-items: center!important;
+    justify-content: space-between!important;
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+    height: 80vh;
     width: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    position: relative;
 }
-.adv-land-desc-para{
-    color: whitesmoke;
-    font-family: "Lucida Console", "Courier New", monospace;
+.adv-pub-detail{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 80vh;
+    background-color: blue;
+    display: flex;
 }
-@media screen and (min-width: 600px) {
-    .adv-land-img Image {
-      width: 50%;
-      height: 500%;
-    }
-  }
-
-  .adv-land-button{
-    
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 20px;
-    padding: 10px 60px;
-    border-radius: 5px;
-    margin: 10px 0px;
-    cursor: pointer; 
-    position: absolute;
-    font-family: "Lucida Console", "Courier New", monospace;
+.adv-pub-detail-wrapper{
+    height: 40vh;
 }
-  
+.adv-pub-img-container{
+    height: 80vh;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: aquamarine;
+}
+#adv-pub-cont-column{
+    width: 50%;
+    float:left;
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+@media (min-width: 576px){
+.adv-pub-com-container {
+    max-width: 540px;
+}
+}
+@media (min-width: 992px){
+.mb-lg-0 {
+    margin-bottom: 0!important;
+}
+.col-lg-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+}
+}
