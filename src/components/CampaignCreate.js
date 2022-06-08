@@ -1,31 +1,33 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import CreativeTable from './CreativeTable';
 import Navibar from './Navibar';
 import RangePicker from './RangePicker';
 //import { DateRange } from 'react-date-range';
 
 const CampaignCreate = () => {
-   const handleChange = (event) =>{
-      console.log(event.target.name, event.target.value);
-      setValues({
-         ...values,
-         [event.target.name]: event.target.value
-      })
-   }
    const [values, setValues] = useState({
        
       campaignName: "",
-      budget: "",
+      budget: 0,
       adCategory: "",
-      startDate: "",
-      endDate: "",
+      // startDate: "",
+      // endDate: "",
       //deletedAt: "",
-      adveID: ""
+      // adveID: ""
       
     });
+   const handleChange = (event) =>{
+     // console.log(event.target.name, event.target.value);
+      const val = event.target.value
+
+      setValues({
+         ...values,
+         [event.target.name]: val
+      })
+   }
+ 
 
 //   const handleSave = (event) =>{
 //      console.log(values);
@@ -73,16 +75,14 @@ const CampaignCreate = () => {
    <div class="card">
       <div class="card-header">
          <div class="page-header">
-            <Navibar/> 
-            
-               
+            <Navibar/>       
          </div>
          <div class="card-body">
             <div class="container ">
                <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
                   <div class="row ">  
                   <div class=" text-gred">               
-                     <form onClick={handleSave} >
+                     <form onSubmit={handleSave} >
                         <h4 class="card-title">Create campaign</h4><br></br>
                         <h5 class="card-title">Basic campaign Information</h5><br></br>                    
                         <div class="form-outline mb-4">
@@ -127,12 +127,13 @@ const CampaignCreate = () => {
                                  />
                               </div>
                            </div>
-                        </div>
-
-                        <div className="date">          
+                           <div className="date">          
                            <RangePicker />
                         </div>
 
+                        </div>
+
+                        
                         <div class="text-right">
                            <Link 
                            to="/creative" 
@@ -143,18 +144,20 @@ const CampaignCreate = () => {
                         </div>
 
                         <div className="table-container">
-                           <br></br> 
-                           <CreativeTable />
-                        </div>
-
-                        <div>
+                        <br></br> 
+                     <CreativeTable />
+                     </div>
                         <Link 
                         to="/campcrea" 
                         role="button" 
                         type="submit" 
                         className="btn btn-primary pull-right" >
                         Save
-                        </Link><br></br>
+                        </Link>
+                        
+                        <div>
+                        
+                    <br></br>
                         </div>                          
                      </form>
                      </div>
