@@ -104,7 +104,18 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,117,216,1) 100%);
     top: 6rem;
   }
 }
+@keyframes slide-down {
+  0% {
+    visibility: visible;
+    top: 5rem;
+  }
 
+  90% {
+    visibility: visible;
+    top: 6rem;
+  }
+ 
+}
 
 
 .lnd-content > * {
@@ -150,12 +161,17 @@ hr {
   background: white;
   width: 50%;
 }
+
+
 @media screen and (max-width: 500px) {
   .lnd-content {
     width: 50%;
     visibility: visible ;
-    margin-top: 300px;
+    margin-top: 10px;
+    animation: slide-down 1s ease 0.5s;
+    align-items: center;
+  
+   
   }
  
 }
-

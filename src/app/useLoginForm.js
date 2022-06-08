@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 
+
 const useLoginForm = (submitLoginForm) => {
-     
-   
+ 
     const [values, setValues] = useState({
        
         email: "",
@@ -22,6 +22,7 @@ const useLoginForm = (submitLoginForm) => {
 var data = JSON.stringify({
   "email": values.email,
   "password":values.password,
+
 });
 
 var config = {
@@ -37,11 +38,14 @@ var config = {
 axios(config)
 .then(function (response) {
   console.log("succes");
-  
   console.log(JSON.stringify(response.data));
   // saving the acces token in local storage
   localStorage.setItem("JWT",JSON.stringify(response.data));
-
+  //signedJwtAccessToken =  localStorage.setItem("JWT",JSON.stringify(response.data));
+  // const jwt = require("accessToken");
+  // const token = localStorage.getItem("JWT",JSON.stringify(response.data));
+  // const decode = jwt.decode(token);
+  // console.log(decode);
 })
 .catch(function (error) {
   console.log(error);

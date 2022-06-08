@@ -22,7 +22,7 @@ import AdvertiserProfile from './UserProfile/advertiserProfile';
 import ChangePassword from './UserProfile/changePassword';
 import BillingDetails from './Payment/billing';
 import HomePage from './LandingPages/homePage';
-import Advertiser from './LandingPages/AdvertiserPage';
+import Advertiser from './LandingPages/advertiser-route';
 import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';

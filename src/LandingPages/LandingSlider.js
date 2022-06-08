@@ -66,6 +66,7 @@ const Slider = () => {
     </div>
   </div>
 </section>
+
   );
 }
 export default Slider;

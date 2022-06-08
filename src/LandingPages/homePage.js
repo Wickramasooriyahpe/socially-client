@@ -4,19 +4,19 @@ import LandingNavibar from "./landingNarbar";
 import Slider from "./LandingSlider";
 import SocialMedia from "./socialMlinks";
 import Footer from "./footer";
-
+import AdvPubCompo from "./advPubComponent";
 const HomePage = () => {
     return (
                        
       
       <div>
-      
       <SocialMedia/>
       <LandingNavibar/>  
       <Slider/>
+      <AdvPubCompo/>
       <Footer/>
-      </div>
-      
+
+      </div> 
 
     );
 }

@@ -88,11 +88,7 @@ body{
   padding: 1rem 3rem;
   line-height: 1.5;
 }
-
-
-
-/*btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn
-
+/*
 .btn-primary:not(.btn-light){
   color: #fff;
 }
@@ -504,9 +500,9 @@ html{
   margin-bottom: 40px;
   align-items: center;
 }
-p{
+/* p{
   color: red;
   font-size: small;
   margin-left: 10px;
   margin-top: 10px;
-}
+} */

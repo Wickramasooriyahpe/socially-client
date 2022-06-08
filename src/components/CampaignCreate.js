@@ -1,31 +1,33 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import CreativeTable from './CreativeTable';
 import Navibar from './Navibar';
 import RangePicker from './RangePicker';
 //import { DateRange } from 'react-date-range';
 
 const CampaignCreate = () => {
-   const handleChange = (event) =>{
-      console.log(event.target.name, event.target.value);
-      setValues({
-         ...values,
-         [event.target.name]: event.target.value
-      })
-   }
    const [values, setValues] = useState({
        
       campaignName: "",
-      budget: "",
+      budget: 0,
       adCategory: "",
-      startDate: "",
-      endDate: "",
+      // startDate: "",
+      // endDate: "",
       //deletedAt: "",
-      adveID: ""
+      // adveID: ""
       
     });
+   const handleChange = (event) =>{
+     // console.log(event.target.name, event.target.value);
+      const val = event.target.value
+
+      setValues({
+         ...values,
+         [event.target.name]: val
+      })
+   }
+ 
 
 //   const handleSave = (event) =>{
 //      console.log(values);
