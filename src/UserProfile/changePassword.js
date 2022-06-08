@@ -30,11 +30,11 @@ import Navibar from '../components/Navibar';
                     <div class="row">
                          <div class="col-sm-4">
                             <div class="collection" role="menu">
-                            <a class="collection-item " href="" role="menuitem" data-toggle="basic">
+                            <a class="collection-item " href="/profile" role="menuitem" data-toggle="basic">
                             <span class="collection-item-title">Personal info</span>
                             <p class="collection-item-description">Set Basic and contact information</p>
                             </a>
-                            <a class="collection-item active" href="" role="menuitem" data-toggle="password">
+                            <a class="collection-item active" href="/password" role="menuitem" data-toggle="password">
                             <span class="collection-item-title">Password</span>
                             <p class="collection-item-description">Change your password </p>
                             </a>        

@@ -18,36 +18,50 @@ function CampDetails() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   return (
- 
-    <div class="card">
-        <div class="card-header">
-        <Navibar /><br></br>
-        </div>
-        <div class="card-body">
-            <div class="container ">
-                <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded"> 
-                    <div class="row ">
-                        <div class="col-sm-3 mt-5 mb-4 text-gred">
-                           
-                        </div>  
-                        <div class="col-sm-3 offset-sm-2 mt-5 mb-4 text-gred" style={{color: "#0275d8"}}>
-                            <h2><b>Campaign Details</b></h2>
-                        </div>
-                        <div class="col-sm-3 offset-sm-1  mt-5 mb-4 text-gred">             
-                            <div>
-                                <Link to="/campaign" class="btn btn-primary" role="button">Create Campaign</Link>            
-                            </div>
-                        </div>
-                        </div>  
-                        <div class="row">
-                            <div class="table-responsive " >
-                            <CampTable />
-                        </div>   
-                    </div>  
-                </div>    
+    <div class="page-container-bg-solid page-boxed">
+    <div class="page-header">
+        <div class="page-header-top">
+            <div class="container-fluid">         
+                <div class="top-menu" >
+                    <ul class="nav navbar-nav pull-right">
+                        <div><Navibar/></div><br></br>
+                    </ul>             
+                </div>
             </div>
         </div>
-  </div>
+    
+        <div class="page-header-menu">
+            <div class="container-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="page-content-wrapper">
+            <div class="page-head"><br></br>
+                <div class="container-fluid"><br></br>
+                    <h2 class="page-head-title" title="Campaign setting">Campaigns</h2>
+                    <div class="page-toolbar"> <Link to="/campaign" class="btn btn-primary" role="button">Create Campaign</Link> </div>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="page-content-inner" id="listsCampaign">
+                        <div class="portlet light">
+                            <div class="portlet-title">
+                                <CampTable />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+    
       );
     }
 

@@ -54,7 +54,7 @@ const Login = ({ submitLoginForm }) => {
                           )}
                         </div>
                         <div className="m-4">
-                          <div className=" form-check">
+                          <div className="form-check">
                             <input
                               type="checkbox"
                               className="form-check-input"

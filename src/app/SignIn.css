@@ -92,10 +92,11 @@ body{
 .btn-primary:not(.btn-light){
   color: #fff;
 }
-.btn.btn-lg{
+.btn .btn-block .btn-primary .btn-lg .font-weight-medium .auth-form-btn{
   font-size: .875rem;
   background-color: #0062ff;
   border-color: #0062ff;
+  text-align: center;
 }
 .btn {
   line-height: 1;
@@ -277,7 +278,7 @@ form {
   display: block;
   margin-top: 0em;
 }
-.form-check {
+ .form-check {
   position: relative;
   display: block;
   margin-top: 10px;

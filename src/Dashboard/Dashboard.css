@@ -13,7 +13,7 @@
 .row1{
     text-align: right;
 }
-.portlet-body{
+.portlet.portlet-card .portlet-body{
     font-size: 1.4rem;
     color: #a7afb7;
     margin-top: 1px;

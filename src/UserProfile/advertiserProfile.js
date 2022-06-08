@@ -67,11 +67,11 @@ import FileUploadComponent from '../fileUploads/profileImage';
                         <div class="col-sm-3">
                         <FileUploadComponent/>
                             <div class="collection" role="menu">
-                                <a class="collection-item active" href=" http://localhost:3001/profile" role="menuitem" data-toggle="basic">
+                                <a class="collection-item active" href=" http://localhost:3000/profile" role="menuitem" data-toggle="basic">
                                     <span class="collection-item-title">Personal info</span>
                                         <p class="collection-item-description">Set Basic and contact information</p>
                                 </a>
-                                 <a class="collection-item " href=" http://localhost:3001/password" role="menuitem" data-toggle="password">
+                                 <a class="collection-item " href=" http://localhost:3000/password" role="menuitem" data-toggle="password">
                                      <span class="collection-item-title">Password</span>
                                         <p class="collection-item-description">Change your password </p>
                                 </a>
