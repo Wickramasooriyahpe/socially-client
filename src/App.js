@@ -47,8 +47,8 @@ function App() {
               <Route path="/Login" element={<LoginForm />} />
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
-              <Route path="/campaign" element={<CampDetails />} />
-              <Route path="/campaign1" element={<CampaignCreate />} />
+              <Route path="/campcrea" element={<CampDetails />} />
+              <Route path="/campaign" element={<CampaignCreate />} />
               <Route path="/creative" element={<Creative />} />
               <Route path="/profile" element={<AdvertiserProfile />} />
               <Route path="/password" element={<ChangePassword />} />

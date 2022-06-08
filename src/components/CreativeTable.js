@@ -23,7 +23,8 @@ function CreativeTable() {
         console.log(res.data);
         setData(res.data);
         
-    });
+    }
+    );
     };
 
     const columns=[

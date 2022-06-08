@@ -1,56 +1,17 @@
+import { useState } from "react";
 import "./advpub.css";
+import AdvPubComponent from "./advPubdetailCom";
 
 
 const AdvPubCompo = () => {
+    const [ADdata,setdata] = useState([
+        {id:1,image: "slideone.jpg",heading: "Advertiser",step1: "Register with the portal",step2: "Make Campaigns",step3: "Make Creatives",step4: "Promote your goods and services",},
+        {id:2,image: "slidetwo.jpg",heading: "Publisher",step1: "Join with our mobile App",step2: "Find preferd Creatives to share",step3: "Share them with your social media",step4: "Enjoy your revanue",},
+         ]);
     return(
-        <div className="adv-pub-main-container">
-        <div className="adv-pub-main-wrapper">
-            <div className="adv-pub-palette-1 circle-shape shape-1"></div>
-            <div className="adv-pub-palette-2 circle-shape shape-2"></div>
-            <img className="adv-pub-img-1" src="slideone.jpg"></img>
-                <div className="adv-pub-heading">
-                <h1 className="adv-pub-heading-1">Advertiser</h1>
-                
-                </div>
-        </div>  
-        <div className="adv-pub-repete-list">
-            <div className="adv-pub-repeter">
-            <div className="row">
-
-                <div class="column">
-                <div className="adv-pub-content-box adv-pub-palette-4">
-                    <div className="adv-pub-text-container">
-                    <p className="adv-pub-text"> Sign Up with the portal</p>
-                    </div>
-                </div></div>
-
-                <div class="column">
-                <div className="adv-pub-content-box adv-pub-palette-3">
-                <div className="adv-pub-text-container">
-                    <p className="adv-pub-text"> Create a campaing </p>
-                    </div>
-                </div></div>
-
-                <div class="column">
-                <div className="adv-pub-content-box adv-pub-palette-2">
-                <div className="adv-pub-text-container">
-                    <p className="adv-pub-text"> Make Creatives to your Campaign</p>
-                    </div>
-                </div></div>
-
-                <div class="column">
-                <div className="adv-pub-content-box adv-pub-palette-1">
-                <div className="adv-pub-text-container">
-                    <p className="adv-pub-text"> Promote your Goods and Services</p>
-                    </div>
-                </div></div>
-            </div>
-           </div>
-        </div>    
-        
-         
-        
+        <div>
+        <AdvPubComponent ADdata ={ADdata}/>
         </div>
-    );
+        );
 }
 export default AdvPubCompo;

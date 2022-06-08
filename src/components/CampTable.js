@@ -29,26 +29,14 @@ function CampTable(){
 
 
     const getData = () => {
-       const config =  {
-        method: "get", 
-        headers: {"Authorization" : `Bearer`+JSON.parse(localStorage.getItem("JWT"))["accessToken"]} }
-        axios.get("http://localhost:3000/campaign/1",config).then((res) =>{
-        
-        console.log(res.data);
-        setData(res.data);
-       
-    });
+        const config ={ headers: {"Authorization" : `Bearer`+JSON.parse(localStorage.getItem("JWT"))["accessToken"]} };
+        axios("http://localhost:3000/campaign",config).then((res) =>{
+          
+        console.log("all campaigns",res.data);
+        setData(res.data);       
+}
+);
 };
-
-// {Campaign.map((Campaign) => (
-//   <li key={Campaign.id} onClick={handleClick}>
-//   </li>
-// ))}
-// const handleClick = (campaignId) => {
-//   axios.get(`http://localhost:5050/employees/${employeeId}`).then((res) => {
-//       setEmployees(res.data);
-//   });
-// };
     
     const columns=[
       {
