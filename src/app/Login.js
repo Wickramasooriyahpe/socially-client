@@ -2,7 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 //import './SignIn.css';
-import "./validation";
+import loginValidation from "./loginValidation";
+import useForm from "./useForm";
 import useLoginForm from "./useLoginForm";
 
 const Login = ({ submitLoginForm }) => {
@@ -24,7 +25,7 @@ const Login = ({ submitLoginForm }) => {
                         </h3>{" "}
                       </div>
 
-                      <form className="pt-3" onClick={handleForSubmit}>
+                      <form className="pt-3">
                         <div className="form-group">
                           <label>Email</label>
                           <input
@@ -54,7 +55,7 @@ const Login = ({ submitLoginForm }) => {
                           )}
                         </div>
                         <div className="m-4">
-                          <div className="form-check">
+                          <div className=" form-check">
                             <input
                               type="checkbox"
                               className="form-check-input"
@@ -70,8 +71,12 @@ const Login = ({ submitLoginForm }) => {
                         <div className="mt-3 mb-3">
                         
                         
-                             <Link to="/Dashboard" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"  role="button" type="submit"  >SIGN IN</Link>  
-                          
+                        <a
+                            className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                            onClick={handleForSubmit}
+                          >
+                            SIGN IN
+                          </a>
                         </div>
                         <div className="row">
                           <div className="col font-weight-light">

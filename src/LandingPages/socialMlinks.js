@@ -15,7 +15,7 @@ const SocialMedia = () => {
             </span>
             <span className="social-media-link-block">
                 <a href="https://www.instagram.com">
-                    <i className="fa fa-instagram"></i>
+                    <i className="fa fa-instagram social-link"></i>
                 </a>
             </span>
             <span className="social-media-link-block">

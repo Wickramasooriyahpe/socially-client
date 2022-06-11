@@ -21,10 +21,11 @@ import LoginForm from './app/LoginForm';
 import OTP from './app/OTP';
 import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
+import ProfileForm from './UserProfile/profileForm';
 import ChangePassword from './UserProfile/changePassword';
 import BillingDetails from './Payment/billing';
 import HomePage from './LandingPages/homePage';
-import Advertiser from './LandingPages/AdvertiserPage';
+import Advertiser from './LandingPages/advertiser-route';
 import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
@@ -53,7 +54,7 @@ function App() {
               <Route path="/campcrea" element={<CampDetails />} />
               <Route path="/campaign" element={<Campaign />} />
               <Route path="/creative" element={<Creative />} />
-              <Route path="/profile" element={<AdvertiserProfile />} />
+              <Route path="/profile" element={<ProfileForm />} />
               <Route path="/password" element={<ChangePassword />} />
               <Route path="/edit" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 

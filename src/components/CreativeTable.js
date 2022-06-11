@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,6 +8,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import { FaEye } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
+import Creative from './Creative';
 
 
 
@@ -17,30 +19,34 @@ function CreativeTable() {
     }, []);
 
     const getData = () => {
-        axios("https://jsonplaceholder.typicode.com/comments").then((res) =>{
+        axios("http://localhost:3000/creative/camp/1").then((res) =>{
         console.log(res.data);
         setData(res.data);
         
-    });
+    }
+    );
     };
 
     const columns=[
-    
+        {
+            dataField: "creativeId", 
+            hidden: true
+        },
     {
-        dataField: "email",
-        text: "Email",
+        dataField: "creativeHeading",
+        text: "Heading",
         sort: true,
        
     },
     {
-        dataField: "postId",
-        text: "Product ID",
+        dataField: "destinationURL",
+        text: "URL",
         sort: true,
         
     },
     {
-        dataField: "name",
-        text: "Name",
+        dataField: " costPerSale",
+        text: "CPS",
         sort: true, align: 'left',
         
     },
@@ -54,9 +60,9 @@ function CreativeTable() {
           
             return (
               <div>
-              <button className="btn btn-outline-success btn-sm"><FaEye /></button>
+              <button className="btn btn-outline-success btn-sm" ><FaEye /></button>
               <button className="btn btn-outline-danger btn-sm"><FaTrashAlt /></button>
-              <button className="btn btn-outline-primary btn-sm"><FaRegEdit /></button>
+              <Link className="btn btn-outline-primary btn-sm" to={'/edit'} role='button'><FaRegEdit /></Link>
               </div>
             );
           

@@ -3,6 +3,8 @@ import validation from "./validation";
 //import './SignIn.css';
 import axios from "axios";
 
+const local_email='email'
+
 const useForm = (submitForm) => {
   const [values, setValues] = useState({
     name: "",
@@ -14,6 +16,15 @@ const useForm = (submitForm) => {
   const [errors, setErrors] = useState({});
   const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
+  useEffect( () =>{
+    const storeEmail = JSON.parse(localStorage.getItem(local_email))
+    if (storeEmail) setValues(storeEmail)
+  },[] )
+
+  useEffect(()=>{
+    localStorage.setItem(local_email,JSON.stringify(values.email))
+  }, [values.email])
+
   async function handleForSubmit(event) {
     event.preventDefault();
     setErrors(validation(values));
@@ -24,6 +35,7 @@ const useForm = (submitForm) => {
       email: values.email,
       name: values.name,
       password: values.password,
+      phonrNumber: values.phonrNumber,
     });
 
     var config = {
@@ -38,7 +50,7 @@ const useForm = (submitForm) => {
     axios(config)
       .then(function (response) {
         console.log("succes")
-        console.log(JSON.stringify(response));
+        console.log(JSON.stringify(response.data));
       })
       .catch(function (response) {
         console.log(response);

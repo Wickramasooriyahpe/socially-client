@@ -5,11 +5,20 @@ import LandingNavibar from "./landingNarbar";
 import SocialMedia from "./socialMlinks";
 import Footer from "./footer";
 import "./contact.css";
+import ContactHeader from "./contactHeadder";
 
 // npm i @emailjs/browser
 
 const Contact = () => {
   const form = useRef();
+  function success() {
+    if(document.getElementById("email").value==="") { 
+             document.getElementById('button').disabled = true; 
+             
+         } else { 
+             document.getElementById('button').disabled = false;
+         }
+     }
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -28,6 +37,8 @@ const Contact = () => {
         },
         (error) => {
           console.log(error.text);
+          console.log("add e mail");
+          alert("add an e-mail")
         }
       );
   };
@@ -37,23 +48,25 @@ const Contact = () => {
       <br></br>
       <SocialMedia/>
       <LandingNavibar/>
+      <ContactHeader/>
       <div className="row">
       <div className="contact-form-container">
-        <div className="column ">
+        <div className="column " id="cont-column">
           <div className="contact-form">
             <form ref={form} onSubmit={sendEmail} className="contact-form">
               <label>Name</label>
               <input type="text" name="name" className="input-lable" />
               <label>Email</label>
-              <input type="email" name="email" className="input-lable" />
+              <input type="email" name="email" id="email" className="input-lable" onkeyup="success()" />
               <label>Message</label>
               <textarea name="message" className="contact-text-area" /><br></br>
-              <input type="submit" value="Send" className="contact-input-lable"/>
+              <button type="submit" value="Send" className="contact-input-lable"  >Submit</button>
             </form>
             </div>
             </div>
-          <div className="column ">
-          <img src="slidetwo.jpg" className="contact-us-page-img"></img>
+          <div className="column " id="cont-column">
+          <div className="contact-us-page-img-container">
+          <img src="slidetwo.jpg" className="contact-us-page-img"></img></div>
           </div>
         
       </div>

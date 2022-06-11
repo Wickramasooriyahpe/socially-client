@@ -3,41 +3,12 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navibar from '../components/Navibar';
 import FileUploadComponent from '../fileUploads/profileImage';
+import profileValidation from './profileValidation';
+import useForm from './useProfileForm';
 
-
-    const AdvertiserProfile = () => {
-        const handleChange = (event) =>{
-            console.log(event.target.name, event.target.value);
-            setValues({
-               ...values,
-               [event.target.name]: event.target.value
-            })
-         }
-         const [values, setValues] = useState({
+    const AdvertiserProfile = ({submitForm}) => {
+        const { handleChange,handleSave, values, errors } = useForm(submitForm);
         
-            //variables
-            
-          });
-          const handleSave = (e) => {
-            //console.log(values);
-            e.preventDefault();
-            var axios = require("axios");
-            var data = JSON.stringify({
-              //setvalues
-            });
-          
-            var config = {
-             //Get request
-            };
-          
-            axios(config)
-              .then(function (response) {
-                console.log(JSON.stringify(response.data));
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          };
 
     return (
         <div class="page-container-bg-solid page-boxed">
@@ -58,7 +29,7 @@ import FileUploadComponent from '../fileUploads/profileImage';
               <div class="page-head"><br></br>
                 <div class="container-fluid"><br></br>
                     <h2 class="page-head-title" title="Profile setting">Profile setting</h2>
-                        <div class="page-toolbar"><label class="btn btn-primary" for="submitForm">Save</label></div>
+                        <div class="page-toolbar"><button class="btn btn-primary" type="submit" onClick={handleSave} for="submitForm">Save</button></div>
                 </div>
               </div>
             <div class="page-content">
@@ -67,11 +38,11 @@ import FileUploadComponent from '../fileUploads/profileImage';
                         <div class="col-sm-3">
                         <FileUploadComponent/>
                             <div class="collection" role="menu">
-                                <a class="collection-item active" href=" http://localhost:3000/profile" role="menuitem" data-toggle="basic">
+                                <a class="collection-item active" href="/profile" role="menuitem" data-toggle="basic">
                                     <span class="collection-item-title">Personal info</span>
                                         <p class="collection-item-description">Set Basic and contact information</p>
                                 </a>
-                                 <a class="collection-item " href=" http://localhost:3000/password" role="menuitem" data-toggle="password">
+                                 <a class="collection-item " href="/password" role="menuitem" data-toggle="password">
                                      <span class="collection-item-title">Password</span>
                                         <p class="collection-item-description">Change your password </p>
                                 </a>
@@ -89,19 +60,49 @@ import FileUploadComponent from '../fileUploads/profileImage';
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="firstName">First Name</label>
                                                 <div class="col-sm-9">
-                                                    <input class="form-control" type="text" id="firstName" name="firstName" required="required" minlength="2" maxlength="255" value="Samathi"/>
+                                                    <input class="form-control"
+                                                     type="text"
+                                                      id="firstName"
+                                                       name="firstName"
+                                                        required="required" 
+                                                        minlength="2" 
+                                                        maxlength="255"
+                                                         value={values.firstName}
+                                                         onChange={handleChange}/>
+                                                         {errors.firstName && (
+                                                            <p className="error" id="profileError">{errors.firstName}</p>
+                                                          )}
                                                 </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="firstName">Last Name</label>
                                                  <div class="col-sm-9">
-                                                    <input class="form-control" type="text" id="lastName" name="lastName" required="required" minlength="2" maxlength="255" value="sapumana"  onChange={handleChange}/>
+                                                    <input class="form-control" 
+                                                    type="text" 
+                                                    id="lastName"
+                                                     name="lastName" 
+                                                     required="required" 
+                                                     minlength="2" 
+                                                     maxlength="255" 
+                                                     value={values.lastName} 
+                                                     onChange={handleChange}/>
                                                  </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="email">Email</label>
                                                 <div class="col-sm-9">
-                                                     <input class="form-control" type="text" id="email" name="email" required="required" minlength="2" value="samathisapumana@gmail.com"  onChange={handleChange}/>
+                                                     <input class="form-control"
+                                                      type="text"
+                                                       id="email"
+                                                        name="email"
+                                                         required="required"
+                                                          minlength="2" 
+                                                          value={values.email} 
+                                                           onChange={handleChange}/>
+
+                                                           {errors.email && (
+                                                            <p className="error" id="profileError">{errors.email}</p>
+                                                          )}
                                                 </div>
                                         </div>
                                     </div>
@@ -111,20 +112,38 @@ import FileUploadComponent from '../fileUploads/profileImage';
                                          <div class="form-group">
                                              <label class="col-sm-3 control-label">Company</label>
                                                  <div class="col-sm-9">
-                                                    <input type="text" required="required" minlength="2" class="form-control" name="company" value="Jinadasa Stores"  onChange={handleChange}/>
+                                                    <input type="text"
+                                                     required="required"
+                                                      minlength="2" 
+                                                      class="form-control"
+                                                       name="company"
+                                                        value={values.company}
+                                                         onChange={handleChange}/>
                                                  </div>
                                          </div>
                   
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Address</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="address" value="138/15 Beliatta Road"  onChange={handleChange}/>
+                                                    <input type="text" 
+                                                    class="form-control"
+                                                     name="address" 
+                                                     value={values.address}  
+                                                     onChange={handleChange}/>
                                                 </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Phone</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="phone" value="0713767774"  onChange={handleChange}/>
+                                                    <input type="text" 
+                                                    class="form-control"
+                                                     name="phone"
+                                                     maxLength={10}
+                                                      value={values.phone}  
+                                                      onChange={handleChange}/>
+                                                      {errors.phone && (
+                                                        <p className="error" id="profileError">{errors.phone}</p>
+                                                      )}
                                                 </div>
                                         </div>
                   

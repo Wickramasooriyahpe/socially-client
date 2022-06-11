@@ -14,7 +14,8 @@ const Form = () => {
   return (
     <div>
       {!formIsSubmitted ? (
-        <Register submitForm={submitForm} />
+        <Register 
+        submitForm={submitForm} />
       ) : (
         <Navigate to="/otp"/>
       )}

@@ -153,14 +153,15 @@ export default CampaignCreate;
       campaignName: "",
       budget: 0,
       adCategory: "",
-      // startDate: "",
-      // endDate: "",
+      startDate: "",
+      endDate: "",
+    
       //deletedAt: "",
       // adveID: ""
       
     });
    const handleChange = (event) =>{
-     // console.log(event.target.name, event.target.value);
+     console.log(event.target.name, event.target.value);
       const val = event.target.value
 
       setValues({
@@ -187,6 +188,7 @@ export default CampaignCreate;
     adCategory: values.adCategory,
     startDate: values.startDate,
     endDate: values.endDate,
+   
     // "deletedAt": setValues.deletedAt,
     adveID: values.adveID,
   });
@@ -274,6 +276,8 @@ export default CampaignCreate;
                                           />
                                        </div>
                                     </div>
+                                   
+                                  
                                     <div class="col">
                                        <div class="form-outline">
                                        
@@ -290,9 +294,7 @@ export default CampaignCreate;
                                     </div>
                                  </div>
 
-                                 <div className="date" name="date">          
-                                    <RangePicker />
-                                 </div>
+                                
 
                                  <div class="text-right">
                                     <Link 
@@ -308,15 +310,11 @@ export default CampaignCreate;
                                     <CreativeTable />
                                  </div>
 
-                                 <div>
-                                    <Link 
-                                       to="/campcrea" 
-                                       role="button" 
-                                       type="submit" 
-                                       className="btn btn-primary pull-right" >
-                                       Save
-                                    </Link><br></br><br></br>
-                                 </div>
+                                 <div >
+                                    <button className="btn btn-primary pull-right" id="camp-page-button"  type='submit'>Save </button>
+                                    <button className="btn btn-primary pull-right" id="camp-page-button" onClick={navigateToCampaignTable}>view Campaigns</button>
+                                    <br></br><br></br>
+                                    </div>
                               </form>  
                            </div>
                         </div>

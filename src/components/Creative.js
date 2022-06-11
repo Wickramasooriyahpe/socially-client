@@ -52,7 +52,7 @@ const [values, setValues] = useState({
    creativeHeading: "",
    destinationURL: "",
    creativeDescription: "",
-   costPerSale: "",
+   costPerSale: 0,
    creativeType: "",
    //deletedAt: null,
    //campID: 7

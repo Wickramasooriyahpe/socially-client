@@ -1,8 +1,10 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navibar from '../components/Navibar';
-
-    const ChangePassword = () => {
+import useForm from './useChangePWForm';
+import profileValidation from './profileValidation';
+    const ChangePassword = ({submitForm}) => {
+        const { handleChange, handleForSubmit, values, errors } = useForm(submitForm);
     return (
 
         <div class="page-container-bg-solid page-boxed">
@@ -28,7 +30,7 @@ import Navibar from '../components/Navibar';
             <div class="page-content"><br></br>
                 <div class="container-fluid"><br></br>
                     <div class="row">
-                         <div class="col-sm-3">
+                         <div class="col-sm-4">
                             <div class="collection" role="menu">
                             <a class="collection-item " href="/profile" role="menuitem" data-toggle="basic">
                             <span class="collection-item-title">Personal info</span>
@@ -41,26 +43,56 @@ import Navibar from '../components/Navibar';
                             </div>
                         </div>
                     <div class="col-sm-8">
-                        <form method="post" class="default-form" data-allow-redirect="true">
+                        <form onClick={handleForSubmit}>
                             <div class="portlet">
                                 <div class="portlet-body">
                                     <div class="row">
-                                        <div class="col-lg-6 col-lg-offset-3 col-sm-12">
+                                        <div class="">
                         <div class="form-group">
                             <label class="control-label" for="old_password">Old Password</label>
-                            <input class="form-control show-password" type="password" id="old_password" name="old_password"/>
-                           
+                            <input class="form-control show-password" 
+                            type="password" 
+                            id="oldpassword"
+                             name="oldpassword"
+                             value={values.oldpassword}
+                             onChange={handleChange}
+                       
+                             />
+                             {errors.oldpassword && (
+                                <p className="error" id="profileError">{errors.oldpassword}</p>
+                              )}
                          </div>
                          <div class="form-group">
                             <label class="control-label" for="password">New Password</label>
-                            <input class="form-control show-password" type="password" id="password" name="password" autocomplete="new-password"/>
+                            <input class="form-control show-password" 
+                            type="password" 
+                            id="newpassword"
+                             name="newpassword" 
+                    
+                             value={values.newpassword}
+                             onChange={handleChange}
+                            
+                             />
+                             {errors.newpassword && (
+                                <p className="error" id="profileError">{errors.newpassword}</p>
+                              )}
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="password">Confirm New Password</label>
-                            <input class="form-control show-password" type="password" id="password" name="confirm-password" autocomplete="new-password"/>
+                            <input class="form-control show-password" 
+                            type="password" 
+                            id="confpassword"
+                             name="confirmPassword"
+                              value={values.confirmPassword}
+                              onChange={handleChange}
+                           
+                              />
+                              {errors.confirmPassword && (
+                                <p className="error" id="profileError">{errors.confirmPassword}</p>
+                              )}
                         </div>
                         <br></br>
-                        <div class="text-center"><input type="submit" id="submitForm"  value="Change password" class="btn btn-primary"/> </div>
+                        <div class="text-center"><button disabled={!values.confirmPassword || !values.newpassword || !values.confirmPassword}  class="btn btn-primary" type="submit" onClick={handleForSubmit} for="submitForm">Save</button> </div>
                        </div>
                       </div>
                      </div>

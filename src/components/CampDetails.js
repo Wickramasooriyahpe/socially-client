@@ -50,7 +50,7 @@ function CampDetails() {
                     <div class="page-content-inner" id="listsCampaign">
                         <div class="portlet light">
                             <div class="portlet-title">
-                                <CampTable />
+                               <CampTable />
                             </div>
                         </div>
                     </div>

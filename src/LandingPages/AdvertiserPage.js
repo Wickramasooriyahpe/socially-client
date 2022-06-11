@@ -1,7 +1,7 @@
 import React from 'react';
 import LandingNavibar from "./landingNarbar";
 import "./Slider.css";
-import AdvertiserPage from './advertiserNavPage';
+import AdvertiserPage from './advertiser-route';
 import SocialMedia from "./socialMlinks";
 import Footer from "./footer";
 
