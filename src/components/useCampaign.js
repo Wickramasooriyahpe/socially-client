@@ -29,10 +29,9 @@ const useCampaign = (submitCamp) => {
         var data = JSON.stringify({
           campaignName: values.campaignName,
           adCategory: values.adCategory,
-          budget: values.budget,
-          
-         // startDate: values.startDate,
-          //endDate: values.endDate,
+          budget: values.budget,         
+          startDate: values.startDate,
+          endDate: values.endDate,
           // "deletedAt": setValues.deletedAt,
           adveID: values.adveID,
         });

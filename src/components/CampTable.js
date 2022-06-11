@@ -19,6 +19,8 @@ import { Container } from 'react-bootstrap';
 
 function CampTable() {
 
+  
+  //console.log(currentUser);
   const [data, setData] = useState([]);
     useEffect(() => {
         getData();
@@ -128,7 +130,7 @@ function CampTable() {
 
   const { SearchBar } = Search;
 
-//   
+
   return (
     <div className="container" style={{ marginTop: 50 }}>
      <ToolkitProvider
