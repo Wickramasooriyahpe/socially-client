@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 //import { FaRegEdit } from "react-icons/fa";
 import Navibar from "./Navibar";
 import CampTable from "./CampTable";
-import SearchBar from "./SearchBar";
+//import SearchBar from "./SearchBar";
  
 function CampDetails() {
  

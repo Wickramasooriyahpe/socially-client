@@ -59,8 +59,10 @@ const [values, setValues] = useState({
 
   });
 
+  
   const handleSave = event => {
    event.preventDefault();
+   
    
    var axios = require('axios');
    var data = JSON.stringify({
@@ -129,7 +131,7 @@ axios(config)
                   <div class="page-content-inner" id="listsCampaign">
                      <div class="portlet light">
                         <div class="portlet-title">
-                           <form onSubmit={handleSave}>
+                           <form >
                               <h4>Ad preferences</h4><br></br>
                               <div class="form-outline mb-4">            
                                  <input 
@@ -219,11 +221,15 @@ axios(config)
                                  <FileUp />               
                               </div>
                               
-                              <div>
+                              <div className="submit-button">
                                  <Link 
                                  to="/campaign" 
+                        
                                  role="button"                
                                  type="submit" 
+         
+                                 id='submit-btn'
+                                 onSubmit={handleSave}
                                  className="btn btn-primary pull-right" >
                                  Submit
                                  </Link>
@@ -232,9 +238,9 @@ axios(config)
                               <div>
                                  {data.cardData.map((item, index)=>{
                                     return(                                                                               
-                                       <div >
+                                       <div className='previewbutton'> 
                                           
-                                          <button href="#" className="btn btn-primary pull-right" onClick={()=> getData(item.imgSrc, item.headline, item.desc)}>Preview</button>
+                                          <button href="#" className="btn btn-primary pull-right" id='submit-btn' onClick={()=> getData(item.imgSrc, item.headline, item.desc)}>Preview</button>
                                        </div>                                       
                                     )
                                  })}

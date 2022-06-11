@@ -402,6 +402,10 @@ body{
     color: #333;
   }
   /*resposive*/
+
+  .form-input p{
+    color: red;
+  }
   
   @media (max-width:600px) {
     .wrapper {
@@ -434,6 +438,11 @@ body{
       font-size: 30px;
     }
   }
+
+  #submit-btn{
+    margin-right: 16px;
+  }
+
 
   /**********Search********************/
   .input {

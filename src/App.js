@@ -8,8 +8,10 @@ import  './UserProfile/profile.css';
 import './fileUploads/image.css';
 import './Payment/pay.css';
 import './LandingPages/Slider.css'
+import './Admin/admin.css'
 
 import CampaignCreate from './components/CampaignCreate';
+import Campaign from './components/Campaign';
 import Creative from './components/Creative';
 import Edit from './components/Edit';
 import CampDetails from './components/CampDetails';
@@ -26,6 +28,7 @@ import Advertiser from './LandingPages/AdvertiserPage';
 import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
+import AdminDash from './Admin/AdminDash';
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -48,13 +51,14 @@ function App() {
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
               <Route path="/campcrea" element={<CampDetails />} />
-              <Route path="/campaign" element={<CampaignCreate />} />
+              <Route path="/campaign" element={<Campaign />} />
               <Route path="/creative" element={<Creative />} />
               <Route path="/profile" element={<AdvertiserProfile />} />
               <Route path="/password" element={<ChangePassword />} />
               <Route path="/edit" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
               <Route path="/Dashboard" element={<AdvertiserDashboard />} />
+              <Route path="admindash" element={<AdminDash />}/>
           </Routes>
       </Router>
     
