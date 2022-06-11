@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Login from "./Login";
-import Dashboard from "./Dashboard";
+import AdvertiserDashboard from "../Dashboard/AdvertiserDashboard";
+
 //import './SignIn.css';
 
 const LoginForm = () => {
@@ -12,7 +13,11 @@ const LoginForm = () => {
 
   return (
     <div>
-      {!formIsSubmitted ? <Login submitForm={submitLoginForm} /> : <Dashboard />}
+      {!formIsSubmitted ? (
+      <Login submitLoginForm={submitLoginForm} /> 
+  ) : (
+      <AdvertiserDashboard/>
+    )}
     </div>
   );
 };

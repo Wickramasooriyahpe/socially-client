@@ -65,6 +65,7 @@ const Register = ({ submitForm }) => {
                             <p className="error">{errors.password}</p>
                           )}
                         </div>
+
                         <div className="form-group">
                           <input
                             type="password"
@@ -95,6 +96,7 @@ const Register = ({ submitForm }) => {
                             </label>
                           </div>
                         </div>
+
                         <div className="mt-3">
                           <a
                             className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"

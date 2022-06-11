@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-
-
+import loginValidation from "./loginValidation";
 
 const useLoginForm = (submitLoginForm) => {
- 
     const [values, setValues] = useState({
        
         email: "",
@@ -11,45 +9,43 @@ const useLoginForm = (submitLoginForm) => {
         
       });
 
-      const [errors] = useState({});
+      const [errors, setErrors] = useState({});
       const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
       async function handleForSubmit(event) {
         event.preventDefault();
+        setErrors(loginValidation(values));
         setDataIsCorrect(true);
 
         var axios = require('axios');
-var data = JSON.stringify({
-  "email": values.email,
-  "password":values.password,
+            var data = JSON.stringify({
+              "email": values.email,
+              "password":values.password,
+            });
 
-});
+            var config = {
+              method: 'post',
+              url: 'http://localhost:3000/auth/login',
+              headers: { 
+              
+                'Content-Type': 'application/json'
+              },
+              data : data
+            };
 
-var config = {
-  method: 'post',
-  url: 'http://localhost:3000/auth/login',
-  headers: { 
-  
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
+            axios(config)
+            .then(function (response) {
+              console.log("succes");
+              alert("Successfully Login");
+              console.log(JSON.stringify(response.data));
+              // saving the acces token in local storage
+              localStorage.setItem("JWT",JSON.stringify(response.data));
 
-axios(config)
-.then(function (response) {
-  console.log("succes");
-  console.log(JSON.stringify(response.data));
-  // saving the acces token in local storage
-  localStorage.setItem("JWT",JSON.stringify(response.data));
-  //signedJwtAccessToken =  localStorage.setItem("JWT",JSON.stringify(response.data));
-  // const jwt = require("accessToken");
-  // const token = localStorage.getItem("JWT",JSON.stringify(response.data));
-  // const decode = jwt.decode(token);
-  // console.log(decode);
-})
-.catch(function (error) {
-  console.log(error);
-});
+            })
+            .catch(function (error) {
+              console.log(error);
+              
+            }); 
       }
       useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
