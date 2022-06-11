@@ -1,50 +1,25 @@
-import React, { Component } from 'react';
-import CampForm from './CampForm';
-//import UserDetails from "./UserDetails";
-//import AddressDetails from "./AddressDetails";
-//import Confirmation from "./Confirmation";
+import React, { useState } from "react";
+import CampaignCreate from "./CampaignCreate";
+//import './SignIn.css';
+import CampDetails from "./CampDetails";
+import { Navigate } from 'react-router-dom';
 
-class Campaign extends Component {
-    state = {
-        step: 1,
-        firstName: '',
-        lastName: '',
-        email: '',
-        address: '',
-        city: '',
-        state: '',
-        zip:'',
-    }
+const Campaign = () => {
+  const [campIsSubmitted, setCampIsSubmitted] = useState(false);
 
-    nextStep = () => {
-        const { step } = this.state
-        this.setState({
-            step : step + 1
-        })
-    }
-    prevStep = () => {
-        const { step } = this.state
-        this.setState({
-            step : step - 1
-        })
-    }
+  const submitCamp = () => {
+    setCampIsSubmitted(true);
+  };
 
-    handleChange = (event) => {
-        this.setState({[event.target.name]: event.target.value})
-    }
+  return (
+    <div>
+      {!campIsSubmitted ? (
+        <CampaignCreate submitCamp={submitCamp} />
+      ) : (
+        <Navigate to="/campcrea"/>
+      )}
+    </div>
+  );
+};
 
-    render(){
-        const { step, firstName, lastName, email, address, city, state, zip } = this.state;
-        const inputValues = { firstName, lastName, email, address, city, state, zip };
-        switch(step) {
-        case 1:
-            return <CampForm
-                    nextStep={this.nextStep}
-                    handleChange = {this.handleChange}
-                    inputValues={inputValues}
-                    />
-                }
-            }
-        }
-        
-        export default Campaign;
+export default Campaign;
