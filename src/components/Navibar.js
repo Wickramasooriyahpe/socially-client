@@ -10,8 +10,10 @@ const Navibar = () => {
                 <Navbar.Collapse id='responsive-navbar-nav'>
                     <Nav>
                         <Nav.Link href='/Dashboard'>Dashboard</Nav.Link>
+                        <Nav.Link href='/Dashboard'>Dashboard</Nav.Link>
                         <Nav.Link href='/campaign'>Campaign</Nav.Link>
                         <Nav.Link href='/profile'>Profile</Nav.Link>
+                        <Nav.Link href='/pay'>Billing</Nav.Link>
                         <Nav.Link href='/'>Review</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

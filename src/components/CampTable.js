@@ -29,8 +29,8 @@ function CampTable(){
 
 
     const getData = () => {
-        const config ={ headers: {"Authorization" : `Bearer`+JSON.parse(localStorage.getItem("JWT"))["accessToken"]} };
-        axios("http://localhost:3000/campaign",config).then((res) =>{
+        const config ={ headers: {"Authorization" : `Bearer`+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
+        axios.get("http://localhost:3000/campaign",config).then((res) =>{
           
         console.log("all campaigns",res.data);
         setData(res.data);       

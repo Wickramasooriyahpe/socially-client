@@ -42,7 +42,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod
-            const response = await axios.post("http://localhost:4000/payment", {
+            const response = await axios.post("http://localhost:3000/payment", {
                 amount: 1000,
                 id
             })
@@ -60,6 +60,7 @@ export default function PaymentForm() {
     }
 }
 
+
     return (
         <>
         {!success ? 
@@ -74,7 +75,7 @@ export default function PaymentForm() {
                     <CardExpiryElement options={CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <button className="paybutton">Topup</button>
+            <button className="paybutton" type="submit">Topup</button>
         </form>
         :
        <div>

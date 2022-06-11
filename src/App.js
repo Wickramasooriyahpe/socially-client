@@ -19,6 +19,7 @@ import LoginForm from './app/LoginForm';
 import OTP from './app/OTP';
 import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
+import ProfileForm from './UserProfile/profileForm';
 import ChangePassword from './UserProfile/changePassword';
 import BillingDetails from './Payment/billing';
 import HomePage from './LandingPages/homePage';
@@ -50,7 +51,7 @@ function App() {
               <Route path="/campcrea" element={<CampDetails />} />
               <Route path="/campaign" element={<CampaignCreate />} />
               <Route path="/creative" element={<Creative />} />
-              <Route path="/profile" element={<AdvertiserProfile />} />
+              <Route path="/profile" element={<ProfileForm />} />
               <Route path="/password" element={<ChangePassword />} />
               <Route path="/edit" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 

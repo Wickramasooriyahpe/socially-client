@@ -123,3 +123,6 @@ label {
 .form-control show-password{
     align-items: center;
 }
+#profileError{
+ color: red;
+}

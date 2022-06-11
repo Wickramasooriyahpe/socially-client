@@ -40,7 +40,7 @@ const BillingDetails = () => {
             
               <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input type="number" name="balance" class="form-control" step="1" value="0"/>
+                <input type="number" name="balance" class="form-control" step="1" value="100"/>
                
               </div>
             </div>
