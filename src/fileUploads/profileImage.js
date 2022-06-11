@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import 'react-dropzone-uploader/dist/styles.css'
+//import 'react-dropzone-uploader/dist/styles.css'
 
 
 const FileUploadComponent = () => {
@@ -8,10 +8,11 @@ const FileUploadComponent = () => {
 
     const handleImageChange =(e) =>{
         setError(false);
-        const selected = e.target.files;
-        const ALLOW_TYPES = ["image/png","image/jpeg" ,"image/jpg"];
+        const selected = e.target.files[0]; //array --> [0]
+        const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
 
         if(selected && ALLOW_TYPES.includes(selected.type)){
+            console.log("selected");
             let reader = new FileReader();
             reader.onloadend = () =>{
                 setImagePreview(reader.result);
@@ -29,15 +30,15 @@ const FileUploadComponent = () => {
         <div className="ImageUpload">
             <div className="image-container ">
             {error && <p className="errorMessage">Not Supported </p>}
-                <div className="Image-preview">
-                
-               
+                <div className="Image-preview" >
                 {!imagePreview && (
                     <>
                     <p>Add an Image</p>
                     <label htmlFor="fileUpload" className="file-upload">Choose File
                     </label>
-                    <input type="file" id="fileUpload" onChange = {handleImageChange}/>
+                    <input type="file" id="fileUpload" onChange = {handleImageChange}
+                    accept="image/*"
+                    />
                     <span>(jpeg,jpg or png)</span>
                     </>
              )}

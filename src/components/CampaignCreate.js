@@ -5,21 +5,27 @@ import CreativeTable from './CreativeTable';
 import Navibar from './Navibar';
 import RangePicker from './RangePicker';
 //import { DateRange } from 'react-date-range';
-
+import { useNavigate } from "react-router-dom";
 const CampaignCreate = () => {
+   const navigate = useNavigate();
+
+   const navigateToCampaignTable =() =>{
+     navigate('/campcrea');
+   }
    const [values, setValues] = useState({
        
       campaignName: "",
       budget: 0,
       adCategory: "",
-      // startDate: "",
-      // endDate: "",
+      startDate: "",
+      endDate: "",
+    
       //deletedAt: "",
       // adveID: ""
       
     });
    const handleChange = (event) =>{
-     // console.log(event.target.name, event.target.value);
+     console.log(event.target.name, event.target.value);
       const val = event.target.value
 
       setValues({
@@ -46,6 +52,7 @@ const CampaignCreate = () => {
     adCategory: values.adCategory,
     startDate: values.startDate,
     endDate: values.endDate,
+   
     // "deletedAt": setValues.deletedAt,
     adveID: values.adveID,
   });
@@ -133,6 +140,8 @@ const CampaignCreate = () => {
                                           />
                                        </div>
                                     </div>
+                                   
+                                  
                                     <div class="col">
                                        <div class="form-outline">
                                        
@@ -149,9 +158,7 @@ const CampaignCreate = () => {
                                     </div>
                                  </div>
 
-                                 <div className="date" name="date">          
-                                    <RangePicker />
-                                 </div>
+                                
 
                                  <div class="text-right">
                                     <Link 
@@ -167,15 +174,11 @@ const CampaignCreate = () => {
                                     <CreativeTable />
                                  </div>
 
-                                 <div>
-                                    <Link 
-                                       to="/campcrea" 
-                                       role="button" 
-                                       type="submit" 
-                                       className="btn btn-primary pull-right" >
-                                       Save
-                                    </Link><br></br><br></br>
-                                 </div>
+                                 <div >
+                                    <button className="btn btn-primary pull-right" id="camp-page-button"  type='submit'>Save </button>
+                                    <button className="btn btn-primary pull-right" id="camp-page-button" onClick={navigateToCampaignTable}>view Campaigns</button>
+                                    <br></br><br></br>
+                                    </div>
                               </form>  
                            </div>
                         </div>
