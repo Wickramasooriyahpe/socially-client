@@ -49,7 +49,7 @@ import RangePicker from '../components/RangePicker';
                     <div class="row">
                         <div class="col-sm-9">                          
                             <div class="portlet">
-                            <div class="portlet-body">
+                            <div class="portlet-bodycontent">
                                 <div id="chartAdverts" class="chart-block">
                                 <div className="loaded-data">
                                 <div className='chart'><SummaryChart/></div>
@@ -64,7 +64,7 @@ import RangePicker from '../components/RangePicker';
                             <div className="row1">
                             <div > <FaTrophy  className='icons'/></div>
                             </div>
-                            <div class="portlet-body number-wins">$120</div>
+                            <div class="portlet-bodycontent number-wins">$120</div>
                             <div class="portlet-title">Earnings</div> 
                             </div>
 
@@ -72,7 +72,7 @@ import RangePicker from '../components/RangePicker';
                             <div className="row1">
                             <div > <FaUsers  className='icons'/></div>
                             </div>
-                            <div class="portlet-body number-impressions">200</div>
+                            <div class="portlet-bodycontent number-impressions">200</div>
                             <div class="portlet-title">Impressions</div>
                             </div>
 
@@ -80,7 +80,7 @@ import RangePicker from '../components/RangePicker';
                             <div className="row1">
                             <div > <FaMousePointer className='icons'/></div>
                             </div>
-                            <div class="portlet-body number-clicks">450</div>
+                            <div class="portlet-bodycontent number-clicks">450</div>
                             <div class="portlet-title">Clicks</div>
                             </div>
 
@@ -88,7 +88,7 @@ import RangePicker from '../components/RangePicker';
                             <div className="row1">
                             <div > <FaMoneyBill className='icons'/></div>
                             </div>
-                            <div class="portlet-body number-spend">$300</div>
+                            <div class="portlet-bodycontent number-spend">$300</div>
                             <div class="portlet-title">Spend</div>
                             </div>
 
@@ -105,7 +105,7 @@ import RangePicker from '../components/RangePicker';
                    <h4 class="title uppercase"> Campaign Activity </h4>
                    <div className='toplist'>Top list</div>
                  </div>
-               <div class="portlet-body">
+               <div class="portlet-bodycontent">
                   <div class="row">
                       <div class="col-xs-12">
                         <div id="topCampaigns" class="smarty-table" data-get="">
@@ -152,7 +152,7 @@ import RangePicker from '../components/RangePicker';
                   <h4 class="title uppercase"> Creative Activity </h4>
                   <div className='toplist'>Top list</div>
                 </div>
-               <div class="portlet-body">
+               <div class="portlet-bodycontent">
                   <div class="row">
                       <div class="col-xs-12">
                         <div id="topCreative" class="smarty-table" data-get="">

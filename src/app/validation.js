@@ -1,6 +1,8 @@
 const validation = (values) =>{
     let errors={};
 
+    const validPhoneNumber = new RegExp(/^[0-9\b]+$/)
+
     if(!values.name){
         errors.name="Name is required"
     }

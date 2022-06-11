@@ -1,21 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 //import './SignIn.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import email from './useForm';
+import AdvertiserDashboard from "../Dashboard/AdvertiserDashboard";
+import { Navigate } from "react-router-dom";
+import useOTP from "./useOTP";
 
+const OTP = (submitOTP) => {
 
-const OTP = () => {
-
-  const [otp, setOtp] = useState(new Array(4).fill(""));
-
-  const handleChange = (element, index) => {
-      if (isNaN(element.value)) return false;
-
-      setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-      if (element.nextSibling) {
-          element.nextSibling.focus();
-      }
-  };
+  const { handleChange, handleOTP, otp } = useOTP(submitOTP);
 
     return (
     <div className="container-scroller">
@@ -38,7 +31,7 @@ const OTP = () => {
                                 type="text"
                                 name="otp"
                                 maxLength="1"
-                                key={index}
+                                key={index} 
                                 value={data}
                                 onChange={e => handleChange(e.target, index)}
                                 onFocus={e => e.target.select()}
@@ -50,9 +43,12 @@ const OTP = () => {
                       <h6 className=" text-center mt-3">Enter OTP</h6>
 
                       </div>
-                      <div className="mt-3"><a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" onClick={e =>
-                                alert("Entered OTP is " + otp.join(""))
-                            } >Submit</a>
+                      <div className="mt-3">
+                      <a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" 
+                             // onClick={e =>
+                               // alert("Entered OTP is " + otp.join(""))}
+                               onClick={handleOTP}
+                             >Submit</a>
                       </div>
                       <div className="text-center mt-4 font-weight-light"> <a className="text-primary" href="/user-pages/login">Re-sent OTP</a>
                       </div>
