@@ -19,7 +19,8 @@ function CreativeTable() {
     }, []);
 
     const getData = () => {
-        axios("http://localhost:3000/creative/1").then((res) =>{
+        const config ={ headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
+        axios.get("http://localhost:3000/creative",config).then((res) =>{
         console.log(res.data);
         setData(res.data);
         

@@ -7,65 +7,30 @@ import data from './data';
 import Model from './Model';
 
 const Creative = (props) => {
-   
-   const {id} = useParams();
-   const stateParamVal = useLocation().state;
-   console.log("props param val" + id);
-   console.log("props state val" + stateParamVal);
-   //const [data, setData] = React.useState();
-
-  /*const handleSave = (event) =>{
-     console.log(data);
-     event.preventDefault();
-  }
   
-  const handleChange = (event) =>{
-     //console.log(event.target.name, event.target.value);
-     setData({
-        ...data,
-        [event.target.name]: event.target.value
-     })
-  }*/
-/*************** */
-// const handleSave = (event) =>{
-//    console.log(values);
-//    event.preventDefault();
-// }
-
-const handleChange = (event) =>{
-   //console.log(event.target.name, event.target.value);
+   const {id} = useParams();
+   console.log("props param val = " + id);
+  
+   const [values, setValues] = useState({ 
+      creativeHeading: "",
+      destinationURL: "",
+      creativeDescription: "",
+      costPerSale: 0,
+      creativeType: "",
+      //deletedAt: null,
+      //campID: 7
+   
+     });
+     
+   const handleChange = (event) =>{
+   console.log(event.target.name, event.target.value);
    setValues({
       ...values,
       [event.target.name]: event.target.value
    })
 }
 
-/**Model data */
-const [model, setModel] = useState(false);
-    const [tempdata, setTempdata] = useState([]);
-
-
-    const getData = (img, heading, desc) =>{
-        let tempData = [img, heading, desc];
-        setTempdata(item => [1, ...tempData]);
-
-        return setModel(true);
-
-    }
-
-const [values, setValues] = useState({ 
-   creativeHeading: "",
-   destinationURL: "",
-   creativeDescription: "",
-   costPerSale: 0,
-   creativeType: "",
-   //deletedAt: null,
-   //campID: 7
-
-  });
-
-  
-  const handleSave = event => {
+const handleSave = event => {
    event.preventDefault();
    
    
@@ -82,7 +47,7 @@ const [values, setValues] = useState({
 
 var config = {
   method: 'post',
-  url: 'http://localhost:3000/creative',
+  url: 'http://localhost:3000/creative/' + id,
   headers: { 
     'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('JWT'))['accessToken'] , 
     'Content-Type': 'application/json'
@@ -98,6 +63,24 @@ axios(config)
   console.log(error);
 });
   }
+
+/**Model data */
+const [model, setModel] = useState(false);
+    const [tempdata, setTempdata] = useState([]);
+
+
+    const getData = (img, heading, desc) =>{
+        let tempData = [img, heading, desc];
+        setTempdata(item => [1, ...tempData]);
+
+        return setModel(true);
+
+    }
+
+
+
+  
+  
 /*************** */
    const[creativeType, setCreativeType] = useState("")
    const creativeTypeHandle=(e)=>{
@@ -136,7 +119,7 @@ axios(config)
                   <div class="page-content-inner" id="listsCampaign">
                      <div class="portlet light">
                         <div class="portlet-title">
-                           <form >
+                           <form  onSubmit={handleSave}>
                               <h4>Ad preferences</h4><br></br>
                               <div class="form-outline mb-4">            
                                  <input 
@@ -227,17 +210,12 @@ axios(config)
                               </div>
                               
                               <div className="submit-button">
-                                 <Link 
-                                 to="/campaign" 
-                        
-                                 role="button"                
+                                <button           
                                  type="submit" 
-         
                                  id='submit-btn'
-                                 onSubmit={handleSave}
                                  className="btn btn-primary pull-right" >
                                  Submit
-                                 </Link>
+                                 </button>
                               </div>
 
                               <div>

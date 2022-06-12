@@ -47,6 +47,7 @@ function CampTable(props){
     }
     ).catch (err=>console.log(err))
     }
+    /*********************  T A B L E *****************************/
     const columns=[
       {
         datafield: "",
@@ -98,7 +99,12 @@ function CampTable(props){
               <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.campaignId)}  ><FaTrashAlt /></button>
               <Link className="btn btn-outline-primary btn-sm"  to={'/edit/'} role="button" ><FaRegEdit /></Link>
               <Link className="btn btn-outline-success btn-sm" role="button" 
-               to={'/Creative/row.campaignId'}><FcPlus /></Link>
+               to={{
+                pathname : '/Creative/'+ row.campaignId ,
+                
+               }}>
+               
+               <FcPlus /></Link>
               </div>
             );         
         }
