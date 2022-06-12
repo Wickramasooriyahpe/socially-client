@@ -18,26 +18,35 @@ import { FcPlus } from "react-icons/fc";
 //import { Button, Row } from "react-bootstrap";
 
 
-function CampTable(){
+function CampTable(props){
+  const [data, setData] = useState([]);
 
-
-  //console.log(currentUser);
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        getData();
+ useEffect(() => {
+  getData();
+ 
     }, []);
-
-
-    const getData = () => {
-        const config ={ headers: {"Authorization" : `Bearer`+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
-        axios.get("http://localhost:3000/campaign",config).then((res) =>{
-          
+  /******************A P I INTEGRATION to  DELETE campaign**************/
+    async function deleteOperation (campaignId){
+      //alert(campaignId);
+      console.log(campaignId);
+      let result = await fetch('http://localhost:3000/campaign/' + campaignId,{
+        method: 'DELETE',
+        headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}
+      });
+      result = await result.json();
+      console.log(result);
+      getData();
+    }
+    /******************A P I INTEGRATION to  GET campaign**************/
+    async function getData(){
+      const config ={ headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
+      axios.get("http://localhost:3000/campaign",config).then((res) =>{
+              
         console.log("all campaigns",res.data);
         setData(res.data);       
-}
-);
-};
-    
+    }
+    ).catch (err=>console.log(err))
+    }
     const columns=[
       {
         datafield: "",
@@ -58,6 +67,7 @@ function CampTable(){
     },    
     {
       dataField: "campaignId", 
+      isKey: true,
       hidden: true
   },
   {
@@ -82,12 +92,13 @@ function CampTable(){
             return {textAlign: 'center' };
           },
         formatter: (cellContent, row) => {
-          
+        
             return (
               <div>              
-              <button className="btn btn-outline-danger btn-sm"  ><FaTrashAlt /></button>
+              <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.campaignId)}  ><FaTrashAlt /></button>
               <Link className="btn btn-outline-primary btn-sm"  to={'/edit/'} role="button" ><FaRegEdit /></Link>
-              <Link className="btn btn-outline-success btn-sm" role="button" to='/Creative'><FcPlus /></Link>
+              <Link className="btn btn-outline-success btn-sm" role="button" 
+               to={'/Creative/row.campaignId'}><FcPlus /></Link>
               </div>
             );         
         }
@@ -125,7 +136,7 @@ const { SearchBar } = Search;
 return (
   <div className="container" style={{ marginTop: 50 }}>
      <ToolkitProvider
-      keyField="id"
+      keyField="campaignId"
       data={data}
       columns={columns}
       search
@@ -163,3 +174,7 @@ return (
 }
 
 export default CampTable;
+{/*to={{
+  pathname :"/Creative/" ,
+   //state:{stateParam:true}
+  }} */}

@@ -1,12 +1,17 @@
 import React from 'react';
 import FileUp from './FileUp';
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useParams} from 'react-router-dom';
 import { useState } from 'react';
 import Navibar from './Navibar';
 import data from './data';
 import Model from './Model';
 
-const Creative = () => {
+const Creative = (props) => {
+   
+   const {id} = useParams();
+   const stateParamVal = useLocation().state;
+   console.log("props param val" + id);
+   console.log("props state val" + stateParamVal);
    //const [data, setData] = React.useState();
 
   /*const handleSave = (event) =>{
@@ -77,7 +82,7 @@ const [values, setValues] = useState({
 
 var config = {
   method: 'post',
-  url: 'http://localhost:3000/creative/createCreative',
+  url: 'http://localhost:3000/creative',
   headers: { 
     'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('JWT'))['accessToken'] , 
     'Content-Type': 'application/json'

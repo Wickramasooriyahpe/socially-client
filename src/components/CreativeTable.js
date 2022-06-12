@@ -19,7 +19,7 @@ function CreativeTable() {
     }, []);
 
     const getData = () => {
-        axios("http://localhost:3000/creative/camp/1").then((res) =>{
+        axios("http://localhost:3000/creative/1").then((res) =>{
         console.log(res.data);
         setData(res.data);
         

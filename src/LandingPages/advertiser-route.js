@@ -1,29 +1,30 @@
-import "./adv.css";
+import "./advertiser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Image from 'react-bootstrap/Image'
 import {Link} from 'react-router-dom';
-import { Button } from "react-bootstrap";
 
-const AdvertiserPage = () => {
+
+
+const AdvertiserPage = (props) => {
+    const APdata = props.APdata;
     return(
-      <div className="adv-land-map-section">
-      <div className="adv-land-overly-wrapper" >
-          <Image src="slidetwo.jpg" className="adv-land-img"></Image>
-              <div className="adv-land-wrap">
-              <div className="adv-land-content">
-                  <div className="adv-land-map-overly">
-                      <h3 className="adv-land-text-spacing"> Advertisers </h3>
-                          <div className="adv-land-desc">
-                              <p className="adv-land-desc-para">Lorem Ipsum is simply dummy text  into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                          </div>
-                      <Button href="/login" className="adv-land-button" >Start</Button>
-                  </div>
-              </div>
-          </div>
-      
+      <div >
+      {APdata.map((APdata) =>(
+        <div>
+        <img src={APdata.image} className="a-main-container"/>
+        <div className="a-container a-fill-hight">  
+        <div className="row align-item-center a-fill-hight" id="a-row-center">
+         <div className="col" id="a-col">
+         <div className="a-main-slider-content">
+            <h1>{APdata.heading}</h1>
+            <Link className="btn btn-primary"  to={APdata.path}>Start Now</Link>
+         </div>
+         
+         </div>
+        </div>
+        </div>
+        </div>
+      ))}
       </div>
-     
-     </div>
        
     );
 }
