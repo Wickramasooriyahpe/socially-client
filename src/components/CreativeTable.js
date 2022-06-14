@@ -17,7 +17,7 @@ function CreativeTable() {
     useEffect(() => {
         getData();
     }, []);
-
+/******************A P I INTEGRATION to  GET creative table**************/
     const getData = () => {
         const config ={ headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
         axios.get("http://localhost:3000/creative",config).then((res) =>{
@@ -27,10 +27,23 @@ function CreativeTable() {
     }
     );
     };
-
+     /******************A P I INTEGRATION to  DELETE campaign**************/
+     async function deleteOperation (creativeId){
+        //alert(campaignId);
+        console.log(creativeId);
+        let result = await fetch('http://localhost:3000/creative/' + creativeId,{
+          method: 'DELETE',
+          headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}
+        });
+        result = await result.json();
+        console.log(result);
+        getData();
+      }
+/*********************  T A B L E *****************************/
     const columns=[
         {
             dataField: "creativeId", 
+            key : true,
             hidden: true
         },
     {
@@ -62,7 +75,7 @@ function CreativeTable() {
             return (
               <div>
               <button className="btn btn-outline-success btn-sm" ><FaEye /></button>
-              <button className="btn btn-outline-danger btn-sm"><FaTrashAlt /></button>
+              <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.creativeId)}><FaTrashAlt /></button>
               <Link className="btn btn-outline-primary btn-sm" to={'/edit'} role='button'><FaRegEdit /></Link>
               </div>
             );
@@ -78,7 +91,7 @@ function CreativeTable() {
     <div>
         <BootstrapTable 
         bootstrap4 
-        keyField="id" 
+        keyField="creativeId" 
         data={data} 
         columns={columns}  
         pagination={paginationFactory()}

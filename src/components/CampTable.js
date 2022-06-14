@@ -97,7 +97,12 @@ function CampTable(props){
             return (
               <div>              
               <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.campaignId)}  ><FaTrashAlt /></button>
-              <Link className="btn btn-outline-primary btn-sm"  to={'/edit/'} role="button" ><FaRegEdit /></Link>
+              <Link className="btn btn-outline-primary btn-sm"   role="button"
+              to={{
+                pathname : '/editCamp/'+ row.campaignId ,
+                
+               }}
+              ><FaRegEdit /></Link>
               <Link className="btn btn-outline-success btn-sm" role="button" 
                to={{
                 pathname : '/Creative/'+ row.campaignId ,

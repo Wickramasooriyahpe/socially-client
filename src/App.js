@@ -22,6 +22,7 @@ import LoginForm from './app/LoginForm';
 import OTP from './app/OTP';
 import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
+import EditCampaign from './components/EditCampaign';
 import ProfileForm from './UserProfile/profileForm';
 import ChangePassword from './UserProfile/changePassword';
 import BillingDetails from './Payment/billing';
@@ -31,7 +32,7 @@ import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 import AdminDash from './Admin/AdminDash';
-import AppFaq from './LandingPages/faq';
+
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -51,11 +52,12 @@ function App(props) {
               <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
-              <Route path="/faq" element={<AppFaq />} />
+        
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
               <Route path="/campcrea" element={<CampDetails />} />
               <Route path="/campaign" element={<Campaign />} />
+              <Route path="/editcamp/:id" element={<EditCampaign />} />
               <Route path="/creative/:id" element={<Creative />} />
               <Route path="/profile" element={<ProfileForm />} />
               <Route path="/password" element={<ChangePassword />} />
