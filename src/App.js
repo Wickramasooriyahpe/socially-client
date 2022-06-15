@@ -61,7 +61,7 @@ function App(props) {
               <Route path="/creative/:id" element={<Creative />} />
               <Route path="/profile" element={<ProfileForm />} />
               <Route path="/password" element={<ChangePassword />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
               <Route path="/Dashboard" element={<AdvertiserDashboard />} />
               <Route path="admindash" element={<AdminDash />}/>

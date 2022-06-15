@@ -25,7 +25,8 @@ const FileUploadComponent = () => {
             }
         };
     
-    return (
+    
+        return (
         //<input type="file" onChange={handleImageChange}/>
         <div className="ImageUpload">
             <div className="image-container ">

@@ -22,7 +22,7 @@ const useEditCamp = (updateCamp,props) => {
     let result = await fetch("http://localhost:3000/campaign/"+id)
     result = await result.json();
     console.log(result);
-    setCampaignName(result.campaignName);
+     setCampaignName(result.campaignName);
      setadCategory(result.adCategory);
      setbudget(result.budget);
   }
