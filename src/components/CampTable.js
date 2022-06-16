@@ -105,7 +105,7 @@ function CampTable(props){
               ><FaRegEdit /></Link>
               <Link className="btn btn-outline-success btn-sm" role="button" 
                to={{
-                pathname : '/Creative/'+ row.campaignId ,
+                pathname : '/creative/'+ row.campaignId ,
                 
                }}>
                

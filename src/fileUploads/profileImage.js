@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React ,{useState} from 'react';
 //import 'react-dropzone-uploader/dist/styles.css'
 
@@ -16,7 +17,7 @@ const FileUploadComponent = () => {
             let reader = new FileReader();
             reader.onloadend = () =>{
                 setImagePreview(reader.result);
-            }
+            };
             reader.readAsDataURL(selected);
         }
             else{
@@ -24,7 +25,14 @@ const FileUploadComponent = () => {
                 console.log("file not supported");
             }
         };
-    
+     const handleAPI =()=>{
+        const url = ("http://localhost:3000/UploadMedia")
+        const FormData = new FormData();
+        FormData.append('imagePreview',imagePreview)
+        axios.post(url,FormData).then((res)=>{
+            console.log(res)
+        })
+     }
     
         return (
         //<input type="file" onChange={handleImageChange}/>
@@ -41,6 +49,7 @@ const FileUploadComponent = () => {
                     accept="image/*"
                     />
                     <span>(jpeg,jpg or png)</span>
+                   // <button type='submit' onClick={handleAPI}>Submit</button>
                     </>
              )}
                 </div>

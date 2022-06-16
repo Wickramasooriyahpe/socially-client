@@ -12,7 +12,7 @@ import Creative from './Creative';
 
 
 
-function CreativeTable() {
+function CreativeTable(props) {
     const [data, setData] = useState([]);
     useEffect(() => {
         getData();
@@ -76,7 +76,11 @@ function CreativeTable() {
               <div>
               <button className="btn btn-outline-success btn-sm" ><FaEye /></button>
               <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.creativeId)}><FaTrashAlt /></button>
-              <Link className="btn btn-outline-primary btn-sm" to={'/edit'} role='button'><FaRegEdit /></Link>
+              <Link className="btn btn-outline-primary btn-sm"  to={{
+                pathname : '/edit/'+ row.creativeId ,
+                
+               }}
+               role='button'><FaRegEdit /></Link>
               </div>
             );
           
