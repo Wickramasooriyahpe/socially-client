@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import campValidation from "./campValidation";
-import {Link, useLocation, useParams} from 'react-router-dom';
+import {Link, useLocation, useParams,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import Campaign from "./Campaign";
 
@@ -8,6 +8,7 @@ const useEditCamp = (updateCamp,props) => {
 
   const {id} = useParams();
    console.log("props param val = " + id);
+   const navigate = useNavigate();
  const [campaignName,setCampaignName] = useState('');
  const [adCategory,setadCategory] = useState('');
  const [budget,setbudget] = useState('');
@@ -43,7 +44,7 @@ const useEditCamp = (updateCamp,props) => {
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
 const handleUpdate = async () =>{
-    
+        navigate('/campcrea')
         let result = await fetch("http://localhost:3000/campaign/editcamp/" + id,{
         method: "PUT",
         "body" :JSON.stringify({campaignName,budget,adCategory}),

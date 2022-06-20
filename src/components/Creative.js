@@ -1,16 +1,24 @@
 import React from 'react';
 import FileUp from './FileUp';
-import {Link, useLocation, useParams} from 'react-router-dom';
-import { useState } from 'react';
+import {Link, useLocation, useParams,useNavigate} from 'react-router-dom';
+import { useState,useEffect } from 'react';
 import Navibar from './Navibar';
 import data from './data';
 import Model from './Model';
+import CreativeTable from './CreativeTable';
+import axios from 'axios';
 
 const Creative = (props) => {
   
    const {id} = useParams();
    console.log("props param val = " + id);
   
+   const [image, setImage] = useState(null);
+   const [thumdnailImage, setThumdnailImage] = useState(null);
+   const [thumdnailImagePreview, setThumdnailImagePreview] = useState(null);
+   const [creativeId, setcreativeId] = useState(null);
+   const [creativeData, setCreativeData] = useState(null);
+   const navigate = useNavigate();
    const [values, setValues] = useState({ 
       creativeHeading: "",
       destinationURL: "",
@@ -31,9 +39,8 @@ const Creative = (props) => {
 }
 
 const handleSave = event => {
+  // navigate('/campcrea')
    event.preventDefault();
-   
-   
    var axios = require('axios');
    var data = JSON.stringify({
   "creativeHeading": values.creativeHeading,
@@ -58,34 +65,74 @@ var config = {
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
+  const creativeId =(JSON.stringify(response.data.creativeId));
+  setcreativeId(creativeId);
+  setCreativeData(response.data);
 })
 .catch(function (error) {
   console.log(error);
 });
+
+
   }
+/*************************** Handle Image API ****************************/
+  const handlecreativeLibrarySubmit = () => {
+   const formData = new FormData();
+   const config ={ headers: 
+       {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]},
+       method: 'post',
+      
+   }//creID ---->id
+   const url = ("http://localhost:3000/UploadMedia/multiple/"+creativeId)
+   console.log(creativeId);
+  // formData.append('creID',id)
+   formData.append('files',image)
+   formData.append('files',thumdnailImage)
+   axios.post(url,formData,config).then((res)=>{
+       console.log(res)
+   })
+}
 
 /**Model data */
 const [model, setModel] = useState(false);
-    const [tempdata, setTempdata] = useState([]);
-
-
-    const getData = (img, heading, desc) =>{
-        let tempData = [img, heading, desc];
-        setTempdata(item => [1, ...tempData]);
-
+  
+    const getData = () =>{
+    
         return setModel(true);
 
     }
 
-
-
-  
-  
-/*************** */
    const[creativeType, setCreativeType] = useState("")
    const creativeTypeHandle=(e)=>{
       setCreativeType(e.target.value)     
    }
+
+   const handleImageChange =(e) =>{
+      // setError(false);
+      const selected = e.target.files[0]; 
+      const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
+      setImage(selected);
+   
+      };
+
+      const handleThumbnailChange =(e) =>{
+         // setError(false);
+         const selected = e.target.files[0]; 
+         const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
+         setThumdnailImage(selected);
+         if(selected && ALLOW_TYPES.includes(selected.type)){
+          console.log("selected");
+          let reader = new FileReader();
+          reader.onloadend = () =>{
+              setThumdnailImagePreview(reader.result);
+          };
+          reader.readAsDataURL(selected);
+      }
+          else{
+            //   setError(true);
+              console.log("file not supported");
+          }
+         };
   // console.log(creativeType)
   return(
   
@@ -199,41 +246,54 @@ const [model, setModel] = useState(false);
                               </textarea>  
                            </div>
 
+                           <div className="submit-button">
+                           <button           
+                            type="submit" 
+                            id='submit-btn'
+                            className="btn btn-primary pull-right" >
+                            Submit
+                            </button>
+                         </div>
+                        </form>
+                        <form >
                            <label><h6>Upload Thumbnail media</h6></label>
                            <div>
-                           <input type="file"></input>               
+                           <input type="file" onChange = {handleThumbnailChange} ></input>               
                            </div>
 
                            <br></br>     
                            <label><h6>Upload media</h6></label>
                            <div >
-                              <input type="file"></input>          
+                              <input type="file" onChange = {handleImageChange} ></input>          
                            </div>
-                           
                            <div className="submit-button">
-                             <button           
-                              type="submit" 
-                              id='submit-btn'
-                              className="btn btn-primary pull-right" >
-                              Submit
-                              </button>
-                           </div>
+                           <button  
+                           onClick={handlecreativeLibrarySubmit}         
+                            type="submit" 
+                            id='submit-btn'
+                            className="btn btn-primary pull-right" >
+                            Submit Media
+                            </button>
+                         </div>
+                         </form>
 
-                           <div>
-                              {data.cardData.map((item, index)=>{
-                                 return(                                                                               
-                                    <div className='previewbutton'> 
-                                       
-                                       <button href="#" className="btn btn-primary pull-right" id='submit-btn' onClick={()=> getData(item.imgSrc, item.headline, item.desc)}>Preview</button>
-                                    </div>                                       
-                                 )
-                              })}
-                           </div> 
+                         <div className='previewbutton'> 
+                                          
+                                          <button href="#" 
+                                          className="btn btn-primary pull-right" 
+                                          id='submit-btn' 
+                                          onClick={()=> getData()}>
+                                          Preview
+                                          </button>
+                                       </div>
+
+                          
                            <br></br><br></br>
-                           </form>
+                           
+                           <CreativeTable/>
                      </div>
                      {
-                        model === true ? <Model img={tempdata[1]} heading={tempdata[2]} desc={tempdata[3]} hide={() => setModel(false)}/>: ''
+                        model === true ? <Model img={thumdnailImagePreview} heading={creativeData.creativeHeading} desc={creativeData.creativeDescription} hide={() => setModel(false)}/>: ''
                      }
                      
                   </div>

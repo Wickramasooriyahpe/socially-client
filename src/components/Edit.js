@@ -1,34 +1,38 @@
 import React from 'react';
 import FileUp from './FileUp';
-import {Link,useParams} from 'react-router-dom';
+import {Link,useParams,useNavigate} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function Edit(props) {
    const {id} = useParams();
-   console.log("props param val = " + id);
+   console.log("creative ID = " + id);
+   const navigate = useNavigate();
    const [data, setData] = useState([]);
    const [creativeHeading,setcreativeHeading] = useState('');
    const [destinationURL,setdestinationURL] = useState('');
    const [creativeDescription,setcreativeDescription] = useState('');
    const [costPerSale,setcostPerSale] = useState('');
    const [creativeType,setcreativeType] = useState('');
+   const [image, setImage] = useState(null);
+   const [thumdnailImage, setThumdnailImage] = useState(null);
+   const [thumdnailImagePreview, setThumdnailImagePreview] = useState(null);
    useEffect(() =>{
       getcreativedetails();
     },[])
 
 /***************************** A P I to pre fill form *****************************************/
    const getcreativedetails = async () =>{
-      let result = await fetch("http://localhost:3000/creative/"+id)
+      let result = await fetch("http://localhost:3000/creative/get-one-creative/"+id)
       result = await result.json();
-      console.log(result);
+      console.log("creative data =",result);
        setcreativeHeading(result.creativeHeading);
        setcreativeDescription(result.creativeDescription);
        setcostPerSale(result.costPerSale);
        setdestinationURL(result.destinationURL);
     }
     const handleUpdate = async () =>{
-    
+     // navigate('/campcrea');
       let result = await fetch("http://localhost:3000/creative/" + id,{
       method: "PUT",
       "body" :JSON.stringify({creativeHeading,creativeDescription,costPerSale,destinationURL}),
@@ -39,8 +43,54 @@ function Edit(props) {
               }
       }
   )
+  
   result = await result.json();
+  
 };  
+/************************************************************/
+const handlecreativeLibrarySubmit = () => {
+   const formData = new FormData();
+   const config ={ headers: 
+       {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]},
+       method: 'post',
+      
+   }//creID ---->id
+   const url = ("http://localhost:3000/UploadMedia/multiple/"+id)
+   console.log(id);
+  // formData.append('creID',id)
+   formData.append('files',image)
+   formData.append('files',thumdnailImage)
+   axios.post(url,formData,config).then((res)=>{
+       console.log(res)
+   })
+}
+
+const handleThumbnailChange =(e) =>{
+   // setError(false);
+   const selected = e.target.files[0]; 
+   const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
+   setThumdnailImage(selected);
+   if(selected && ALLOW_TYPES.includes(selected.type)){
+    console.log("selected");
+    let reader = new FileReader();
+    reader.onloadend = () =>{
+        setThumdnailImagePreview(reader.result);
+    };
+    reader.readAsDataURL(selected);
+}
+    else{
+      //   setError(true);
+        console.log("file not supported");
+    }
+   };
+   const handleImageChange =(e) =>{
+      // setError(false);
+      const selected = e.target.files[0]; 
+      const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
+      setImage(selected);
+   
+      };
+/************************************************************/
    const handleChange = (event) =>{
       console.log(event.target.name, event.target.value);
       setValues({
@@ -60,49 +110,8 @@ function Edit(props) {
       
     });
 
-//   const handleSave = (event) =>{
-//      console.log(values);
-//      event.preventDefault();
-//   }
-  
-//console.log("data");
 
-  const handleSave = (e) => {
-  //console.log(values);
- e.preventDefault();
-  var axios = require("axios");
-  var data = JSON.stringify({
-   "creativeHeading": values.creativeHeading,
-  "destinationURL":values.destinationURL ,
-  "creativeDescription": values.creativeDescription,
-  "costPerSale": values.costPerSale,
-  "creativeType":values.creativeType ,
-  });
 
-  var config = {
-    method: "put",
-    url: "http://localhost:3000/creative/2",
-    headers: {
-      Authorization:
-        "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
-        "Content-Type": "application/json",
-    },
-    data: data,
-  };
-
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-// const[creativeType, setCreativeType] = useState("")
-// const creativeTypeHandle=(e)=>{
-//    setCreativeType(e.target.value)     
-// }
-// console.log(creativeType)
 return(
    <div className="bg-light">
       <h4>Ad preferences</h4>
@@ -194,27 +203,37 @@ return(
             </textarea>  
          </div>
 
-         <label><h6>Upload Thumbnail media</h6></label>
          <div>
-                     
-         </div>
-
-         <br></br>     
-         <label><h6>Upload media</h6></label>
-         <div >
-                   
-         </div>
-         <div>
-            <button 
-            onClick={handleUpdate}s
-            role="button"                
-            type="submit" 
-            className="btn btn-primary pull-right" >
-            Update
-            </button><br></br>
-         </div>    
-
+         <button 
+         onClick={handleUpdate}
+         role="button"                
+         type="submit" 
+         className="btn btn-primary pull-right" >
+         Update
+         </button><br></br>
+      </div>  
       </form>
+      <form >
+            <label><h6>Upload Thumbnail media</h6></label>
+            <div>
+            <input type="file" onChange = {handleThumbnailChange} ></input>               
+            </div>
+
+            <br></br>     
+            <label><h6>Upload media</h6></label>
+            <div >
+               <input type="file" onChange = {handleImageChange} ></input>          
+            </div>
+            <div className="submit-button">
+            <button  
+            onClick={handlecreativeLibrarySubmit}         
+            type="submit" 
+            id='submit-btn'
+            className="btn btn-primary pull-right" >
+            Submit Media
+            </button>
+         </div>
+    </form>
       </div>
 
    </div>

@@ -9,7 +9,7 @@ import AdvertiserPage from './advertiser-route';
 
 const Publisher = () => {
     const [APdata,setdata] = useState([
-        {id:1,image: "advpage.jpg",heading: "Join with us as a Publisher", path: "/play-store",}
+        {id:1,image: "pubPage.jpg",heading: "Join with us as a Publisher", path: "/play-store",}
          ]);
     return(
         <div>

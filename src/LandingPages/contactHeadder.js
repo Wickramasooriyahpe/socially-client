@@ -29,7 +29,7 @@ const ContactHeader = () => {
                 <span class="fa fa-paper-plane" id="u-icon-contact-page"></span>
                 </div>
                 <div class="text">
-                <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                <p><span>Email:</span> <a href="mailto:socially@gmail.com">socially@gmail.com</a></p>
                 </div>
                 </div>
           </div>
@@ -39,7 +39,7 @@ const ContactHeader = () => {
                 <i class="fa fa-globe center-fa-icon " id="u-icon-contact-page"></i>
                 </div>
                 <div class="text">
-                <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                <p><span>Website</span> <a href="#">Socially.com</a></p>
                 </div>
                 </div>
                 </div>      

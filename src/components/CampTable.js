@@ -15,8 +15,6 @@ import { FaTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import { FcPlus } from "react-icons/fc";
-//import { Button, Row } from "react-bootstrap";
-
 
 function CampTable(props){
   const [data, setData] = useState([]);

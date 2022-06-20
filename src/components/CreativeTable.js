@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link,useParams} from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,10 +9,13 @@ import { FaEye } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import Creative from './Creative';
+import { id } from 'date-fns/locale';
 
 
 
 function CreativeTable(props) {
+    const {id} = useParams();
+    console.log("props param table = " + id);
     const [data, setData] = useState([]);
     useEffect(() => {
         getData();
@@ -20,7 +23,7 @@ function CreativeTable(props) {
 /******************A P I INTEGRATION to  GET creative table**************/
     const getData = () => {
         const config ={ headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
-        axios.get("http://localhost:3000/creative",config).then((res) =>{
+        axios.get("http://localhost:3000/creative/"+id ,config).then((res) =>{
         console.log(res.data);
         setData(res.data);
         
