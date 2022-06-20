@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import campValidation from "./campValidation";
 
-const useCampaign = (submitCamp) => {
+const useEditCamp = (updateCamp) => {
     const [values, setValues] = useState({
        
         campaignName: "",
@@ -14,9 +14,6 @@ const useCampaign = (submitCamp) => {
         // adveID: ""
         
     });
-
-    
-
 
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
@@ -39,16 +36,16 @@ const useCampaign = (submitCamp) => {
           adveID: values.adveID,
         });
       
-        var config = {
-          method: "post",
-          url: "http://localhost:3000/campaign/createCampaign",
-          headers: {
-            Authorization:
-              "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
-              "Content-Type": "application/json",
-          },
-          data: data,
-        };
+        // var config = {
+        //   method: "post",
+        //   url: "http://localhost:3000/campaign/createCampaign",
+        //   headers: {
+        //     Authorization:
+        //       "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
+        //       "Content-Type": "application/json",
+        //   },
+        //   data: data,
+        // };
       
         axios(config)
           .then(function (response) {
@@ -61,7 +58,7 @@ const useCampaign = (submitCamp) => {
 
       useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
-            submitCamp(true);
+            updateCamp(true);
         }
       }, [errors]);
       
@@ -78,7 +75,6 @@ const useCampaign = (submitCamp) => {
       return {handleChange, handleSave, errors, values};
     
     
-};
+}
 
-export default useCampaign;
-
+export default useEditCamp

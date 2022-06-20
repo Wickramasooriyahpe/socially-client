@@ -7,7 +7,7 @@ import profileValidation from './profileValidation';
 import useForm from './useProfileForm';
 
     const AdvertiserProfile = ({submitForm}) => {
-        const { handleChange,handleSave, values, errors } = useForm(submitForm);
+        const { handleChange,handleSave, values, errors, name, setName, lname, setLname, email, setEmail, company, setCompany, address, setAddress, phone, setPhone} = useForm(submitForm);
         
 
     return (
@@ -29,7 +29,7 @@ import useForm from './useProfileForm';
               <div class="page-head"><br></br>
                 <div class="container-fluid"><br></br>
                     <h2 class="page-head-title" title="Profile setting">Profile setting</h2>
-                        <div class="page-toolbar"><button class="btn btn-primary" type="submit" onClick={handleSave} for="submitForm">Save</button></div>
+                        <div class="page-toolbar"></div>
                 </div>
               </div>
             <div class="page-content">
@@ -52,7 +52,7 @@ import useForm from './useProfileForm';
                         </div>
             <div class="col-sm-9">
                 <div class="page-inner-content">
-                    <form onClick={handleSave}>
+                    <form onSubmit={handleSave}>
                         <div class="portlet">
                             <div class="portlet-title"><h4 class="uppercase text-primary title">Basic Personal Info</h4></div>
                                 <div class="portlet-body">
@@ -61,48 +61,51 @@ import useForm from './useProfileForm';
                                             <label class="col-sm-3 control-label" for="firstName">First Name</label>
                                                 <div class="col-sm-9">
                                                     <input class="form-control"
-                                                     type="text"
-                                                      id="firstName"
-                                                       name="firstName"
+                                                        type="text"
+                                                        id="name"
+                                                        name="name"
                                                         required="required" 
                                                         minlength="2" 
                                                         maxlength="255"
-                                                         value={values.firstName}
-                                                         onChange={handleChange}/>
-                                                         {errors.firstName && (
-                                                            <p className="error" id="profileError">{errors.firstName}</p>
-                                                          )}
+                                                        value={name}
+                                                        onChange={(e) =>{setName(e.target.value)}}
+                                                        />
+                                                        {errors.firstName && (
+                                                        <p className="error" id="profileError">{errors.name}</p>
+                                                        )}
                                                 </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="firstName">Last Name</label>
                                                  <div class="col-sm-9">
                                                     <input class="form-control" 
-                                                    type="text" 
-                                                    id="lastName"
-                                                     name="lastName" 
-                                                     required="required" 
-                                                     minlength="2" 
-                                                     maxlength="255" 
-                                                     value={values.lastName} 
-                                                     onChange={handleChange}/>
+                                                        type="text" 
+                                                        id="lname"
+                                                        name="lname" 
+                                                        required="required" 
+                                                        minlength="2" 
+                                                        maxlength="255" 
+                                                        value={lname} 
+                                                        onChange={(e) =>{setLname(e.target.value)}}
+                                                        />
                                                  </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="email">Email</label>
                                                 <div class="col-sm-9">
                                                      <input class="form-control"
-                                                      type="text"
-                                                       id="email"
+                                                        type="text"
+                                                        id="email"
                                                         name="email"
-                                                         required="required"
-                                                          minlength="2" 
-                                                          value={values.email} 
-                                                           onChange={handleChange}/>
+                                                        required="required"
+                                                        minlength="2" 
+                                                        value={email} 
+                                                        onChange={(e) =>{setEmail(e.target.value)}}
+                                                        />
 
-                                                           {errors.email && (
-                                                            <p className="error" id="profileError">{errors.email}</p>
-                                                          )}
+                                                        {errors.email && (
+                                                        <p className="error" id="profileError">{errors.email}</p>
+                                                        )}
                                                 </div>
                                         </div>
                                     </div>
@@ -117,8 +120,9 @@ import useForm from './useProfileForm';
                                                       minlength="2" 
                                                       class="form-control"
                                                        name="company"
-                                                        value={values.company}
-                                                         onChange={handleChange}/>
+                                                        value={company}
+                                                         onChange={(e) =>{setCompany(e.target.value)}}
+                                                         />
                                                  </div>
                                          </div>
                   
@@ -128,8 +132,9 @@ import useForm from './useProfileForm';
                                                     <input type="text" 
                                                     class="form-control"
                                                      name="address" 
-                                                     value={values.address}  
-                                                     onChange={handleChange}/>
+                                                     value={address}  
+                                                     onChange={(e) =>{setAddress(e.target.value)}}
+                                                     />
                                                 </div>
                                         </div>
                                         <div class="form-group">
@@ -139,8 +144,9 @@ import useForm from './useProfileForm';
                                                     class="form-control"
                                                      name="phone"
                                                      maxLength={10}
-                                                      value={values.phone}  
-                                                      onChange={handleChange}/>
+                                                      value={phone}  
+                                                      onChange={(e) =>{setPhone(e.target.value)}}
+                                                      />
                                                       {errors.phone && (
                                                         <p className="error" id="profileError">{errors.phone}</p>
                                                       )}
@@ -150,7 +156,7 @@ import useForm from './useProfileForm';
                 
                                 </div>
                         </div>
-                        <input type="submit" id="submitForm" class="hide"/>
+                        <button class="btn btn-primary" type="submit" >Save</button>
                     </form>
                    </div>
                   </div>
