@@ -11,15 +11,19 @@ const LoginForm = () => {
     setFormIsSubmitted(true);
   };
 
-  return (
-    <div>
-      {!formIsSubmitted ? (
-      <Login submitLoginForm={submitLoginForm} /> 
-  ) : (
-      <AdvertiserDashboard/>
-    )}
-    </div>
-  );
+  return (<div>
+    <Login submitLoginForm={submitLoginForm} /> 
+ </div>);
+
+  // return (
+  //   <div>
+  //     {!formIsSubmitted ? (
+  //     <Login submitLoginForm={submitLoginForm} /> 
+  // ) : (
+  //     <AdvertiserDashboard/>
+  //   )}
+  //   </div>
+  // );
 };
 
 export default LoginForm;

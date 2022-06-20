@@ -285,6 +285,7 @@ input {
 .pt-3{
   padding-top: 1rem!important;
 }
+/*
 form {
   display: block;
   margin-top: 0em;
@@ -328,7 +329,7 @@ label {
   cursor: pointer;
   opacity: 0;
 }
-.form-check-input {
+/*.form-check-input {
   position: absolute;
   margin-top: 0.3rem;
   margin-left: -1.25rem;
@@ -401,7 +402,7 @@ div.auth-form-light.text-left{
 div{
 text-shadow: none;
 box-shadow: none;
-}
+}*/
 :root{
   --gray: #6c757d;
     --gray-dark: #0f1531;

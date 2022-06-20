@@ -311,11 +311,11 @@ body{
     padding: 6px;
   }
   
-  img{
+  /* img{
       width: 20px;
       height: 24px; 
       padding: 5px; 
-  }
+  } */
   
   button{
     size: 50%;
@@ -405,6 +405,10 @@ body{
     color: #333;
   }
   /*resposive*/
+
+  .form-input p{
+    color: red;
+  }
   
   @media (max-width:600px) {
     .wrapper {
@@ -437,6 +441,11 @@ body{
       font-size: 30px;
     }
   }
+
+  #submit-btn{
+    margin-right: 16px;
+  }
+
 
   /**********Search********************/
   .input {

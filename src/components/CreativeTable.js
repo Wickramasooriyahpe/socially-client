@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link,useParams} from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,27 +9,44 @@ import { FaEye } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import Creative from './Creative';
+import { id } from 'date-fns/locale';
 
 
 
-function CreativeTable() {
+function CreativeTable(props) {
+    const {id} = useParams();
+    console.log("props param table = " + id);
     const [data, setData] = useState([]);
     useEffect(() => {
         getData();
     }, []);
-
+/******************A P I INTEGRATION to  GET creative table**************/
     const getData = () => {
-        axios("http://localhost:3000/creative/camp/1").then((res) =>{
+        const config ={ headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}}
+        axios.get("http://localhost:3000/creative/"+id ,config).then((res) =>{
         console.log(res.data);
         setData(res.data);
         
     }
     );
     };
-
+     /******************A P I INTEGRATION to  DELETE campaign**************/
+     async function deleteOperation (creativeId){
+        //alert(campaignId);
+        console.log(creativeId);
+        let result = await fetch('http://localhost:3000/creative/' + creativeId,{
+          method: 'DELETE',
+          headers: {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]}
+        });
+        result = await result.json();
+        console.log(result);
+        getData();
+      }
+/*********************  T A B L E *****************************/
     const columns=[
         {
             dataField: "creativeId", 
+            key : true,
             hidden: true
         },
     {
@@ -61,8 +78,12 @@ function CreativeTable() {
             return (
               <div>
               <button className="btn btn-outline-success btn-sm" ><FaEye /></button>
-              <button className="btn btn-outline-danger btn-sm"><FaTrashAlt /></button>
-              <Link className="btn btn-outline-primary btn-sm" to={'/edit'} role='button'><FaRegEdit /></Link>
+              <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.creativeId)}><FaTrashAlt /></button>
+              <Link className="btn btn-outline-primary btn-sm"  to={{
+                pathname : '/edit/'+ row.creativeId ,
+                
+               }}
+               role='button'><FaRegEdit /></Link>
               </div>
             );
           
@@ -77,7 +98,7 @@ function CreativeTable() {
     <div>
         <BootstrapTable 
         bootstrap4 
-        keyField="id" 
+        keyField="creativeId" 
         data={data} 
         columns={columns}  
         pagination={paginationFactory()}

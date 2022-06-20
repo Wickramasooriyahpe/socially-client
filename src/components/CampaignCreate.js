@@ -1,17 +1,143 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Link,useNavigate,useParams} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import validation from './campValidation';
 import CreativeTable from './CreativeTable';
 import Navibar from './Navibar';
 import RangePicker from './RangePicker';
-//import { DateRange } from 'react-date-range';
-import { useNavigate } from "react-router-dom";
-const CampaignCreate = () => {
-   const navigate = useNavigate();
+import FormErrorMessage from 'rsuite/esm/FormErrorMessage';
+import useCampaign from './useCampaign';
+import { id } from 'date-fns/locale';
 
-   const navigateToCampaignTable =() =>{
-     navigate('/campcrea');
-   }
+const CampaignCreate = ({submitCamp}) => {
+   const { handleChange, handleSave, values, errors,handlNav } = useCampaign(submitCamp);
+  const {campID} = useParams();
+  
+  return (
+   <div class="page-container-bg-solid page-boxed">
+      <div class="page-header">
+            <div class="page-header-top">
+               <div class="container-fluid">         
+                  <div class="top-menu" >
+                        <ul class="nav navbar-nav pull-right">
+                           <div><Navibar/></div><br></br>
+                        </ul>             
+                  </div>
+               </div>
+            </div>
+      
+            <div class="page-header-menu">
+               <div class="container-fluid">
+               </div>
+            </div>
+      </div>
+
+      <div class="page-container">
+         <div class="page-content-wrapper">
+            <div class="page-head"><br></br>
+               <div class="container-fluid"><br></br>
+                  <h2 class="page-head-title" title="Profile setting">Create campaign</h2>
+               </div>
+            </div>
+
+            <div class="page-content">
+               <div class="container-fluid">
+                     <div class="page-content-inner" id="listsCampaign">
+                        <div class="portlet light">
+                           <div class="portlet-title" >
+                              <form onSubmit={handleSave}>
+                                 <h5 class="card-title">Basic campaign Information</h5><br></br>  
+
+                                 <div class="form-outline mb-4">                                    
+                                    <input 
+                                       type="text" 
+                                       id="form6Example4" 
+                                       class="form-control" 
+                                       name="campaignName"
+                                       placeholder='campaignName'
+                                       onChange={handleChange}
+                                       values = {values.campaignName}
+                                    />
+                                    {errors.campaignName && <p>{errors.campaignName}</p>}
+                                 </div>
+
+                                 <div class="row mb-4">
+                                    <div class="col">
+                                       <div class="form-outline">
+                                    
+                                          <input 
+                                          type="text" 
+                                          id="form6Example5" 
+                                          class="form-control" 
+                                          name="adCategory"
+                                          placeholder='adCategory'
+                                          onChange={handleChange}
+                                          values = {values.adCategory}
+                                          />
+                                       {errors.adCategory && <p>{errors.adCategory}</p>}
+                                       </div>
+                                    </div>
+                                    
+                                    <div class="col">
+                                       <div class="form-outline">
+                                       
+                                          <input 
+                                          type="currency" 
+                                          id="form6Example6" 
+                                          class="form-control"
+                                          name="budget" 
+                                          placeholder='budget'
+                                          values = {values.budget}
+                                          onChange={handleChange}
+                                          />
+                                         {errors.budget && <p>{errors.budget}</p>}<br></br>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 { <div className="date" name="date">          
+                                    <RangePicker />
+                                 </div> }
+
+                               
+
+                                
+                                 
+
+                                 <div>
+                                  <button
+                                    
+                                    className="btn btn-primary pull-right"
+                                    type='submit'
+                                   >
+                                    Save
+                                 </button> 
+                                 <button className="btn btn-primary pull-right" onClick={handlNav}>
+                                 Create Creative
+                                 </button>
+                                 <br></br>
+                                 
+                                 </div>
+                              </form>  
+                           </div>
+                        </div>
+                     </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+ 
+    	
+  );
+
+};
+
+export default CampaignCreate;
+
+
+
+/*const CampaignCreate = () => {
    const [values, setValues] = useState({
        
       campaignName: "",
@@ -180,6 +306,27 @@ const CampaignCreate = () => {
 }
 
 export default CampaignCreate;
+
+
+//previous
+{ <button className="btn btn-primary pull-right"  type='submit' >Save</button>
+                                 
+                                    <Link 
+                                       to="/campcrea" 
+                                       role="button" 
+                                       type="submit" 
+                                       className="btn btn-primary pull-right" >
+                                       view campaign
+                                    </Link><br></br><br></br> }*/
+
+/*{ <button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" onClick={e =>
+         alert("Hello Sir/Madam")
+      } >Submit
+</button> }*/
+
+// {errors.campaignName && <p>{errors.campaignName}</p>}
+// {errors.adCategory && <p>{errors.adCategory}</p>}
+// {errors.budget && <p>{errors.budget}</p>}
 
 /*<div id="basic" className="portlet collection-tab light active">
          <Navibar /><br></br>

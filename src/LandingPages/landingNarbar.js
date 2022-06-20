@@ -5,7 +5,7 @@ const LandingNavibar = () => {
   return (
     
     <> 
-    <Navbar bg="light" variant="light" className="nav-wrapper">
+    <Navbar bg="dark" variant="dark" className="nav-wrapper">
       <Container>
       <Navbar.Brand className="Landing-page-logo-image"href="#home">
       <img

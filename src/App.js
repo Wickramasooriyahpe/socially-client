@@ -8,8 +8,11 @@ import  './UserProfile/profile.css';
 import './fileUploads/image.css';
 import './Payment/pay.css';
 import './LandingPages/Slider.css'
+import './Admin/admin.css'
 
 import CampaignCreate from './components/CampaignCreate';
+
+import Campaign from './components/Campaign';
 import Creative from './components/Creative';
 import Edit from './components/Edit';
 import CampDetails from './components/CampDetails';
@@ -19,11 +22,12 @@ import LoginForm from './app/LoginForm';
 import OTP from './app/OTP';
 import Home from './components/Home';
 import AdvertiserProfile from './UserProfile/advertiserProfile';
+import EditCampaign from './components/EditCampaign';
 import ProfileForm from './UserProfile/profileForm';
 import ChangePassword from './UserProfile/changePassword';
 import BillingDetails from './Payment/billing';
 import HomePage from './LandingPages/homePage';
-import Advertiser from './LandingPages/advertiser-route';
+import Advertiser from './LandingPages/AdvertiserPage';
 import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
@@ -35,7 +39,7 @@ import ResetPassword from './app/resetPassword';
 //import CampForm from './components/CampForm';
 //import CampTable from './components/CampTable';
 
-function App() {
+function App(props) {
   return (
     <div>
       
@@ -48,19 +52,23 @@ function App() {
               <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
+        
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
               <Route path="/campcrea" element={<CampDetails />} />
-              <Route path="/campaign" element={<CampaignCreate />} />
-              <Route path="/creative" element={<Creative />} />
+              <Route path="/campaign" element={<Campaign />} />
+              <Route path="/editcamp/:id" element={<EditCampaign />} />
+              <Route path="/creative/:id" element={<Creative />} />
               <Route path="/profile" element={<ProfileForm />} />
               <Route path="/password" element={<ChangePassword />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
               <Route path="/Dashboard" element={<AdvertiserDashboard />} />
               <Route path="/forgotPassword" element={<ForgotPassword />} />
               <Route path="/resetPassword" element={<ResetPassword />} />
+              <Route path="admindash" element={<AdminDash />}/>
           </Routes>
+          
       </Router>
     
     </div>
@@ -70,6 +78,9 @@ function App() {
 
 export default App;
 /*<Router>
+<Link to={`/Dashboard/1`}> 
+          <button> +</button>
+          </Link>
           <Routes>
               <Route path="/" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />

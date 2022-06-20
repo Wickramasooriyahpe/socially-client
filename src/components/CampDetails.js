@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 //import { FaRegEdit } from "react-icons/fa";
 import Navibar from "./Navibar";
 import CampTable from "./CampTable";
-import SearchBar from "./SearchBar";
+//import SearchBar from "./SearchBar";
  
 function CampDetails() {
  
@@ -35,7 +35,7 @@ function CampDetails() {
                     <div class="page-content-inner" id="listsCampaign">
                         <div class="portlet light">
                             <div class="portlet-title">
-                                <CampTable />
+                               <CampTable />
                             </div>
                         </div>
                     </div>
