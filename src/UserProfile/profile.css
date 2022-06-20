@@ -50,7 +50,6 @@ label {
 }
 .page-boxed .page-container .page-head {
     background-color: #fff;
-    padding: 1.5rem 0;
 }
 .page-boxed .page-container .page-head .page-head-title {
     color: #697882;
@@ -59,6 +58,8 @@ label {
     margin: 0;
     display: inline-block;
 }
+
+
 .page-boxed .page-container .page-head .page-toolbar {
     float: right;
     display: inline-block;

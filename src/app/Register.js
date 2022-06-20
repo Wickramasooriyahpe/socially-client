@@ -88,6 +88,7 @@ const Register = ({ submitForm }) => {
                               className="form-check-input"
                               id="defaultUnchecked"
                               name="checkbox"
+                              
                             />
                             <label className="m-2 form-check-label text-muted">
                               {" "}
@@ -98,12 +99,15 @@ const Register = ({ submitForm }) => {
                         </div>
 
                         <div className="mt-3">
-                          <a
+                            <button
+                            disabled={!values.name || !values.email || !values.password || !values.confirmPassword } 
                             className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                            onClick={handleForSubmit}
-                          >
-                            SIGN UP
-                          </a>
+                            type="submit"
+                            onClick={handleForSubmit }
+                            >SIGN UP</button>
+
+
+
                         </div>
                         <div className="text-center mt-4 font-weight-light">
                           Already have an account?{" "}

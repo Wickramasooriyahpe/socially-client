@@ -137,22 +137,7 @@ const [model, setModel] = useState(false);
   return(
   
    <div class="page-container-bg-solid page-boxed">
-   <div class="page-header">
-      <div class="page-header-top">
-         <div class="container-fluid">         
-            <div class="top-menu" >
-               <ul class="nav navbar-nav pull-right">
-                  <div><Navibar/></div><br></br>
-               </ul>             
-            </div>
-         </div>
-      </div>
-         
-      <div class="page-header-menu">
-         <div class="container-fluid">
-         </div>
-      </div>
-   </div>
+       <div><Navibar/></div>
 
    <div class="page-container">
       <div class="page-content-wrapper">
