@@ -92,6 +92,13 @@ body{
   display: block;
   width: 100%;
 }
+#reset{
+float: right;
+}
+
+#back{
+  
+}
 /*
 .btn-primary:not(.btn-light){
   color: #fff;

@@ -4,33 +4,17 @@ import Navibar from '../components/Navibar';
 import { FaTrophy,FaUsers,FaMousePointer,FaMoneyBill,IoStatsChartOutline} from 'react-icons/fa';
 import "./Dashboard.css";
 import SummaryChart from './SummaryChart';
-import RangePicker from '../components/RangePicker';
+
     const AdvertiserDashboard = () => {
     return (
         <div class="page-container-bg-solid page-boxed">
-            <div class="page-header">
-                <div class="page-header-top">
-                    <div class="container-fluid">  
-                      
-                        <div class="top-menu" >
-                            <ul class="nav navbar-nav pull-right">
-                                <div><Navibar/></div><br></br>
-                            </ul>             
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="page-header-menu">
-                    <div class="container-fluid">
-                    </div>
-                </div>
-            </div>
+          <div><Navibar/></div>
 
           <div class="page-container">
             <div class="page-content-wrapper">
-              <div class="page-head"><br></br>
-                    <div class="container-fluid"><br></br>
-                      <div class="row">
+              <div class="page-head">
+                    <div class="container-fluid">
+                      <div class="row" id='nameRow'>
                             <div class="col-sm-8"> 
                                 <h2 class="page-head-title" title="Dashboard">Dashboard<div></div></h2>
                             </div>
@@ -45,10 +29,11 @@ import RangePicker from '../components/RangePicker';
 
             <div class="page-content">
                 <div class="container-fluid">
-                <div id="BidderDashboard" className="page-content-inner" data-chart="">
+                <div className='dbContainer'>
+
                     <div class="row">
-                        <div class="col-sm-9">                          
-                            <div class="portlet">
+                        <div class="col-sm-9"  >                          
+                            <div class="portlet" >
                             <div class="portlet-bodycontent">
                                 <div id="chartAdverts" class="chart-block">
                                 <div className="loaded-data">
@@ -59,7 +44,7 @@ import RangePicker from '../components/RangePicker';
                             </div>
                         </div>
                         <div class="col-sm-3">
-                          <div className='container'>
+                          <div className='nameCardContainer'>
                             <div class="portlet portlet-card">
                             <div className="row1">
                             <div > <FaTrophy  className='icons'/></div>
@@ -95,8 +80,9 @@ import RangePicker from '../components/RangePicker';
                             </div>
                         </div>
                     </div>
-</div>
-<div className='lowerContainer'>
+                    </div>
+
+<div className='dbContainer'>
                         <div class="row">
                           
         <div class="col-sm-6">
@@ -193,7 +179,7 @@ import RangePicker from '../components/RangePicker';
    </div>
    </div>
 
-                    
+                  
                 </div>
             </div>
             </div>

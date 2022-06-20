@@ -19,19 +19,17 @@ const Login = ({ submitLoginForm }) => {
                 <div className="w-100 text-center mx-auto p-3 mt-2">
                   <div className="col-lg-4 mx-auto">
                     <div className="auth-form-light text-left py-5 px-4 px-sm-5">
-                      <div className="text-left text-primary">
-                        <h3>
-                          <b>Socially</b>
-                        </h3>{" "}
-                      </div>
-
+                    <h4>Sign in</h4><br></br>
+                      <h5 className="font-weight-light">
+                    
+                      </h5>
                       <form className="pt-3">
                         <div className="form-group">
-                          <label>Email</label>
                           <input
                             type="email"
-                            className="form-control"
+                            className="form-control form-control-lg"
                             id="exampleInputEmail1"
+                            placeholder="Email"
                             name="email"
                             value={values.email}
                             onChange={handleChange}
@@ -41,11 +39,11 @@ const Login = ({ submitLoginForm }) => {
                           )}
                         </div>
                         <div className="form-group">
-                          <label>Password</label>
                           <input
                             type="password"
-                            className="form-control"
+                            className="form-control form-control-lg"
                             id="exampleInputPassword1"
+                            placeholder="Password"
                             name="password"
                             value={values.password}
                             onChange={handleChange}
@@ -86,8 +84,8 @@ const Login = ({ submitLoginForm }) => {
                             </Link>
                           </div>
                           <div className="col font-weight-light">
-                            <Link to="" className=" text-primary">
-                              Forgotten Password?
+                            <Link to="/forgotPassword" className=" text-primary">
+                              Forgot Password?
                             </Link>
                           </div>
                         </div>

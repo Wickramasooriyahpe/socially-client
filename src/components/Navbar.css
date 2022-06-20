@@ -1,0 +1,87 @@
+.headerLogo{
+    padding-left: 20px;
+    padding-top: 5px;
+    font-size: large;
+    float: left;
+    
+    color: #0062ff;
+}
+.header-icons{
+    line-height: 1;
+    font-size: 1.8rem;
+    color: #0062ff;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    float: right;
+    padding-right: 60px;
+}
+.header-icons-prof{
+    line-height: 1;
+    font-size: 1.8rem;
+    color:  #fff;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    float: left;
+}
+#prof-name{
+    font-size: 1rem;
+    color:  #fff;
+    float: left;
+    padding-left: 12px;
+    padding-top: 8px;
+}
+
+#bal{
+    font-size: 1rem;
+    color: #0062ff;
+    padding-top: 8px;
+    float: right;
+}
+#prof{
+    float: right;
+    margin-left: 50px;
+}
+.dropdown.dropdown-profile a#userProfileSetting {
+    min-width: 225px;
+    text-align: center;
+}
+#userProfileSetting {
+    color: #3598dc;
+}
+#logout{
+    color: #3598dc;   
+}
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+.dropdown.dropdown-overflow-block .dropdown-menu {
+    width: 100%;
+}
+.dropdown.dropdown-overflow .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 0;
+}
+.dropdown>.dropdown-menu {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    border-color: #c1c0c0;
+    padding: 0;
+    box-shadow: 5px 5px rgb(85 97 111 / 20%);
+}

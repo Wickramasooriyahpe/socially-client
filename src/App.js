@@ -27,6 +27,8 @@ import Advertiser from './LandingPages/advertiser-route';
 import Publisher from './LandingPages/publisherPage';
 import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
+import ForgotPassword from './app/forgotPassword';
+import ResetPassword from './app/resetPassword';
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -56,6 +58,8 @@ function App() {
               <Route path="/edit" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
               <Route path="/Dashboard" element={<AdvertiserDashboard />} />
+              <Route path="/forgotPassword" element={<ForgotPassword />} />
+              <Route path="/resetPassword" element={<ResetPassword />} />
           </Routes>
       </Router>
     

@@ -31,18 +31,56 @@ export default function PaymentForm() {
     const elements = useElements()
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    async function handleSubmit(event) {
+      event.preventDefault()
+        
         const {error, paymentMethod} = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement)
+            type: 'card',
+            card: elements.getElement(CardNumberElement,CardCvcElement,CardExpiryElement)
         })
 
+        const paymentMethodId = paymentMethod.id;
 
+        var axios = require('axios');
+        var data = JSON.stringify({
+          paymentMethodId,
+          amount: 1000
+        });
+
+       // const token = localStorage.getItem('JWT');
+       // const token = JSON.parse(localStorage.getItem('JWT'));
+        var config = {
+          method: 'post',
+          url: 'http://localhost:3000/payments',
+          headers: { 
+            Authorization: 
+            "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
+            "Content-Type": "application/json",
+            /*
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          //  "Authorization" : `Bearer ${token}`*/
+          },
+          data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          console.log("Successful payment")
+          alert("Payment done successfully")
+                setSuccess(true)
+        })
+        .catch(function (error) {
+          console.log(error);
+          alert("Failed")
+        });
+
+/*
     if(!error) {
         try {
             const {id} = paymentMethod
-            const response = await axios.post("http://localhost:3000/payment", {
+            const response = await axios.post("http://localhost:3000/payments", {
                 amount: 1000,
                 id
             })
@@ -54,10 +92,13 @@ export default function PaymentForm() {
 
         } catch (error) {
             console.log("Error", error)
+            alert("Failed")
         }
     } else {
         console.log(error.message)
     }
+*/
+
 }
 
 

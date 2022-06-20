@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import local_email from "./useForm";
+import { useNavigate, Navigate } from "react-router-dom";
+import storeEmail from "./useForm";
 
 const useOTP = () => {
 
@@ -8,6 +8,7 @@ const useOTP = () => {
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+    const [redirect, setRedirect] = useState(false);
 
     const navigate = useNavigate();
 
@@ -18,9 +19,8 @@ const useOTP = () => {
   
       var axios = require('axios');
         var data = JSON.stringify({
-          email: "hasinipunsara00@gmail.com",
-          //email: "samathisapumana@gmail.com",
-          //email: local_email,
+         email: "awer@gmail.com",
+         // email: storeEmail,
           enteredOTP: otp.join(""),
         });
   
@@ -37,15 +37,24 @@ const useOTP = () => {
         .then(function (response) {
           console.log('Successfully Login');
           console.log(JSON.stringify(response.data));
+          setRedirect(true)
         alert('Successfully Login');
         })
         .catch(function (error) {
           console.log(error);
+          alert('Re-enterOTP')
         });
-        navigate('/Dashboard');
+        //navigate('/Dashboard');
     }
     
+      if (redirect) {
+        return <Navigate to="/login"/>;
+    } else{
+      
+    }
 
+
+    
   
     const handleChange = (element, index) => {
         if (isNaN(element.value)) return false;
@@ -56,6 +65,13 @@ const useOTP = () => {
             element.nextSibling.focus();
         }
     };
+
+
+
+
+
+
+
     return { handleChange, handleOTP, otp};
 };
   export default useOTP;

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import validation from "./validation";
+import { Navigate } from "react-router-dom";
 //import './SignIn.css';
 import axios from "axios";
 
 const local_email='email'
 
 const useForm = (submitForm) => {
+  const [redirect, setRedirect] = useState(false);
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -18,7 +20,7 @@ const useForm = (submitForm) => {
 
   useEffect( () =>{
     const storeEmail = JSON.parse(localStorage.getItem(local_email))
-    if (storeEmail) setValues(storeEmail)
+    if (storeEmail) setValues(storeEmail);
   },[] )
 
   useEffect(()=>{
@@ -50,10 +52,13 @@ const useForm = (submitForm) => {
     axios(config)
       .then(function (response) {
         console.log("succes")
-        console.log(JSON.stringify(response.data));
+        console.log(JSON.stringify(response.data));        
+        alert("Verification otp email sent");
+        setRedirect(true)
       })
       .catch(function (response) {
         console.log(response);
+        alert("Registration Faild");
       });
   }
 

@@ -50,7 +50,9 @@ const OTP = (submitOTP) => {
                                onClick={handleOTP}
                              >Submit</a>
                       </div>
-                      <div className="text-center mt-4 font-weight-light"> <a className="text-primary" href="/user-pages/login">Re-sent OTP</a>
+                      <div className="text-center mt-4 font-weight-light"> <a className="text-primary" 
+                      //onClick={handleResendOTP}
+                      >Re-sent OTP</a>
                       </div>
 
                     </div>
