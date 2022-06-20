@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import campValidation from "./campValidation";
+import {Link,useNavigate,useParams} from 'react-router-dom';
+import { id } from "date-fns/locale";
 
 const useCampaign = (submitCamp) => {
+  const navigate = useNavigate();
+  // const {id} = useParams();
+  // console.log("props param val = " + id);
     const [values, setValues] = useState({
        
         campaignName: "",
@@ -21,8 +26,11 @@ const useCampaign = (submitCamp) => {
     const [errors, setErrors] = useState({});
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
+    const [campID , setCampID] =useState();
+    
     async function handleSave (e) {
         //console.log(values);
+        
         e.preventDefault();
         setErrors(campValidation(values));
         setDataIsCorrect(true);
@@ -52,13 +60,18 @@ const useCampaign = (submitCamp) => {
       
         axios(config)
           .then(function (response) {
-            console.log(JSON.stringify(response.data));
+            console.log(JSON.stringify(response.data.campaignId));
+            const campID = (JSON.stringify(response.data.campaignId));
+            setCampID(campID);
           })
           .catch(function (error) {
             console.log(error);
           });
       };
-
+      async function handlNav (e) {
+        navigate('/creative/' + campID)
+      }
+      
       useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
             submitCamp(true);
@@ -75,7 +88,7 @@ const useCampaign = (submitCamp) => {
          });
       };
 
-      return {handleChange, handleSave, errors, values};
+      return {handleChange, handleSave, errors, values,handlNav};
     
     
 };

@@ -1,13 +1,15 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import CreativeTable from './CreativeTable';
 import Navibar from './Navibar';
 import RangePicker from './RangePicker';
 import useEditCamp from './useEditCamp';
 
 const EditCampaign = (updateCamp) => {
-    const { handleChange, handleSave, values, errors } = useEditCamp(updateCamp);
-
+    const { handleChange, handleUpdate, values, errors ,campaignName,setCampaignName,
+      adCategory,setadCategory,budget,setbudget,
+   } = useEditCamp(updateCamp);
+   
   return (
     <div class="page-container-bg-solid page-boxed">
       <div class="page-header">
@@ -40,7 +42,7 @@ const EditCampaign = (updateCamp) => {
                      <div class="page-content-inner" id="listsCampaign">
                         <div class="portlet light">
                            <div class="portlet-title" >
-                              <form onSubmit={handleSave}>
+                              <form onSubmit={handleUpdate}>
                                  <h5 class="card-title">Basic campaign Information</h5><br></br>  
 
                                  <div class="form-outline mb-4">                                    
@@ -50,8 +52,8 @@ const EditCampaign = (updateCamp) => {
                                        class="form-control" 
                                        name="campaignName"
                                        placeholder='campaignName'
-                                       onChange={handleChange}
-                                       values = {values.campaignName}
+                                       onChange={(e) =>{setCampaignName(e.target.value)}}
+                                       value = {campaignName}
                                     />
                                     {errors.campaignName && <p>{errors.campaignName}</p>}
                                  </div>
@@ -66,8 +68,8 @@ const EditCampaign = (updateCamp) => {
                                           class="form-control" 
                                           name="adCategory"
                                           placeholder='adCategory'
-                                          onChange={handleChange}
-                                          values = {values.adCategory}
+                                          onChange={(e) =>{setadCategory(e.target.value)}}
+                                          value = {adCategory}
                                           />
                                        {errors.adCategory && <p>{errors.adCategory}</p>}
                                        </div>
@@ -82,8 +84,8 @@ const EditCampaign = (updateCamp) => {
                                           class="form-control"
                                           name="budget" 
                                           placeholder='budget'
-                                          values = {values.budget}
-                                          onChange={handleChange}
+                                          onChange={(e) =>{setbudget(e.target.value)}}
+                                          value = {budget}
                                           />
                                          {errors.budget && <p>{errors.budget}</p>}<br></br>
                                        </div>
@@ -94,18 +96,9 @@ const EditCampaign = (updateCamp) => {
                                     <RangePicker />
                                  </div> }
 
-                                 <div class="text-right">
-                                    <Link 
-                                    to="/creative" 
-                                    className="btn btn-primary pull-right" 
-                                    > 
-                                    Create creative 
-                                    </Link>  <br></br>       
-                                 </div>
-
                                  <div className="table-container">
                                     <br></br> 
-                                    <CreativeTable />
+                                  
                                  </div>
                                  
 
@@ -114,7 +107,7 @@ const EditCampaign = (updateCamp) => {
                                     
                                     className="btn btn-primary pull-right"
                                     type='submit'
-                                    
+                                    onClick={handleUpdate}
                                  >
                                     Update
                                  </button> 
@@ -134,4 +127,4 @@ const EditCampaign = (updateCamp) => {
   )
 }
 
-export default EditCampaign
+export default EditCampaign;
