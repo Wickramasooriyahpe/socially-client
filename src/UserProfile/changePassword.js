@@ -43,27 +43,27 @@ import profileValidation from './profileValidation';
                             </div>
                         </div>
                     <div class="col-sm-8">
-                        <form onClick={handleForSubmit}>
+                        <form onSubmit={handleForSubmit}>
                             <div class="portlet">
                                 <div class="portlet-body">
                                     <div class="row">
                                         <div class="">
                         <div class="form-group">
-                            <label class="control-label" for="old_password">Old Password</label>
+                            <label class="control-label" for="password">Old Password</label>
                             <input class="form-control show-password" 
                             type="password" 
-                            id="oldpassword"
-                             name="oldpassword"
-                             value={values.oldpassword}
+                            id="password"
+                             name="password"
+                             value={values.password}
                              onChange={handleChange}
                        
                              />
-                             {errors.oldpassword && (
-                                <p className="error" id="profileError">{errors.oldpassword}</p>
+                             {errors.password && (
+                                <p className="error" id="profileError">{errors.password}</p>
                               )}
                          </div>
                          <div class="form-group">
-                            <label class="control-label" for="password">New Password</label>
+                            <label class="control-label" for="newpassword">New Password</label>
                             <input class="form-control show-password" 
                             type="password" 
                             id="newpassword"

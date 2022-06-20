@@ -6,7 +6,7 @@ const useForm = (submitForm) => {
 
     const [values, setValues] = useState({
       
-      oldpassword: "",
+      password: "",
       newpassword:"",
       confirmPassword: "",
     });
@@ -23,6 +23,10 @@ const useForm = (submitForm) => {
   const [errors, setErrors] = useState({});
   const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem('JWT'));
+  const adverId = user.userId;
+  console.log(adverId);
+
   async function handleForSubmit(event) {
     event.preventDefault();
     setErrors(profileValidation(values));
@@ -30,13 +34,18 @@ const useForm = (submitForm) => {
 
     var axios = require("axios");
     var data = JSON.stringify({
-      oldpassword: values.oldpassword,
+      password: values.password,
       newpassword:values.newpassword,
-      confirmPassword: values.confirmPassword,
+      
     });
 
     var config = {
-     //API integration
+      method: 'put',
+      url: 'http://localhost:3000/advertiser/'+adverId,
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
     };
 
     axios(config)

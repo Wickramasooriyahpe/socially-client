@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import loginValidation from "./loginValidation";
+import { useNavigate } from "react-router-dom";
+
 
 const useLoginForm = (submitLoginForm) => {
     const [values, setValues] = useState({
@@ -9,11 +11,18 @@ const useLoginForm = (submitLoginForm) => {
         
       });
 
+      const navigate = useNavigate();
+
+      const [redirect, setRedirect] = useState(false);
+
       const [errors, setErrors] = useState({});
       const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
       async function handleForSubmit(event) {
         event.preventDefault();
+        await submitLoginForm(event.target);
+        
+        
         setErrors(loginValidation(values));
         setDataIsCorrect(true);
 
@@ -38,7 +47,8 @@ const useLoginForm = (submitLoginForm) => {
               console.log("succes");
               alert("Successfully Login");
               console.log(JSON.stringify(response.data));
-              console.log(JSON.stringify("userID",response.data.id));
+              setRedirect(true)
+
               // saving the acces token in local storage
               localStorage.setItem("JWT",JSON.stringify(response.data));
               localStorage.setItem("id",JSON.stringify(response.data.id));
@@ -47,7 +57,26 @@ const useLoginForm = (submitLoginForm) => {
               console.log(error);
               
             }); 
+
       }
+
+      const user = JSON.parse(localStorage.getItem('JWT'));
+      const role = user.userRole;
+      console.log(role);
+
+      if (redirect) {
+        if(role==='Admin'){
+          navigate("/admindash");
+        }else if(role==='advertiser'){
+          navigate("/Dashboard");
+        }else{
+          navigate("/");
+        }
+        } else{
+          
+        }
+   
+
       useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
             submitLoginForm(true);
