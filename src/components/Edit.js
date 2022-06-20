@@ -48,48 +48,48 @@ function Edit(props) {
   
 };  
 /************************************************************/
-const handlecreativeLibrarySubmit = () => {
-   const formData = new FormData();
-   const config ={ headers: 
-       {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]},
-       method: 'post',
+// const handlecreativeLibrarySubmit = () => {
+//    const formData = new FormData();
+//    const config ={ headers: 
+//        {"Authorization" : `Bearer `+JSON.parse(localStorage.getItem("JWT"))["accessToken"]},
+//        method: 'post',
       
-   }//creID ---->id
-   const url = ("http://localhost:3000/UploadMedia/multiple/"+id)
-   console.log(id);
-  // formData.append('creID',id)
-   formData.append('files',image)
-   formData.append('files',thumdnailImage)
-   axios.post(url,formData,config).then((res)=>{
-       console.log(res)
-   })
-}
+//    }//creID ---->id
+//    const url = ("http://localhost:3000/UploadMedia/multiple/"+id)
+//    console.log(id);
+//   // formData.append('creID',id)
+//    formData.append('files',image)
+//    formData.append('files',thumdnailImage)
+//    axios.post(url,formData,config).then((res)=>{
+//        console.log(res)
+//    })
+// }
 
-const handleThumbnailChange =(e) =>{
-   // setError(false);
-   const selected = e.target.files[0]; 
-   const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
-   setThumdnailImage(selected);
-   if(selected && ALLOW_TYPES.includes(selected.type)){
-    console.log("selected");
-    let reader = new FileReader();
-    reader.onloadend = () =>{
-        setThumdnailImagePreview(reader.result);
-    };
-    reader.readAsDataURL(selected);
-}
-    else{
-      //   setError(true);
-        console.log("file not supported");
-    }
-   };
-   const handleImageChange =(e) =>{
-      // setError(false);
-      const selected = e.target.files[0]; 
-      const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
-      setImage(selected);
+// const handleThumbnailChange =(e) =>{
+//    // setError(false);
+//    const selected = e.target.files[0]; 
+//    const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
+//    setThumdnailImage(selected);
+//    if(selected && ALLOW_TYPES.includes(selected.type)){
+//     console.log("selected");
+//     let reader = new FileReader();
+//     reader.onloadend = () =>{
+//         setThumdnailImagePreview(reader.result);
+//     };
+//     reader.readAsDataURL(selected);
+// }
+//     else{
+//       //   setError(true);
+//         console.log("file not supported");
+//     }
+//    };
+//    const handleImageChange =(e) =>{
+//       // setError(false);
+//       const selected = e.target.files[0]; 
+//       const ALLOW_TYPES = "image/png,image/jpeg ,image/jpg";
+//       setImage(selected);
    
-      };
+//       };
 /************************************************************/
    const handleChange = (event) =>{
       console.log(event.target.name, event.target.value);
@@ -216,17 +216,17 @@ return(
       <form >
             <label><h6>Upload Thumbnail media</h6></label>
             <div>
-            <input type="file" onChange = {handleThumbnailChange} ></input>               
+            <input type="file" ></input>               
             </div>
 
             <br></br>     
             <label><h6>Upload media</h6></label>
             <div >
-               <input type="file" onChange = {handleImageChange} ></input>          
+               <input type="file"  ></input>          
             </div>
             <div className="submit-button">
             <button  
-            onClick={handlecreativeLibrarySubmit}         
+                    
             type="submit" 
             id='submit-btn'
             className="btn btn-primary pull-right" >
