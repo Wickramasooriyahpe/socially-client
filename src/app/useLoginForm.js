@@ -38,9 +38,10 @@ const useLoginForm = (submitLoginForm) => {
               console.log("succes");
               alert("Successfully Login");
               console.log(JSON.stringify(response.data));
+              console.log(JSON.stringify("userID",response.data.id));
               // saving the acces token in local storage
               localStorage.setItem("JWT",JSON.stringify(response.data));
-
+              localStorage.setItem("id",JSON.stringify(response.data.id));
             })
             .catch(function (error) {
               console.log(error);

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate,useParams} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import validation from './campValidation';
 import CreativeTable from './CreativeTable';
@@ -7,13 +7,11 @@ import Navibar from './Navibar';
 import RangePicker from './RangePicker';
 import FormErrorMessage from 'rsuite/esm/FormErrorMessage';
 import useCampaign from './useCampaign';
-//import useCampCreate from './useCampCreate';
-//import { DateRange } from 'react-date-range';
-
+import { id } from 'date-fns/locale';
 
 const CampaignCreate = ({submitCamp}) => {
-   const { handleChange, handleSave, values, errors } = useCampaign(submitCamp);
-
+   const { handleChange, handleSave, values, errors,handlNav } = useCampaign(submitCamp);
+  const {campID} = useParams();
   
   return (
    <div class="page-container-bg-solid page-boxed">
@@ -101,19 +99,9 @@ const CampaignCreate = ({submitCamp}) => {
                                     <RangePicker />
                                  </div> }
 
-                                 <div class="text-right">
-                                    <Link 
-                                    to="/creative" 
-                                    className="btn btn-primary pull-right" 
-                                    > 
-                                    Create creative 
-                                    </Link>  <br></br>       
-                                 </div>
+                               
 
-                                 <div className="table-container">
-                                    <br></br> 
-                                    <CreativeTable />
-                                 </div>
+                                
                                  
 
                                  <div>
@@ -121,10 +109,12 @@ const CampaignCreate = ({submitCamp}) => {
                                     
                                     className="btn btn-primary pull-right"
                                     type='submit'
-                                    
-                                 >
+                                   >
                                     Save
                                  </button> 
+                                 <button className="btn btn-primary pull-right" onClick={handlNav}>
+                                 Create Creative
+                                 </button>
                                  <br></br>
                                  
                                  </div>
