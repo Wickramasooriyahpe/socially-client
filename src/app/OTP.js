@@ -1,14 +1,70 @@
 import React from "react";
-//import './SignIn.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import email from './useForm';
-import AdvertiserDashboard from "../Dashboard/AdvertiserDashboard";
-import { Navigate } from "react-router-dom";
-import useOTP from "./useOTP";
+import { useState, useEffect } from "react";
+import { useNavigate, Navigate  } from "react-router-dom";
 
-const OTP = (submitOTP) => {
+const user = JSON.parse(localStorage.getItem('email'));
 
-  const { handleChange, handleOTP, otp } = useOTP(submitOTP);
+const OTP = () => {
+    const [otp, setOtp] = useState(new Array(4).fill(""));
+    const [errors, setErrors] = useState({});
+    const [dataIsCorrect, setDataIsCorrect] = useState(false);
+    const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate();
+
+  const handleChange = (element, index) => {
+    if (isNaN(element.value)) return false;
+
+    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
+
+    if (element.nextSibling) {
+        element.nextSibling.focus();
+    }
+};
+
+function handleOTP(event){
+      
+  
+  event.preventDefault();
+  setDataIsCorrect(true);
+
+  var axios = require('axios');
+  var data = JSON.stringify({
+    email: JSON.parse(localStorage.getItem('email')),
+    enteredOTP: otp.join(""),
+  });
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/auth/verify',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    setRedirect(true)
+    console.log('Successfully Login');
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+    console.log(user);
+  });
+
+  
+}
+
+if (redirect ) {
+        
+  navigate("/login");
+  } else{
+    
+  }
+
 
     return (
     <div className="container-scroller">
@@ -45,13 +101,10 @@ const OTP = (submitOTP) => {
                       </div>
                       <div className="mt-3">
                       <a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" 
-                             // onClick={e =>
-                               // alert("Entered OTP is " + otp.join(""))}
                                onClick={handleOTP}
                              >Submit</a>
                       </div>
                       <div className="text-center mt-4 font-weight-light"> <a className="text-primary" 
-                      //onClick={handleResendOTP}
                       >Re-sent OTP</a>
                       </div>
 
@@ -64,6 +117,6 @@ const OTP = (submitOTP) => {
         </div>
       </div>
     </div>
-    )
+    );
 }
 export default OTP

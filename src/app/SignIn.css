@@ -99,6 +99,9 @@ float: right;
 #back{
   
 }
+#login-title{
+ float: left; 
+}
 /*
 .btn-primary:not(.btn-light){
   color: #fff;
@@ -499,6 +502,9 @@ html{
   box-sizing: border-box;
 }
 
+#check-box{
+  
+}
 
 .otp-field {
   width: 38px;

@@ -33,6 +33,8 @@ import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 import ForgotPassword from './app/forgotPassword';
 import ResetPassword from './app/resetPassword';
+import AdminDash from './Admin/AdminDash';
+
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -52,7 +54,6 @@ function App(props) {
               <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
-        
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
               <Route path="/campcrea" element={<CampDetails />} />

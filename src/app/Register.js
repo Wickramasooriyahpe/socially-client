@@ -81,8 +81,9 @@ const Register = ({ submitForm }) => {
                           )}
                         </div>
 
-                        <div className="m-4">
-                          <div className=" form-check">
+                        <div className="m-2">
+                        <div class="row">
+                          <div className=" form-check" id="check-box">
                             <input
                               type="checkbox"
                               className="form-check-input"
@@ -97,6 +98,10 @@ const Register = ({ submitForm }) => {
                             </label>
                           </div>
                         </div>
+                          
+                      </div>
+
+                        
 
                         <div className="mt-3">
                             <button

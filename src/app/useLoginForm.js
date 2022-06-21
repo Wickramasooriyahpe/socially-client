@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import loginValidation from "./loginValidation";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
-
-const useLoginForm = (submitLoginForm) => {
+const useLoginForm = () => {
     const [values, setValues] = useState({
        
         email: "",
@@ -12,15 +11,21 @@ const useLoginForm = (submitLoginForm) => {
       });
 
       const navigate = useNavigate();
-
       const [redirect, setRedirect] = useState(false);
-
       const [errors, setErrors] = useState({});
       const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
+      useEffect(()=>{
+        localStorage.setItem("email",JSON.stringify(values.email))
+      }, [values.email])
+    
+      useEffect( () =>{
+        JSON.parse(localStorage.getItem(values.email))
+      },[] )
+
       async function handleForSubmit(event) {
         event.preventDefault();
-        await submitLoginForm(event.target);
+        //await submitLoginForm(event.target);
         
         
         setErrors(loginValidation(values));
@@ -47,7 +52,7 @@ const useLoginForm = (submitLoginForm) => {
               console.log("succes");
               alert("Successfully Login");
               console.log(JSON.stringify(response.data));
-              setRedirect(true)
+              setRedirect(true);
 
               // saving the acces token in local storage
               localStorage.setItem("JWT",JSON.stringify(response.data));
@@ -55,33 +60,35 @@ const useLoginForm = (submitLoginForm) => {
             })
             .catch(function (error) {
               console.log(error);
-              
             }); 
 
       }
-
+     
       const user = JSON.parse(localStorage.getItem('JWT'));
-      const role = user.userRole;
-      console.log(role);
+     // const role = user.userRole;
+      //console.log(role);
 
-      if (redirect) {
-        if(role==='Admin'){
-          navigate("/admindash");
-        }else if(role==='advertiser'){
-          navigate("/Dashboard");
-        }else{
-          navigate("/");
-        }
+      if (redirect ) {
+        
+        navigate("/Dashboard");
+        // if(role==='Admin'){
+        //   navigate("/admindash");
+        // }else 
+        // if(role==='advertiser'){
+        //   navigate("/Dashboard");
+        // }else{
+        //   navigate("/");
+        // }
         } else{
           
         }
    
 
-      useEffect(() => {
-        if (Object.keys(errors).length === 0 && dataIsCorrect) {
-            submitLoginForm(true);
-        }
-      }, [errors]);
+      // useEffect(() => {
+      //   if (Object.keys(errors).length === 0 && dataIsCorrect) {
+      //       submitLoginForm(true);
+      //   }
+      // }, [errors]);
     
       const handleChange = (event) => {
         setValues({

@@ -2,9 +2,21 @@ import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import "./Navbar.css";
 import { FiLogOut} from 'react-icons/fi';
-import {FaUserCircle} from 'react-icons/fa'
+import {FaUserCircle} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 const Navibar = () => {
+const user = JSON.parse(localStorage.getItem('email'));
+
+const navigate = useNavigate();
+
+  const removeToken = () => {
+    localStorage.removeItem('JWT');
+    navigate('/login');
+  }
+
+
   return (
 <div>
        
@@ -22,7 +34,7 @@ const Navibar = () => {
                 </div>
            
             <div class="col-4">
-            <a id="logout" href="http://localhost:3001/logout"><i class="header-icons"><FiLogOut/></i></a>
+            <a id="logout" onClick={removeToken}><i class="header-icons"><FiLogOut/></i></a>
             </div>
       </div>
 
@@ -51,7 +63,7 @@ const Navibar = () => {
                 <div class="col  " id='box-container'>
                 <a href="http://localhost:3001/profile"><i class="header-icons-prof"><FaUserCircle/></i></a>
                 <a id="userProfileSetting"  href="http://localhost:3001/profile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-                <div id='prof-name'>Samathi sapumana  </div></a>
+                <div id='prof-name'>{user} </div></a>
                 </div>
                 </div>
             </Container>
