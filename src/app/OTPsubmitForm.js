@@ -16,7 +16,7 @@ const OTPsubmitForm = () => {
       {!formIsSubmitted ? (
         <OTP submitOTP={submitOTP} />
       ) : (
-       <Navigate to=" ../Dashboard/AdvertiserDashboard"/>
+       <Navigate to="/login"/>
       )}
     </div>
     
