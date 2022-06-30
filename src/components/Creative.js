@@ -68,6 +68,7 @@ axios(config)
   const creativeId =(JSON.stringify(response.data.creativeId));
   setcreativeId(creativeId);
   setCreativeData(response.data);
+  console.log(creativeData);
 })
 .catch(function (error) {
   console.log(error);
@@ -195,7 +196,7 @@ const [model, setModel] = useState(false);
                               </div>
                            </div>
 
-                           <label><h6>Creative type</h6></label>              
+                           {/* <label><h6>Creative type</h6></label>              
                            <div class="form-check">
                               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="image" onClick={creativeTypeHandle} />
                               <label class="form-check-label" for="flexRadioDefault1">
@@ -214,7 +215,7 @@ const [model, setModel] = useState(false);
                               <label class="form-check-label" for="flexRadioDefault2">
                                  Image & Video
                               </label>
-                           </div>
+                           </div> */}
 
                            <div class="form-outline mb-4">
                               <br></br>
@@ -259,18 +260,18 @@ const [model, setModel] = useState(false);
                             className="btn btn-primary pull-right" >
                             Submit Media
                             </button>
-                         </div>
-                         </form>
+                           </div>
+                        </form>
 
-                         <div className='previewbutton'> 
+                        <div className='previewbutton'> 
                                           
-                                          <button href="#" 
-                                          className="btn btn-primary pull-right" 
-                                          id='submit-btn' 
-                                          onClick={()=> getData()}>
-                                          Preview
-                                          </button>
-                                       </div>
+                           <button href="#" 
+                           className="btn btn-primary pull-right" 
+                           id='submit-btn' 
+                           onClick={()=> getData()}>
+                           Preview
+                           </button>
+                        </div>
 
                           
                            <br></br><br></br>

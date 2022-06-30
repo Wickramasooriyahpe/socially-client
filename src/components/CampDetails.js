@@ -27,7 +27,7 @@ function CampDetails() {
                 <div class="container-fluid"><br></br>
                     <h2 class="page-head-title" title="Campaign setting">Campaigns</h2>
                     <div class="page-toolbar"> <Link to="/campaign" class="btn btn-primary" role="button">Create Campaign</Link> </div>
-                </div>
+                </div><br></br>
             </div>
 
             <div class="page-content">

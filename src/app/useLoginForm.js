@@ -46,6 +46,10 @@ const useLoginForm = () => {
         setErrors(loginValidation(values));
         setDataIsCorrect(true);
 
+        
+
+      
+
         var axios = require('axios');
             var data = JSON.stringify({
               "email": values.email,
@@ -65,7 +69,7 @@ const useLoginForm = () => {
             axios(config)
             .then(function (response) {
               console.log("succes");
-              alert("Successfully Login");
+              
               console.log(JSON.stringify(response.data));
               setRedirect(true);
 
@@ -147,7 +151,14 @@ const useLoginForm = () => {
           [event.target.name]: event.target.value,
         });
       };
+
+      
+
+      
+      
       return { handleChange, handleForSubmit, errors, values };
+
+      
 
 };
 export default useLoginForm;

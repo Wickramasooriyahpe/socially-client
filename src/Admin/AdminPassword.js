@@ -1,9 +1,10 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navibar from '../components/Navibar';
-import useForm from './useChangePWForm';
-import profileValidation from './profileValidation';
-    const ChangePassword = ({submitForm}) => {
+import useForm from '../UserProfile/useChangePWForm';
+import profileValidation from '../UserProfile/profileValidation';
+import AdminNavi from './AdminNavi';
+    const AdminChangePassword = ({submitForm}) => {
         const { handleChange, handleForSubmit, values, errors } = useForm(submitForm);
     return (
 
@@ -13,7 +14,7 @@ import profileValidation from './profileValidation';
                 <div class="container-fluid">
                     <div class="hor-menu">
                         <ul class="nav navbar-nav">
-                        <div><Navibar/></div><br></br>
+                        <div><AdminNavi/></div><br></br>
                         </ul>
                     </div>
                 </div>
@@ -32,12 +33,12 @@ import profileValidation from './profileValidation';
                     <div class="row">
                          <div class="col-sm-4">
                             <div class="collection" role="menu">
-                            <a class="collection-item " href="/profile" role="menuitem" data-toggle="basic">
+                            <a class="collection-item " href="/adminprofile" role="menuitem" data-toggle="basic">
                             <span class="collection-item-title">Personal info</span>
                             <p class="collection-item-description">Set Basic and contact information</p>
                             </a>
                             <a class="collection-item active" href="/password" role="menuitem" data-toggle="password">
-                            <span class="collection-item-title">Password</span>
+                            <span class="collection-item-title">adminpassword</span>
                             <p class="collection-item-description">Change your password </p>
                             </a>        
                             </div>
@@ -107,4 +108,4 @@ import profileValidation from './profileValidation';
        </div>
     )
 }
-export default ChangePassword;
+export default AdminChangePassword;

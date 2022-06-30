@@ -1,6 +1,6 @@
 import {useState, useEffect, Component} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 //import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -15,14 +15,32 @@ import { FaTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import { FcPlus } from "react-icons/fc";
+import swal from 'sweetalert';
 
 function CampTable(props){
   const [data, setData] = useState([]);
+  const navi = useNavigate();
 
  useEffect(() => {
   getData();
  
     }, []);
+
+    const handleButton = (campaign) => {
+
+      
+      if(campaign.status===0){
+         swal({
+        title: "Incorrect",
+        text: "This Campaign is not active",
+        icon: "warning",
+        button: "OK",
+      });
+      }else{
+        navi("/creative/"+campaign.campaignId)
+      }
+     
+    }
   /******************A P I INTEGRATION to  DELETE campaign**************/
     async function deleteOperation (campaignId){
       //alert(campaignId);
@@ -94,25 +112,30 @@ function CampTable(props){
         
             return (
               <div>              
-              <button className="btn btn-outline-danger btn-sm" onClick= {()=>deleteOperation(row.campaignId)}  ><FaTrashAlt /></button>
-              <Link className="btn btn-outline-primary btn-sm"   role="button"
+              <button className="btn btn-outline-danger btn-sm btn-space" onClick= {()=>deleteOperation(row.campaignId)}  ><FaTrashAlt /></button>
+              <Link className="btn btn-outline-primary btn-sm btn-space"   role="button"
               to={{
                 pathname : '/editCamp/'+ row.campaignId ,
                 
                }}
               ><FaRegEdit /></Link>
-              <Link className="btn btn-outline-success btn-sm" role="button" 
+
+              <button className="btn btn-outline-success btn-sm btn-space" role="button" onClick={()=>handleButton(row)}><FcPlus /></button>
+              
+              {/* <Link className="btn btn-outline-success btn-sm" role="button" 
                to={{
                 pathname : '/creative/'+ row.campaignId ,
                 
                }}>
                
-               <FcPlus /></Link>
+               <FcPlus /></Link> */}
               </div>
             );         
         }
     }
 ]
+
+
 
 const[value, setValue] = useState('');
 const [datasource, setDataSource] = useState(data);
@@ -165,7 +188,7 @@ return (
           columns={columns} 
           // filter={filterFactory()}
           defaultSorted={defaultSorted}  
-          selectRow={ selectRow }
+          
           pagination={paginationFactory()} 
          
           {...props.baseProps}

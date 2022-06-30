@@ -121,7 +121,8 @@ async function handleToken(token) {
                   .then(function (response) {
                     console.log(JSON.stringify(response.data));
                     console.log("balance");
-                    localStorage.setItem("balance",JSON.stringify(response.data ));
+                    localStorage.setItem("balance",JSON.stringify(response.data + parseInt(values.amount)
+                    ));
                   })
                   .catch(function (error) {
                     console.log(error);

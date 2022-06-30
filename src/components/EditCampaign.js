@@ -16,7 +16,7 @@ const EditCampaign = (updateCamp) => {
             <div class="page-header-top">
                <div class="container-fluid">         
                   <div class="top-menu" >
-                        <ul class="nav navbar-nav pull-right">
+                        <ul class="nav navbar-nav ">
                            <div><Navibar/></div><br></br>
                         </ul>             
                   </div>
@@ -45,7 +45,8 @@ const EditCampaign = (updateCamp) => {
                               <form onSubmit={handleUpdate}>
                                  <h5 class="card-title">Basic campaign Information</h5><br></br>  
 
-                                 <div class="form-outline mb-4">                                    
+                                 <div class="form-outline mb-4"> 
+                                 <label class="col-sm-3 control-label">campaign Name</label>                                     
                                     <input 
                                        type="text" 
                                        id="form6Example4" 
@@ -61,7 +62,7 @@ const EditCampaign = (updateCamp) => {
                                  <div class="row mb-4">
                                     <div class="col">
                                        <div class="form-outline">
-                                    
+                                       <label class="col-sm-3 control-label">ad Category</label>
                                           <input 
                                           type="text" 
                                           id="form6Example5" 
@@ -77,7 +78,7 @@ const EditCampaign = (updateCamp) => {
                                     
                                     <div class="col">
                                        <div class="form-outline">
-                                       
+                                       <label class="col-sm-3 control-label">budget</label>                                      
                                           <input 
                                           type="currency" 
                                           id="form6Example6" 
@@ -93,7 +94,7 @@ const EditCampaign = (updateCamp) => {
                                  </div>
 
                                  { <div className="date" name="date">          
-                                    <RangePicker />
+                                    {/* <RangePicker /> */}
                                  </div> }
 
                                  <div className="table-container">

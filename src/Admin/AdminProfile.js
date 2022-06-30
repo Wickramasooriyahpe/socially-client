@@ -3,24 +3,25 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navibar from '../components/Navibar';
 import FileUploadComponent from '../fileUploads/profileImage';
-import profileValidation from './profileValidation';
-import useForm from './useProfileForm';
+import profileValidation from '../UserProfile/profileValidation';
+import useForm from '../UserProfile/useProfileForm';
+import AdminNavi from './AdminNavi';
 
-    const AdvertiserProfile = ({submitForm}) => {
+    const AdminProfile = ({submitForm}) => {
         const { handleChange,handleSave, values, errors, name, setName, lname, setLname, email, setEmail, company, setCompany, address, setAddress, phone, setPhone} = useForm(submitForm);
         
 
     return (
         <div class="page-container-bg-solid page-boxed">
-             <div><Navibar/></div>
+             <div><AdminNavi/></div>
 
           <div class="page-container">
             <div class="page-content-wrapper">
               <div class="page-head"><br></br>
-                <div class="container-fluid"><br></br>
+                <div class="container-fluid">
                     <h2 class="page-head-title" title="Profile setting">Profile setting</h2>
                         <div class="page-toolbar"></div>
-                </div>
+                </div><br></br>
               </div>
             <div class="page-content">
                 <div class="container-fluid">
@@ -28,11 +29,11 @@ import useForm from './useProfileForm';
                         <div class="col-sm-3">
                         <FileUploadComponent/>
                             <div class="collection" role="menu">
-                                <a class="collection-item active" href="/profile" role="menuitem" data-toggle="basic">
+                                <a class="collection-item active" href="/adminprofile" role="menuitem" data-toggle="basic">
                                     <span class="collection-item-title">Personal info</span>
                                         <p class="collection-item-description">Set Basic and contact information</p>
                                 </a>
-                                 <a class="collection-item " href="/password" role="menuitem" data-toggle="password">
+                                 <a class="collection-item " href="/adminpassword" role="menuitem" data-toggle="password">
                                      <span class="collection-item-title">Password</span>
                                         <p class="collection-item-description">Change your password </p>
                                 </a>
@@ -160,4 +161,4 @@ import useForm from './useProfileForm';
     );        
 }
 
-export default AdvertiserProfile;
+export default AdminProfile;

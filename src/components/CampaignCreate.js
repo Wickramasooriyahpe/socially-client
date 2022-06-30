@@ -11,7 +11,7 @@ import { id } from 'date-fns/locale';
 
 const CampaignCreate = ({submitCamp}) => {
    const { handleChange, handleSave, values, errors,handlNav } = useCampaign(submitCamp);
-  const {campID} = useParams();
+  
   
   return (
    <div class="page-container-bg-solid page-boxed">
@@ -19,10 +19,11 @@ const CampaignCreate = ({submitCamp}) => {
             <div class="page-header-top">
                <div class="container-fluid">         
                   <div class="top-menu" >
-                        <ul class="nav navbar-nav pull-right">
+                        <ul class="nav navbar-nav ">
                            <div><Navibar/></div><br></br>
+                          
                         </ul>             
-                  </div>
+                  </div><br></br>
                </div>
             </div>
       
@@ -34,10 +35,10 @@ const CampaignCreate = ({submitCamp}) => {
 
       <div class="page-container">
          <div class="page-content-wrapper">
-            <div class="page-head"><br></br>
-               <div class="container-fluid"><br></br>
+            <div class="page-head">
+               <div class="container-fluid">
                   <h2 class="page-head-title" title="Profile setting">Create campaign</h2>
-               </div>
+               </div><br></br>
             </div>
 
             <div class="page-content">
@@ -48,7 +49,8 @@ const CampaignCreate = ({submitCamp}) => {
                               <form onSubmit={handleSave}>
                                  <h5 class="card-title">Basic campaign Information</h5><br></br>  
 
-                                 <div class="form-outline mb-4">                                    
+                                 <div class="form-outline mb-4"> 
+                                 <label class="col-sm-3 control-label">campaign Name</label>                                   
                                     <input 
                                        type="text" 
                                        id="form6Example4" 
@@ -58,13 +60,13 @@ const CampaignCreate = ({submitCamp}) => {
                                        onChange={handleChange}
                                        values = {values.campaignName}
                                     />
-                                    {errors.campaignName && <p>{errors.campaignName}</p>}
+                                    {errors.campaignName && <p id='validationErrors'>{errors.campaignName}</p>}
                                  </div>
 
                                  <div class="row mb-4">
                                     <div class="col">
                                        <div class="form-outline">
-                                    
+                                       <label class="col-sm-3 control-label">ad Category</label>
                                           <input 
                                           type="text" 
                                           id="form6Example5" 
@@ -74,13 +76,13 @@ const CampaignCreate = ({submitCamp}) => {
                                           onChange={handleChange}
                                           values = {values.adCategory}
                                           />
-                                       {errors.adCategory && <p>{errors.adCategory}</p>}
+                                       {errors.adCategory && <p id='validationErrors'>{errors.adCategory}</p>}
                                        </div>
                                     </div>
                                     
                                     <div class="col">
                                        <div class="form-outline">
-                                       
+                                       <label class="col-sm-3 control-label">budget</label>
                                           <input 
                                           type="currency" 
                                           id="form6Example6" 
@@ -90,13 +92,13 @@ const CampaignCreate = ({submitCamp}) => {
                                           values = {values.budget}
                                           onChange={handleChange}
                                           />
-                                         {errors.budget && <p>{errors.budget}</p>}<br></br>
+                                         {errors.budget && <p id='validationErrors'>{errors.budget}</p>}<br></br>
                                        </div>
                                     </div>
                                  </div>
 
                                  { <div className="date" name="date">          
-                                    <RangePicker />
+                                    {/* <RangePicker /> */}
                                  </div> }
 
                                
@@ -108,11 +110,12 @@ const CampaignCreate = ({submitCamp}) => {
                                   <button
                                     
                                     className="btn btn-primary pull-right"
+                                    id='save-btn'
                                     type='submit'
                                    >
                                     Save
                                  </button> 
-                                 <button className="btn btn-primary pull-right" onClick={handlNav}>
+                                 <button className="btn btn-primary pull-right" id='create-btn' onClick={handlNav}>
                                  Create Creative
                                  </button>
                                  <br></br>
