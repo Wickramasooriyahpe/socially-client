@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    
-    
+    "@emailjs/browser": "^3.6.2",
     "@stripe/react-stripe-js": "^1.7.2",
     "@stripe/stripe-js": "^1.29.0",
     "@testing-library/jest-dom": "^5.16.1",
@@ -46,8 +45,8 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "react-table": "^7.8.0",
     "react-stripe-checkout": "^2.6.3",
+    "react-table": "^7.8.0",
     "reactstrap": "^9.0.1",
     "rsuite": "^5.5.2",
     "stripe": "^9.0.0",

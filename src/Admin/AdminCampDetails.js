@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom';
 //import CampTable from "./CampTable";
 import AdminCampTable from "./AdminCamptable";
 import AdminNavi from "./AdminNavi";
-import { AdminTable } from "./AdminTable";
+
 //import SearchBar from "./SearchBar";
  
 function AdminCampDetails() {

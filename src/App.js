@@ -37,6 +37,10 @@ import AdminDash from './Admin/AdminDash';
 import TransactionHistory from './Payment/TransactionHistory'
 import Checkout from './Payment/checkout';
 import DataTable from './Payment/dataTable';
+import AdminChangePassword from './Admin/AdminPassword';
+import AdminProfile from './Admin/AdminProfile';
+import AdminCampDetails from './Admin/AdminCampDetails';
+import AdminCreativeDetails from './Admin/AdminCreative';
 
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
@@ -75,6 +79,9 @@ function App(props) {
               <Route path="admindash" element={<AdminDash />}/>
               <Route path="/transactionHistory" element={<TransactionHistory />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/admincamp" element={<AdminCampDetails/>} />
+              <Route path="/admincreative" element={<AdminCreativeDetails/>} />
+
 
 
               {/* <Route path="/dataTable" element={<DataTable />} /> */}
