@@ -33,6 +33,17 @@ import Contact from './LandingPages/contactUs';
 import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 import ForgotPassword from './app/forgotPassword';
 import ResetPassword from './app/resetPassword';
+import AdminDash from './Admin/AdminDash';
+import AdminNavi from './Admin/AdminNavi';
+import AdminProfile from './Admin/AdminProfile';
+import AdminChangePassword from './Admin/AdminPassword';
+import AdminCampTable from './Admin/AdminCamptable';
+import AdminCampDetails from './Admin/AdminCampDetails';
+//import AdminTable from './Admin/AdminTable';
+import rootElement from './Admin/AdminTable';
+import AdminCreativeDetails from './Admin/AdminCreative';
+
+
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
 //import TableComponents from './components/TableComponents';
@@ -52,7 +63,7 @@ function App(props) {
               <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
-        
+              <Route path="/adminnavi" element={<AdminNavi />} />
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
               <Route path="/campcrea" element={<CampDetails />} />
@@ -60,13 +71,18 @@ function App(props) {
               <Route path="/editcamp/:id" element={<EditCampaign />} />
               <Route path="/creative/:id" element={<Creative />} />
               <Route path="/profile" element={<ProfileForm />} />
+              <Route path="/adminprofile" element={<AdminProfile />} />
               <Route path="/password" element={<ChangePassword />} />
+              <Route path="/adminpassword" element={<AdminChangePassword />} />
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/pay" element={<BillingDetails/>}/> 
               <Route path="/Dashboard" element={<AdvertiserDashboard />} />
               <Route path="/forgotPassword" element={<ForgotPassword />} />
               <Route path="/resetPassword" element={<ResetPassword />} />
-              <Route path="admindash" element={<AdminDash />}/>
+              <Route path="/admindash" element={<AdminDash />}/>
+              <Route path='/admincamp' element={<AdminCampDetails />} />
+              <Route path='admint' element={<rootElement />} />
+              <Route path='/admincreative' element={<AdminCreativeDetails/>} />
           </Routes>
           
       </Router>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import "./Navbar.css";
+import { Navbar, Nav, Container, Form, FormControl, Button } from 'react-bootstrap';
+import "./admin.css"
 import { FiLogOut} from 'react-icons/fi';
 import {FaUserCircle} from 'react-icons/fa'
 
-const Navibar = () => {
+const AdminNavi = () => {
 
   const userName = JSON.parse(localStorage.getItem('JWT'));
   const name = userName.userName;
@@ -16,16 +16,14 @@ const Navibar = () => {
   
   <Navbar bg="light">
       <div class="col-6"> 
-            <h5 className='headerLogo' >SOCIALLY</h5>
+            <h5 className='header-Logo' >SOCIALLY</h5>
       </div>
       <div class="col-6">
-        <div class = "row">
-            <div class="col-8">
-             <a href="http://localhost:3001/pay"><div id='bal'><b>Balance: </b>$0.00</div></a>
-                </div>
+        <div class = "row pull-right" >
+            
            
-            <div class="col-4">
-            <a id="logout" href="http://localhost:3001/logout"><i class="header-icons"><FiLogOut/></i></a>
+            <div class="col-4 pull-right">
+            <a id="logout" href="http://localhost:3001/logout" className='btn btn-info-dark'><i class="header-icon"> <FiLogOut/></i></a>
             </div>
       </div>
 
@@ -37,16 +35,21 @@ const Navibar = () => {
     
 <div class="page-header-menu">
     
-    <Navbar collapseOnSelect className="color-nav" expand="sm" bg="primary" variant="dark">
+    <Navbar collapseOnSelect className="color-nav" expand="sm" bg="primary" >
             <Container>
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav'>
                     <Nav>
-                        <Nav.Link href='/Dashboard'>Dashboard</Nav.Link>
-                        <Nav.Link href='/campcrea'>Campaign</Nav.Link>
-                        <Nav.Link href='/profile'>Profile</Nav.Link>
-                        <Nav.Link href='/pay'>Billing</Nav.Link>
-                        <Nav.Link href='/'>Review</Nav.Link>
+                        <Nav.Link href='/admindash'>Dashboard</Nav.Link>
+                       
+                        <Nav.Link href='/adminprofile'>Profile</Nav.Link>
+
+                        <Nav.Link href='/admincamp'> Campaigns</Nav.Link>
+
+                        <Nav.Link href='/admincreative'>Creatives</Nav.Link>
+
+                        
+                       
                     </Nav>
                 </Navbar.Collapse>
                 
@@ -57,6 +60,7 @@ const Navibar = () => {
                 <div id='prof-name'>{name} </div></a>
                 </div>
                 </div>
+                
             </Container>
         </Navbar>
 
@@ -68,4 +72,4 @@ const Navibar = () => {
   )
 }
 
-export default Navibar;
+export default AdminNavi;

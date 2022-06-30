@@ -18,6 +18,8 @@ const useLoginForm = (submitLoginForm) => {
       const [errors, setErrors] = useState({});
       const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
+      
+
       async function handleForSubmit(event) {
         event.preventDefault();
         await submitLoginForm(event.target);
@@ -25,6 +27,10 @@ const useLoginForm = (submitLoginForm) => {
         
         setErrors(loginValidation(values));
         setDataIsCorrect(true);
+
+        
+
+      
 
         var axios = require('axios');
             var data = JSON.stringify({
@@ -45,37 +51,42 @@ const useLoginForm = (submitLoginForm) => {
             axios(config)
             .then(function (response) {
               console.log("succes");
-              alert("Successfully Login");
+              
               console.log(JSON.stringify(response.data));
               setRedirect(true)
 
               // saving the acces token in local storage
               localStorage.setItem("JWT",JSON.stringify(response.data));
               localStorage.setItem("id",JSON.stringify(response.data.id));
+              
+              alert("Successfully Login");
+
+             
             })
             .catch(function (error) {
               console.log(error);
               
             }); 
 
+            
+            
+
       }
+      
 
       const user = JSON.parse(localStorage.getItem('JWT'));
-      const role = user.userRole;
+      const role = user.userRole;      
       console.log(role);
-
       if (redirect) {
-        if(role==='Admin'){
-          navigate("/admindash");
-        }else if(role==='advertiser'){
-          navigate("/Dashboard");
-        }else{
-          navigate("/");
-        }
-        } else{
-          
-        }
-   
+        navigate("/Dashboard");
+        // if(role==='Admin'){
+        //   navigate("/admindash");
+        // }
+        // else{
+        //   navigate("/Dashboard");
+        // }
+      }
+      
 
       useEffect(() => {
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
@@ -89,7 +100,14 @@ const useLoginForm = (submitLoginForm) => {
           [event.target.name]: event.target.value,
         });
       };
+
+      
+
+      
+      
       return { handleChange, handleForSubmit, errors, values };
+
+      
 
 };
 export default useLoginForm;

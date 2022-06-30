@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import profileValidation from "./profileValidation";
+import swal from 'sweetalert';
 
 const useForm = (submitForm) => {
  
@@ -50,10 +51,22 @@ const useForm = (submitForm) => {
 
     axios(config)
       .then(function (response) {
+        swal({
+          title: "Success",
+          text: "Password is Change successfully",
+          icon: "success",
+          button: "OK",
+        });
         console.log("succes")
         console.log(JSON.stringify(response));
       })
       .catch(function (response) {
+        swal({
+          title: "Are you sure?",
+          text: "Your Old Password is Incorrect",
+          icon: "warning",
+          button: "OK",
+        });
         console.log(response);
       });
   }

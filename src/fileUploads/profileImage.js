@@ -9,7 +9,7 @@ const FileUploadComponent = () => {
     
     const user = JSON.parse(localStorage.getItem('JWT'));
     console.log(user);
-    const adverId = user.id;
+    const adverId = user.userId;
    
     useEffect(() => {
        getImage();
@@ -91,7 +91,7 @@ const FileUploadComponent = () => {
                     />}
                    {!image && <span>(jpeg,jpg or png)</span> }
 
-                   {image &&  <button onClick={()=> deleteImageOperation(avatarid)}>Remove Image</button>}
+                   {image &&  <button className='btn btn-primary' onClick={()=> deleteImageOperation(avatarid)}>Remove Image</button>}
                      
                     </>
              )}
@@ -107,8 +107,8 @@ const FileUploadComponent = () => {
                     className="Image-preview"
                     alt="profile"
                   />
-                  <button onClick={() => setImagePreview(null)}>Remove Image</button>
-                  <button onClick={handleAPI}>Submit</button>
+                  <button className='btn btn-primary' id="imageremove" onClick={() => setImagePreview(null)}>Remove Image</button>
+                  <button className='btn btn-primary' id='imagesubmit' onClick={handleAPI}>Submit</button>
 
                     </>
                 )}

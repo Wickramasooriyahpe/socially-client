@@ -167,3 +167,55 @@
     color: #76afdc;
     text-transform: uppercase;
 }
+
+/*******Admin navi******/
+.header-Logo{
+    padding-left: 20px;
+    padding-top: 5px;
+    font-size: large;
+    float: left;
+    
+    color: #28549a;
+}
+.header-icon{
+    line-height: 1;
+    font-size: 1.8rem;
+    color: #28549a;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    float:right;
+    padding-right: 60px;
+}
+.header-icons-prof{
+    line-height: 1;
+    font-size: 1.8rem;
+    color:  #fff;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    float: left;
+}
+#prof-name{
+    font-size: 1rem;
+    color:  #fff;
+    float: left;
+    padding-left: 12px;
+    padding-top: 8px;
+}
+
+.btn-space{
+    margin-right: 5px;
+}
+
+.status-pending{
+    color: rgb(7, 89, 204);
+    font-weight: bold;
+}
+
+.status-active{
+    color: rgb(7, 180, 7);
+    font-weight: bold;
+}

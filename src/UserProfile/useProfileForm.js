@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import profileValidation from "./profileValidation";
+import swal from 'sweetalert';
+
 
 const useForm = (submitForm) => {
 
@@ -44,7 +46,7 @@ const useForm = (submitForm) => {
          const [id, setid] = useState([]);
 
           useEffect(() => {
-            const id = JSON.parse(localStorage.getItem('id'));
+            const id = JSON.parse(localStorage.getItem('userId'));
             if (id) {
             setid(id);
             }
@@ -114,6 +116,12 @@ const useForm = (submitForm) => {
        
          axios(config)
            .then(function (response) {
+            swal({
+              title: "Success",
+              text: "Profile is update successfully",
+              icon: "success",
+              button: "OK",
+            });
              console.log(JSON.stringify(response.data));
            })
            .catch(function (error) {
