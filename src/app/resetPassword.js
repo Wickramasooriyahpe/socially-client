@@ -2,8 +2,64 @@ import React from "react";
 //import './SignIn/.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
-
+import { useNavigate, Navigate  } from "react-router-dom";
+import { useState, useEffect } from "react";
+import resetPasswordValidation from "./resetPasswordValidation";
 const ResetPassword = () => {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const navigate = useNavigate();
+  const [redirect, setRedirect] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [dataIsCorrect, setDataIsCorrect] = useState(false);
+
+  const handleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+
+  async function handleRestPW(event) {
+    event.preventDefault();
+    setErrors(resetPasswordValidation(values));
+    var axios = require('axios');
+    var data = JSON.stringify({
+      "email": values.email,
+      "password":values.password,
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3000/auth/passwordReset',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      setRedirect(true)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+  }
+
+  if (redirect ) {
+        
+    navigate("/login");
+    } else{
+      
+    }
 
  // const { handleChange, handleOTP, otp } = useOTP(submitOTP);
 
@@ -29,9 +85,12 @@ const ResetPassword = () => {
                             id="exampleInputEmail1"
                             placeholder="Email"
                             name="email"
-                            //value={values.email}
-                            //onChange={handleChange}
+                            value={values.email}
+                            onChange={handleChange}
                           />
+                          {errors.email && (
+                            <p className="error">{errors.email}</p>
+                          )}
                         </div>
                         <div className="form-group">
                           <input
@@ -40,10 +99,12 @@ const ResetPassword = () => {
                             id="exampleInputPassword1"
                             placeholder="Password"
                             name="password"
-                           // value={values.password}
-                            //onChange={handleChange}
+                           value={values.password}
+                            onChange={handleChange}
                           />
-                          
+                          {errors.password && (
+                            <p className="error">{errors.password}</p>
+                          )}
                         </div>
 
                         <div className="form-group">
@@ -53,10 +114,12 @@ const ResetPassword = () => {
                             id="exampleInputPassword2"
                             placeholder="Confirm Password"
                             name="confirmPassword"
-                            //value={values.confirmPassword}
-                            //onChange={handleChange}
+                            value={values.confirmPassword}
+                            onChange={handleChange}
                           />
-                    
+                     {errors.confirmPassword && (
+                            <p className="error">{errors.confirmPassword}</p>
+                          )}
                         </div>
                         
                       </form>
@@ -66,9 +129,8 @@ const ResetPassword = () => {
                       <div className="mt-3">
                       
                       <a className="btn  btn-primary btn font-weight-medium auth-form-btn" id="reset" 
-                             // onClick={e =>
-                               // alert("Entered OTP is " + otp.join(""))}
-                             //  onClick={}
+                             href=""
+                             onClick={handleRestPW}
                              >Reset Passward</a>
 
                              </div>

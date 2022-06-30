@@ -4,7 +4,8 @@ import { Navigate } from "react-router-dom";
 //import './SignIn.css';
 import axios from "axios";
 
-const local_email='email'
+//const local_email='email'
+
 
 const useForm = (submitForm) => {
   const [redirect, setRedirect] = useState(false);
@@ -18,14 +19,13 @@ const useForm = (submitForm) => {
   const [errors, setErrors] = useState({});
   const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
-  useEffect( () =>{
-    const storeEmail = JSON.parse(localStorage.getItem(local_email))
-    if (storeEmail) setValues(storeEmail);
-  },[] )
-
   useEffect(()=>{
-    localStorage.setItem(local_email,JSON.stringify(values.email))
+    localStorage.setItem("email",JSON.stringify(values.email))
   }, [values.email])
+
+  useEffect( () =>{
+    JSON.parse(localStorage.getItem(values.email))
+  },[] )
 
   async function handleForSubmit(event) {
     event.preventDefault();

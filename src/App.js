@@ -34,15 +34,9 @@ import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 import ForgotPassword from './app/forgotPassword';
 import ResetPassword from './app/resetPassword';
 import AdminDash from './Admin/AdminDash';
-import AdminNavi from './Admin/AdminNavi';
-import AdminProfile from './Admin/AdminProfile';
-import AdminChangePassword from './Admin/AdminPassword';
-import AdminCampTable from './Admin/AdminCamptable';
-import AdminCampDetails from './Admin/AdminCampDetails';
-//import AdminTable from './Admin/AdminTable';
-import rootElement from './Admin/AdminTable';
-import AdminCreativeDetails from './Admin/AdminCreative';
-
+import TransactionHistory from './Payment/TransactionHistory'
+import Checkout from './Payment/checkout';
+import DataTable from './Payment/dataTable';
 
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
@@ -63,7 +57,6 @@ function App(props) {
               <Route path="/cont" element={<Contact />} /> 
               <Route path="/form" element={<Form />} />
               <Route path="/Login" element={<LoginForm />} />
-              <Route path="/adminnavi" element={<AdminNavi />} />
               <Route path="/otp" element={<OTP />} />
               <Route path="/navi" element={<Navibar />} />
               <Route path="/campcrea" element={<CampDetails />} />
@@ -79,10 +72,12 @@ function App(props) {
               <Route path="/Dashboard" element={<AdvertiserDashboard />} />
               <Route path="/forgotPassword" element={<ForgotPassword />} />
               <Route path="/resetPassword" element={<ResetPassword />} />
-              <Route path="/admindash" element={<AdminDash />}/>
-              <Route path='/admincamp' element={<AdminCampDetails />} />
-              <Route path='admint' element={<rootElement />} />
-              <Route path='/admincreative' element={<AdminCreativeDetails/>} />
+              <Route path="admindash" element={<AdminDash />}/>
+              <Route path="/transactionHistory" element={<TransactionHistory />} />
+              <Route path="/checkout" element={<Checkout />} />
+
+
+              {/* <Route path="/dataTable" element={<DataTable />} /> */}
           </Routes>
           
       </Router>

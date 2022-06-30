@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 //import './SignIn.css';
 import loginValidation from "./loginValidation";
 import useForm from "./useForm";
+import Navibar from "../components/Navibar";
 import useLoginForm from "./useLoginForm";
+
 
 const Login = ({ submitLoginForm }) => {
   const { handleChange, handleForSubmit, values, errors } = useLoginForm(submitLoginForm);
@@ -18,8 +20,8 @@ const Login = ({ submitLoginForm }) => {
               <div className="d-flex align-items-center auth px-0">
                 <div className="w-100 text-center mx-auto p-3 mt-2">
                   <div className="col-lg-4 mx-auto">
-                    <div className="auth-form-light text-left py-5 px-4 px-sm-5">
-                    <h4>Sign in</h4><br></br>
+                    <div className="auth-form-light text-left py-5 px-4 px-sm-5" >
+                    <div id="login-title"><h4>Sign in</h4><br></br></div>
                       <h5 className="font-weight-light">
                     
                       </h5>
@@ -52,20 +54,7 @@ const Login = ({ submitLoginForm }) => {
                             <p className="error">{errors.password}</p>
                           )}
                         </div>
-                        <div className="m-4">
-                          <div className=" form-check">
-                            <input
-                              type="checkbox"
-                              className="form-check-input"
-                              id="defaultUnchecked"
-                              name="checkbox"
-                            />
-                            <label className="m-2 form-check-label text-muted">
-                              {" "}
-                              <i className="input-helper"></i>Remember me
-                            </label>
-                          </div>
-                        </div>
+                        
                         <div className="mt-3 mb-3">
                         
                         

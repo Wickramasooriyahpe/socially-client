@@ -1,7 +1,7 @@
 import { CardCvcElement, CardElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
-
+import swal from 'sweetalert';
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -44,11 +44,10 @@ export default function PaymentForm() {
         var axios = require('axios');
         var data = JSON.stringify({
           paymentMethodId,
-          amount: 1000
+          amount: 50000,
+          
         });
-
-       // const token = localStorage.getItem('JWT');
-       // const token = JSON.parse(localStorage.getItem('JWT'));
+  
         var config = {
           method: 'post',
           url: 'http://localhost:3000/payments',
@@ -56,10 +55,7 @@ export default function PaymentForm() {
             Authorization: 
             "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
             "Content-Type": "application/json",
-            /*
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          //  "Authorization" : `Bearer ${token}`*/
+      
           },
           data : data
         };
@@ -67,38 +63,83 @@ export default function PaymentForm() {
         axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data));
+          swal({
+            title: "success",
+            text: "Payment done successfully!",
+            icon: "success",
+            button: "close",
+          });
           console.log("Successful payment")
-          alert("Payment done successfully")
+          //alert("Payment done successfully")
                 setSuccess(true)
         })
         .catch(function (error) {
+          swal({
+            title: "Error",
+            text: "Insufficient Balance",
+            icon: "error",
+            button: "close",
+          });
           console.log(error);
           alert("Failed")
         });
 
-/*
-    if(!error) {
-        try {
-            const {id} = paymentMethod
-            const response = await axios.post("http://localhost:3000/payments", {
-                amount: 1000,
-                id
-            })
+    //Topup
+    var axios = require('axios');
+    var data = JSON.stringify({
+     advertiserID: JSON.parse(localStorage.getItem('id')),
+     //advertiserID:"13",
+      amount: 50000/100
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3000/advertiser-transaction/create',
+      headers: { 
+        Authorization: 
+            "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
+            "Content-Type": "application/json",
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      console.log("amount added");
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log("error");
+    });
 
-            if(response.data.success) {
-                console.log("Successful payment")
-                setSuccess(true)
-            }
+    //get balance
+    var axios = require('axios');
+    var data = JSON.stringify({
+      advertiserID: JSON.parse(localStorage.getItem('id')),
+   });
 
-        } catch (error) {
-            console.log("Error", error)
-            alert("Failed")
-        }
-    } else {
-        console.log(error.message)
-    }
-*/
+      var config = {
+        method: 'get',
+        url: 'http://localhost:3000/advertiser-transaction/balance',
+        headers: { 
+          Authorization: 
+          "Bearer " + JSON.parse(localStorage.getItem("JWT"))["accessToken"],
+          "Content-Type": "application/json",
+        },
+        data : data
+      };
 
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        console.log("balance");
+        localStorage.setItem("balance",JSON.stringify(response.data+500));
+      })
+      .catch(function (error) {
+        console.log(error);
+        console.log("error");
+      });
 }
 
 

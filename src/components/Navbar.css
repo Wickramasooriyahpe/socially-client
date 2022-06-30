@@ -16,6 +16,7 @@
     text-rendering: auto;
     float: right;
     padding-right: 60px;
+    cursor: pointer;
 }
 .header-icons-prof{
     line-height: 1;

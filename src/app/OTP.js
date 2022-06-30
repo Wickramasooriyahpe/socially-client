@@ -1,14 +1,114 @@
 import React from "react";
-//import './SignIn.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import email from './useForm';
-import AdvertiserDashboard from "../Dashboard/AdvertiserDashboard";
-import { Navigate } from "react-router-dom";
-import useOTP from "./useOTP";
+import { useState, useEffect } from "react";
+import { useNavigate, Navigate  } from "react-router-dom";
+import swal from 'sweetalert';
 
-const OTP = (submitOTP) => {
+import { Link } from "react-router-dom";
 
-  const { handleChange, handleOTP, otp } = useOTP(submitOTP);
+const user = JSON.parse(localStorage.getItem('email'));
+
+const OTP = () => {
+    const [otp, setOtp] = useState(new Array(4).fill(""));
+    const [errors, setErrors] = useState({});
+    const [dataIsCorrect, setDataIsCorrect] = useState(false);
+    const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate();
+
+  const handleChange = (element, index) => {
+    if (isNaN(element.value)) return false;
+
+    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
+
+    if (element.nextSibling) {
+        element.nextSibling.focus();
+    }
+};
+
+function handleOTP(event){
+      
+  
+  event.preventDefault();
+  setDataIsCorrect(true);
+
+  var axios = require('axios');
+  var data = JSON.stringify({
+    email: JSON.parse(localStorage.getItem('email')),
+    enteredOTP: otp.join(""),
+  });
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/auth/verify',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    setRedirect(true)
+    console.log('Successfully Login');
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    swal({
+      title: "Error",
+      text: "You have entered wrong OTP! Click Re-send OTP to get the OTP again.",
+      icon: "error",
+      button: "close",
+    });
+
+    console.log(error);
+    console.log(user);
+  });
+
+  
+}
+function handleresendOTP(event){
+  event.preventDefault();
+  var axios = require('axios');
+  var data = JSON.stringify({
+    email: JSON.parse(localStorage.getItem('email')),
+  });
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/auth/reSendOTP',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    swal({
+      title: "Done!",
+      text: "OTP re-sent succesfully! Please check your Email",
+      icon: "success",
+      button: "close",
+    });
+
+
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+
+if (redirect ) {
+        
+  navigate("/login");
+  } else{
+    
+  }
+
 
     return (
     <div className="container-scroller">
@@ -45,15 +145,20 @@ const OTP = (submitOTP) => {
                       </div>
                       <div className="mt-3">
                       <a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" 
-                             // onClick={e =>
-                               // alert("Entered OTP is " + otp.join(""))}
                                onClick={handleOTP}
                              >Submit</a>
                       </div>
-                      <div className="text-center mt-4 font-weight-light"> <a className="text-primary" 
-                      //onClick={handleResendOTP}
+<br></br>
+                      <a className="text-primary" href=""
+                               onClick={handleresendOTP}
+                             >Re-sent OTP</a>
+
+                      {/* <div className="text-center mt-4 font-weight-light">
+                         <a className="text-primary" 
+                      onClick={handleresendOTP}
                       >Re-sent OTP</a>
-                      </div>
+                    
+                      </div> */}
 
                     </div>
                   </div>
@@ -64,6 +169,6 @@ const OTP = (submitOTP) => {
         </div>
       </div>
     </div>
-    )
+    );
 }
 export default OTP

@@ -24,7 +24,28 @@
 	width: 100%;
 	padding: 11px 15px 11px 0;
 }
+.center{
+	display: flex;
+	width: calc(100% - 30px);
+	justify-content: center;
+}
+#popupbutton{
 
+	display: block;
+	font-size: 16px;
+	height: 40px;
+	justify-content: center;
+	margin: 40px 15px 0;
+	background-color: #0d6efd;
+	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #0d6efd;
+	border-radius: 4px;
+	color: #fff;
+	font-weight: 6000;
+	cursor: pointer;
+	transition: all 100ms ease-in-out;
+	will-change: transform, background-color, box-shadow;
+	border: none;
+}
 .paybutton {
 	display: block;
 	font-size: 16px;
@@ -43,7 +64,10 @@
 	will-change: transform, background-color, box-shadow;
 	border: none;
 }
-
+.popup{
+	text-align: center;
+	color: rgb(65, 65, 65);
+}
 .paybutton:active {
 	background-color: whitesmoke;
 	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #0d6efd;
@@ -78,6 +102,7 @@
     color: #777;
     font-size: 10px;
     font-weight: 100;
+	margin-left: 50px;
 }
 .payment-data{
     font-size: 14px;
@@ -88,4 +113,28 @@
     
     
     border-radius: 0;
+}
+#label {
+    display: inline-block;
+    max-width: 50%;
+    margin-bottom: 5px;
+    font-weight: 700;
+	float: none;
+    margin-left: 0;
+}
+#filter{
+	
+    max-width: 10%;
+	float: none;
+}
+#font{
+	color: #787e83;
+}
+#columnData{
+	text-align: center;
+}
+#columnicon{
+	font-size: 1.5rem;
+    color: #4d97d1;
+	cursor: pointer;
 }
