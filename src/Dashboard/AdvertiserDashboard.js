@@ -49,15 +49,15 @@ import SummaryChart from './SummaryChart';
                             <div className="row1">
                             <div > <FaTrophy  className='icons'/></div>
                             </div>
-                            <div class="portlet-bodycontent number-wins">$120</div>
-                            <div class="portlet-title">Earnings</div> 
+                            <div class="portlet-bodycontent number-wins">$0</div>
+                            <div class="portlet-title">Spend</div> 
                             </div>
 
                             <div class="portlet portlet-card">
                             <div className="row1">
                             <div > <FaUsers  className='icons'/></div>
                             </div>
-                            <div class="portlet-bodycontent number-impressions">200</div>
+                            <div class="portlet-bodycontent number-impressions">0</div>
                             <div class="portlet-title">Impressions</div>
                             </div>
 
@@ -65,7 +65,7 @@ import SummaryChart from './SummaryChart';
                             <div className="row1">
                             <div > <FaMousePointer className='icons'/></div>
                             </div>
-                            <div class="portlet-bodycontent number-clicks">450</div>
+                            <div class="portlet-bodycontent number-clicks">0</div>
                             <div class="portlet-title">Clicks</div>
                             </div>
 
@@ -73,8 +73,8 @@ import SummaryChart from './SummaryChart';
                             <div className="row1">
                             <div > <FaMoneyBill className='icons'/></div>
                             </div>
-                            <div class="portlet-bodycontent number-spend">$300</div>
-                            <div class="portlet-title">Spend</div>
+                            <div class="portlet-bodycontent number-spend">$0</div>
+                            <div class="portlet-title">Earnings</div>
                             </div>
 
                             </div>

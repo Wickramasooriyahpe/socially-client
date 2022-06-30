@@ -82,22 +82,7 @@ const Register = ({ submitForm }) => {
                         </div>
 
                         <div className="m-2">
-                        <div class="row">
-                          <div className=" form-check" id="check-box">
-                            <input
-                              type="checkbox"
-                              className="form-check-input"
-                              id="defaultUnchecked"
-                              name="checkbox"
-                              
-                            />
-                            <label className="m-2 form-check-label text-muted">
-                              {" "}
-                              <i className="input-helper"></i>I agree to all
-                              Terms & Conditions
-                            </label>
-                          </div>
-                        </div>
+                        
                           
                       </div>
 

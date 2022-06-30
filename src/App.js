@@ -34,6 +34,9 @@ import AdvertiserDashboard from './Dashboard/AdvertiserDashboard';
 import ForgotPassword from './app/forgotPassword';
 import ResetPassword from './app/resetPassword';
 import AdminDash from './Admin/AdminDash';
+import TransactionHistory from './Payment/TransactionHistory'
+import Checkout from './Payment/checkout';
+import DataTable from './Payment/dataTable';
 
 //import Table from './components/Table';
 //import AdvertiserProfile from './components/AdvertiserProfile';
@@ -68,6 +71,11 @@ function App(props) {
               <Route path="/forgotPassword" element={<ForgotPassword />} />
               <Route path="/resetPassword" element={<ResetPassword />} />
               <Route path="admindash" element={<AdminDash />}/>
+              <Route path="/transactionHistory" element={<TransactionHistory />} />
+              <Route path="/checkout" element={<Checkout />} />
+
+
+              {/* <Route path="/dataTable" element={<DataTable />} /> */}
           </Routes>
           
       </Router>

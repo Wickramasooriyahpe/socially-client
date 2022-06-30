@@ -2,6 +2,9 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import { useNavigate, Navigate  } from "react-router-dom";
+import swal from 'sweetalert';
+
+import { Link } from "react-router-dom";
 
 const user = JSON.parse(localStorage.getItem('email'));
 
@@ -51,12 +54,53 @@ function handleOTP(event){
     console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
+    swal({
+      title: "Error",
+      text: "You have entered wrong OTP! Click Re-send OTP to get the OTP again.",
+      icon: "error",
+      button: "close",
+    });
+
     console.log(error);
     console.log(user);
   });
 
   
 }
+function handleresendOTP(event){
+  event.preventDefault();
+  var axios = require('axios');
+  var data = JSON.stringify({
+    email: JSON.parse(localStorage.getItem('email')),
+  });
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/auth/reSendOTP',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    swal({
+      title: "Done!",
+      text: "OTP re-sent succesfully! Please check your Email",
+      icon: "success",
+      button: "close",
+    });
+
+
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
 
 if (redirect ) {
         
@@ -104,9 +148,17 @@ if (redirect ) {
                                onClick={handleOTP}
                              >Submit</a>
                       </div>
-                      <div className="text-center mt-4 font-weight-light"> <a className="text-primary" 
+<br></br>
+                      <a className="text-primary" href=""
+                               onClick={handleresendOTP}
+                             >Re-sent OTP</a>
+
+                      {/* <div className="text-center mt-4 font-weight-light">
+                         <a className="text-primary" 
+                      onClick={handleresendOTP}
                       >Re-sent OTP</a>
-                      </div>
+                    
+                      </div> */}
 
                     </div>
                   </div>

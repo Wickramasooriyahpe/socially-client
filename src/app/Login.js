@@ -54,20 +54,7 @@ const Login = ({ submitLoginForm }) => {
                             <p className="error">{errors.password}</p>
                           )}
                         </div>
-                        <div className="m-4">
-                          <div className=" form-check">
-                            <input
-                              type="checkbox"
-                              className="form-check-input"
-                              id="defaultUnchecked"
-                              name="checkbox"
-                            />
-                            <label className="m-2 form-check-label text-muted">
-                              {" "}
-                              <i className="input-helper"></i>Remember me
-                            </label>
-                          </div>
-                        </div>
+                        
                         <div className="mt-3 mb-3">
                         
                         
